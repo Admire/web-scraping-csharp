@@ -11,57 +11,84 @@ namespace web_scraping_csharp
         }
 
          public string HomePage = "https://batdongsan.com.vn";
+         public string NhaDatBan = "https://batdongsan.com.vn/nha-dat-ban/p";
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Thread newTask = new Thread( () =>
+
+
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.AddArgument("user-data-dir=C:/Users/manh/AppData/Local/Google/Chrome/User Data");
+            chromeOptions.AddArgument("--profile-directory=Default");
+
+
+            ChromeDriver chromeDriver = new ChromeDriver(chromeOptions);
+            chromeDriver.Manage().Window.Maximize();
+            int pageNumber = Convert.ToInt32(numericUpDown1.Value);
+            for(int i = 1; i <= pageNumber; i++)
             {
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.AddArgument("user-data-dir=C:/Users/manh/AppData/Local/Google/Chrome/User Data");
-                chromeOptions.AddArgument("--profile-directory=Default");
+                string url = $"{NhaDatBan}{i}";
+                chromeDriver.Navigate().GoToUrl(url);
 
-                ChromeDriver chromeDriver = new ChromeDriver(chromeOptions);
-                chromeDriver.Manage().Window.Maximize();
-                chromeDriver.Navigate().GoToUrl(HomePage);
-
-
-                //hiện mã nguồn trang
-
-                /*              string text =  chromeDriver.PageSource.ToString();
-                                textBox1.Text = text;*/
-
-
-                // nên dùng element.GetAttribute("innerText") thay cho element.text;
-                // vì dùng element.text thì những element có text nhưng k hiện sẽ không hiển thị
-
-                /*                string texthihi = "";
-                                List<IWebElement> menuList = chromeDriver.FindElements(By.CssSelector("div.re__right-menu > div > ul > li>a>span.text")).ToList();
-                                foreach (IWebElement element in menuList)
-                                {
-                                    texthihi += element.GetAttribute("innerText") + " ";
-                                }
-                                textBox2.Text = texthihi;*/
-
-                //mở từng menu con 1
-                List<IWebElement> menuLink = chromeDriver.FindElements(By.CssSelector("div.re__right-menu > div > ul > li:not(li.tablet) > a")).ToList();
-                List<string> menuUrl = new();
-                foreach (IWebElement element in menuLink)
+                IWebElement productList = chromeDriver.FindElement(By.Id("product-lists-web"));
+                List<IWebElement> productItem = productList.FindElements(By.ClassName("js__card")).ToList();
+                foreach (var product in productItem)
                 {
-                    if (element.GetAttribute("href") != "javascript:void(0);")
+                    ListViewItem item = new ListViewItem();
+                    if (product.FindElements(By.TagName("a")).Count() > 0)
                     {
-                        menuUrl.Add(element.GetAttribute("href"));
+                        item.Text = product.FindElement(By.TagName("a")).GetAttribute("href");
                     }
-                }
-                foreach (string item in menuUrl)
-                {
-                  chromeDriver.SwitchTo().NewWindow(WindowType.Tab);
-                  chromeDriver.Navigate().GoToUrl(item);
-                }
-                    //chromeDriver.Quit();
-            });
+                    else { item.Text = ""; }
+                    if (product.FindElements(By.ClassName("js__card-title")).Count() > 0)
+                    {
+                        item.SubItems.Add(product.FindElement(By.ClassName("js__card-title")).GetAttribute("innerText").Trim());
+                    }
+                    else { item.SubItems.Add("Trống"); }
+                    if (product.FindElements(By.ClassName("re__card-config-price")).Count() > 0)
+                    {
+                        item.SubItems.Add(product.FindElement(By.ClassName("re__card-config-price")).GetAttribute("innerHTML").Trim());
+                    }
+                    else { item.SubItems.Add("Trống"); }
 
-             newTask.Start();
-            
+                    if (product.FindElements(By.ClassName("re__card-config-price_per_m2")).Count() > 0)
+                    {
+                        item.SubItems.Add(product.FindElement(By.ClassName("re__card-config-price_per_m2")).GetAttribute("innerHTML").Trim());
+                    }
+                    else { item.SubItems.Add("Trống"); }
+
+                    if (product.FindElements(By.ClassName("re__card-config-area")).Count() > 0)
+                    {
+                        item.SubItems.Add(product.FindElement(By.ClassName("re__card-config-area")).GetAttribute("innerHTML").Trim());
+                    }
+                    else { item.SubItems.Add("Trống"); }
+
+                    if (product.FindElements(By.ClassName("re__card-location")).Count() > 0)
+                    {
+                        item.SubItems.Add(product.FindElement(By.ClassName("re__card-location")).GetAttribute("innerHTML").Trim());
+                    }
+                    else { item.SubItems.Add("Trống"); }
+
+                    listView1.Items.Add(item);
+                }
+            }
+            chromeDriver.Quit();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            listView1.Items.Clear();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Đã lưu vào cơ sở dữ liệu");
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Đã tải từ cơ sở dữ liệu");
         }
     }
 }
