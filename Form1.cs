@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-
+using System.Security.Permissions;
+using System.Text;
 namespace web_scraping_csharp 
 {
     public partial class Form1 : Form
@@ -8,6 +9,7 @@ namespace web_scraping_csharp
         public Form1()
         {
             InitializeComponent();
+            Control.CheckForIllegalCrossThreadCalls = false;
         }
 
          public string HomePage = "https://batdongsan.com.vn";
@@ -15,8 +17,16 @@ namespace web_scraping_csharp
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Thread buttonOne = new Thread(RunChrome);
+            buttonOne.IsBackground = true;
 
+            buttonOne.Start();
+        }
 
+        void RunChrome()
+        {
+
+            label2.Text = "Đang tiến hành cào dữ liệu";
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.AddArgument("user-data-dir=C:/Users/manh/AppData/Local/Google/Chrome/User Data");
             chromeOptions.AddArgument("--profile-directory=Default");
@@ -25,7 +35,7 @@ namespace web_scraping_csharp
             ChromeDriver chromeDriver = new ChromeDriver(chromeOptions);
             chromeDriver.Manage().Window.Maximize();
             int pageNumber = Convert.ToInt32(numericUpDown1.Value);
-            for(int i = 1; i <= pageNumber; i++)
+            for (int i = 1; i <= pageNumber; i++)
             {
                 string url = $"{NhaDatBan}{i}";
                 chromeDriver.Navigate().GoToUrl(url);
@@ -38,6 +48,7 @@ namespace web_scraping_csharp
                     if (product.FindElements(By.TagName("a")).Count() > 0)
                     {
                         item.Text = product.FindElement(By.TagName("a")).GetAttribute("href");
+
                     }
                     else { item.Text = ""; }
                     if (product.FindElements(By.ClassName("js__card-title")).Count() > 0)
@@ -73,22 +84,61 @@ namespace web_scraping_csharp
                 }
             }
             chromeDriver.Quit();
-
+            label2.Text = "Kết quả";
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            listView1.Items.Clear();
+            Thread button2 = new Thread(ClearListView);
+            button2.IsBackground = true;
+            button2.Start();
         }
 
+        void ClearListView()
+        {
+            listView1.Items.Clear();
+            label2.Text = "Bấm vào get data để bắt đầu";
+        }
         private void button3_Click(object sender, EventArgs e)
+        {
+            Thread button3 = new Thread(SaveToDb);
+            button3.IsBackground = true;
+            button3.Start();
+        }
+        void SaveToDb()
         {
             MessageBox.Show("Đã lưu vào cơ sở dữ liệu");
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            Thread button4 = new Thread(LoadFromDb);
+            button4.IsBackground = true;
+            button4.Start();
+        }
+        void LoadFromDb()
+        {
             MessageBox.Show("Đã tải từ cơ sở dữ liệu");
         }
-    }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog() { Filter = "Text Document|*.txt", ValidateNames = true };
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                TextWriter tw = new StreamWriter(new FileStream(sfd.FileName, FileMode.Create), Encoding.UTF8);
+                {
+                    foreach (ListViewItem item in listView1.Items)
+                    {
+                        for (int i = 0; i < item.SubItems.Count; i++)
+                        {
+                            tw.WriteLine(item.SubItems[i].Text + ';');
+                        }
+                    }
+                }
+            MessageBox.Show("Lưu thành công");
+            }
+        }
+
+   }
 }

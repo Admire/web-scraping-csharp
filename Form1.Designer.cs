@@ -42,6 +42,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.button3 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,9 +61,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(264, 18);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 20);
+            this.label2.Size = new System.Drawing.Size(203, 20);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Kết quả";
+            this.label2.Text = "Bấm vào get data để bắt đầu";
             // 
             // listView1
             // 
@@ -75,7 +76,7 @@
             this.columnHeader6});
             this.listView1.Location = new System.Drawing.Point(264, 54);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1080, 569);
+            this.listView1.Size = new System.Drawing.Size(1080, 570);
             this.listView1.TabIndex = 4;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -112,7 +113,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(32, 181);
+            this.button2.Location = new System.Drawing.Point(32, 185);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(200, 50);
             this.button2.TabIndex = 0;
@@ -122,7 +123,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(32, 257);
+            this.button4.Location = new System.Drawing.Point(32, 268);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(200, 50);
             this.button4.TabIndex = 0;
@@ -159,13 +160,23 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(32, 331);
+            this.button3.Location = new System.Drawing.Point(32, 352);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(200, 50);
             this.button3.TabIndex = 0;
             this.button3.Text = "Load from database";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(32, 435);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(200, 50);
+            this.button5.TabIndex = 0;
+            this.button5.Text = "Save to txt file";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // Form1
             // 
@@ -177,6 +188,7 @@
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button3);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -206,5 +218,6 @@
         private Label label1;
         private NumericUpDown numericUpDown1;
         private Button button3;
+        private Button button5;
     }
 }
