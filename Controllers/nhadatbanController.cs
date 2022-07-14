@@ -11,46 +11,46 @@ using web_scraping_csharp.Models;
 
 namespace web_scraping_csharp.Controllers
 {
-    public class nhabandatController
+    public class nhadatbanController
     {
         public void queryInsertAll(List<ListViewItem> item)
         {
 
-            string sqlInsertToNhabandat = $"INSERT INTO nhabandat VALUES ";
+            string sqlInsertTonhadatban = $"INSERT INTO nhadatban VALUES ";
             foreach (ListViewItem item2 in item)
             {
-                sqlInsertToNhabandat += $"(DEFAULT, '{item2.SubItems[0].Text}','{item2.SubItems[1].Text}','{item2.SubItems[2].Text}','{item2.SubItems[3].Text}','{item2.SubItems[4].Text}','{item2.SubItems[5].Text}','{item2.SubItems[6].Text}','{item2.SubItems[7].Text}')";
+                sqlInsertTonhadatban += $"(DEFAULT, '{item2.SubItems[0].Text}','{item2.SubItems[1].Text}','{item2.SubItems[2].Text}','{item2.SubItems[3].Text}','{item2.SubItems[4].Text}','{item2.SubItems[5].Text}','{item2.SubItems[6].Text}','{item2.SubItems[7].Text}')";
                 if(item.IndexOf(item2) != item.Count() - 1)
                 {
-                    sqlInsertToNhabandat += ',';
+                    sqlInsertTonhadatban += ',';
                 }
             }
             using (IDbConnection db = new MySqlConnection("server=localhost;port=5060;user=root;password=140300;database=batdongsan"))
             {
-                db.Query<nhabandat>(sqlInsertToNhabandat);
+                db.Query<nhadatban>(sqlInsertTonhadatban);
             }
         }
         public List<ListViewItem> queryFetchAll()
         {
-            string sqlGetAllNhabandat = "SELECT * FROM nhabandat;";
-            List<nhabandat> nhabandats = new();
+            string sqlGetAllnhadatban = "SELECT * FROM nhadatban;";
+            List<nhadatban> nhadatbans = new();
             using (IDbConnection db = new MySqlConnection("server=localhost;port=5060;user=root;password=140300;database=batdongsan"))
             {
-                nhabandats = db.Query<nhabandat>(sqlGetAllNhabandat).ToList();
+                nhadatbans = db.Query<nhadatban>(sqlGetAllnhadatban).ToList();
             }
             List< ListViewItem > result = new List<ListViewItem>();
-            foreach (nhabandat nhabandat in nhabandats)
+            foreach (nhadatban nhadatban in nhadatbans)
             {
                 ListViewItem item = new ListViewItem();
 
-                item.Text =  nhabandat.url;
-                item.SubItems.Add(nhabandat.tieude);
-                item.SubItems.Add(nhabandat.gia);
-                item.SubItems.Add(nhabandat.giam2);
-                item.SubItems.Add(nhabandat.dientich);
-                item.SubItems.Add(nhabandat.diachi);
-                item.SubItems.Add(nhabandat.ngaydangbai);
-                item.SubItems.Add(nhabandat.nenxem);
+                item.Text =  nhadatban.url;
+                item.SubItems.Add(nhadatban.tieude);
+                item.SubItems.Add(nhadatban.gia);
+                item.SubItems.Add(nhadatban.giam2);
+                item.SubItems.Add(nhadatban.dientich);
+                item.SubItems.Add(nhadatban.diachi);
+                item.SubItems.Add(nhadatban.ngaydangbai);
+                item.SubItems.Add(nhadatban.nenxem);
 
                 result.Add(item);
             }
@@ -59,11 +59,11 @@ namespace web_scraping_csharp.Controllers
         public void queryDeleteAll()
         {
 
-            string sqlDeleteAllNhabandat = $"DELETE FROM nhabandat";
+            string sqlDeleteAllnhadatban = $"DELETE FROM nhadatban";
            
             using (IDbConnection db = new MySqlConnection("server=localhost;port=5060;user=root;password=140300;database=batdongsan"))
             {
-                db.Query<nhabandat>(sqlDeleteAllNhabandat);
+                db.Query<nhadatban>(sqlDeleteAllnhadatban);
             }
         }
     }
