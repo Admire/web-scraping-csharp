@@ -12,8 +12,8 @@ namespace web_scraping_csharp
             Control.CheckForIllegalCrossThreadCalls = false;
         }
 
-         public string HomePage = "https://batdongsan.com.vn";
-         public string NhaDatBan = "https://batdongsan.com.vn/nha-dat-ban/p";
+        public string HomePage = "https://batdongsan.com.vn";
+        public string NhaDatBan = "https://batdongsan.com.vn/nha-dat-ban/p";
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -26,7 +26,17 @@ namespace web_scraping_csharp
         void RunChrome()
         {
 
-            label2.Text = "Đang tiến hành cào dữ liệu";
+            label2.Text = "Đang tiến hành cào dữ liệu (lưu ý: không ẩn trình duyệt chrome)";
+            //tạm thời tắt tính năng ấn vào nút để tránh trường hợp cào chồng lên nhau
+            button1.Enabled = false;
+            button7.Enabled = false;
+            startPageNum.Enabled = false;
+            pageRangeNum.Enabled = false;
+            button2.Enabled = true;
+            button3.Enabled = true;
+            button4.Enabled = true;
+            button5.Enabled = true;
+            button6.Enabled = true;
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.AddArgument("user-data-dir=C:/Users/manh/AppData/Local/Google/Chrome/User Data");
             chromeOptions.AddArgument("--profile-directory=Default");
@@ -34,9 +44,14 @@ namespace web_scraping_csharp
 
             ChromeDriver chromeDriver = new ChromeDriver(chromeOptions);
             chromeDriver.Manage().Window.Maximize();
-            int pageNumber = Convert.ToInt32(numericUpDown1.Value);
-            for (int i = 1; i <= pageNumber; i++)
+            int pageRangeNumber = Convert.ToInt32(pageRangeNum.Value + startPageNum.Value -1);
+            int pageStartNumber = Convert.ToInt32(startPageNum.Value);
+            for (int i = pageStartNumber; i <= pageRangeNumber; i++)
             {
+                if (label2.Text == "Kết quả")
+                {
+                    break;
+                }
                 string url = $"{NhaDatBan}{i}";
                 chromeDriver.Navigate().GoToUrl(url);
 
@@ -44,6 +59,10 @@ namespace web_scraping_csharp
                 List<IWebElement> productItem = productList.FindElements(By.ClassName("js__card")).ToList();
                 foreach (var product in productItem)
                 {
+                    if(label2.Text == "Kết quả")
+                    {
+                        break;
+                    }
                     ListViewItem item = new ListViewItem();
                     if (product.FindElements(By.TagName("a")).Count() > 0)
                     {
@@ -79,31 +98,55 @@ namespace web_scraping_csharp
                         item.SubItems.Add(product.FindElement(By.ClassName("re__card-location")).GetAttribute("innerHTML").Trim());
                     }
                     else { item.SubItems.Add("Trống"); }
+                    if (product.FindElements(By.ClassName("re__card-published-info-published-at")).Count() > 0)
+                    {
+                        item.SubItems.Add(product.FindElement(By.ClassName("re__card-published-info-published-at")).GetAttribute("aria-label").Trim());
+                    }
+                    else { item.SubItems.Add("Trống"); }
+                    if (product.FindElements(By.ClassName("re__icon-star--sm")).Count() > 0)
+                    {
+                        item.SubItems.Add("Nên xem");
+                    }
+                    else { item.SubItems.Add("Không nên xem"); }
 
                     listView1.Items.Add(item);
                 }
             }
             chromeDriver.Quit();
             label2.Text = "Kết quả";
+            //bật lại tính năng nhấn vào nút
+            button1.Enabled = true;
+            startPageNum.Enabled = true;
+            button6.Enabled = false;
+            button7.Enabled = true;
+            pageRangeNum.Enabled = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Thread button2 = new Thread(ClearListView);
-            button2.IsBackground = true;
-            button2.Start();
+            Thread buttonTwo = new Thread(ClearListView);
+            buttonTwo.IsBackground = true;
+            buttonTwo.Start();
         }
 
         void ClearListView()
         {
             listView1.Items.Clear();
-            label2.Text = "Bấm vào get data để bắt đầu";
+            if(button1.Enabled == true|| button7.Enabled == true || button6.Enabled == false)
+            {
+                label2.Text = "Bấm vào \"Cào theo số đã nhập\" hoặc \"Cào tất cả các trang\" để bắt đầu";
+                button2.Enabled = false;
+                button3.Enabled = false;
+                button4.Enabled = false;
+                button5.Enabled = false;
+                button6.Enabled = false;
+            }
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            Thread button3 = new Thread(SaveToDb);
-            button3.IsBackground = true;
-            button3.Start();
+            Thread buttonThree = new Thread(SaveToDb);
+            buttonThree.IsBackground = true;
+            buttonThree.Start();
         }
         void SaveToDb()
         {
@@ -112,9 +155,9 @@ namespace web_scraping_csharp
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Thread button4 = new Thread(LoadFromDb);
-            button4.IsBackground = true;
-            button4.Start();
+            Thread buttonFour = new Thread(LoadFromDb);
+            buttonFour.IsBackground = true;
+            buttonFour.Start();
         }
         void LoadFromDb()
         {
@@ -140,5 +183,128 @@ namespace web_scraping_csharp
             }
         }
 
-   }
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Thread button6 = new Thread(StopGetData);
+            button6.IsBackground = true;
+            button6.Start();
+        }
+        void StopGetData()
+        {
+            label2.Text = "Kết quả";
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Thread buttonSeven = new Thread(RunChromeAllPages);
+            buttonSeven.IsBackground = true;
+
+            buttonSeven.Start();
+        }
+        void RunChromeAllPages()
+        {
+
+            label2.Text = "Đang tiến hành cào dữ liệu (lưu ý: không ẩn trình duyệt chrome)";
+            //tạm thời tắt tính năng ấn vào nút để tránh trường hợp cào chồng lên nhau
+            button1.Enabled = false;
+            button7.Enabled = false;
+            startPageNum.Enabled = false;
+            pageRangeNum.Enabled = false;
+            button2.Enabled = true;
+            button3.Enabled = true;
+            button4.Enabled = true;
+            button5.Enabled = true;
+            button6.Enabled = true;
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.AddArgument("user-data-dir=C:/Users/manh/AppData/Local/Google/Chrome/User Data");
+            chromeOptions.AddArgument("--profile-directory=Default");
+
+
+            ChromeDriver chromeDriver = new ChromeDriver(chromeOptions);
+            chromeDriver.Manage().Window.Maximize();
+            int i = 1;
+            while (i<100000000)
+            {
+                if (label2.Text == "Kết quả")
+                {
+                    break;
+                }
+                string url = $"{NhaDatBan}{i}";
+                chromeDriver.Navigate().GoToUrl(url);
+                if (chromeDriver.FindElements(By.ClassName("re__srp-empty")).Count()>0)
+                {
+                    break;
+                }
+                else
+                {
+                    IWebElement productList = chromeDriver.FindElement(By.Id("product-lists-web"));
+                    List<IWebElement> productItem = productList.FindElements(By.ClassName("js__card")).ToList();
+                    foreach (var product in productItem)
+                    {
+                        if (label2.Text == "Kết quả")
+                        {
+                            break;
+                        }
+                        ListViewItem item = new ListViewItem();
+                        if (product.FindElements(By.TagName("a")).Count() > 0)
+                        {
+                            item.Text = product.FindElement(By.TagName("a")).GetAttribute("href");
+
+                        }
+                        else { item.Text = ""; }
+                        if (product.FindElements(By.ClassName("js__card-title")).Count() > 0)
+                        {
+                            item.SubItems.Add(product.FindElement(By.ClassName("js__card-title")).GetAttribute("innerText").Trim());
+                        }
+                        else { item.SubItems.Add("Trống"); }
+                        if (product.FindElements(By.ClassName("re__card-config-price")).Count() > 0)
+                        {
+                            item.SubItems.Add(product.FindElement(By.ClassName("re__card-config-price")).GetAttribute("innerHTML").Trim());
+                        }
+                        else { item.SubItems.Add("Trống"); }
+
+                        if (product.FindElements(By.ClassName("re__card-config-price_per_m2")).Count() > 0)
+                        {
+                            item.SubItems.Add(product.FindElement(By.ClassName("re__card-config-price_per_m2")).GetAttribute("innerHTML").Trim());
+                        }
+                        else { item.SubItems.Add("Trống"); }
+
+                        if (product.FindElements(By.ClassName("re__card-config-area")).Count() > 0)
+                        {
+                            item.SubItems.Add(product.FindElement(By.ClassName("re__card-config-area")).GetAttribute("innerHTML").Trim());
+                        }
+                        else { item.SubItems.Add("Trống"); }
+
+                        if (product.FindElements(By.ClassName("re__card-location")).Count() > 0)
+                        {
+                            item.SubItems.Add(product.FindElement(By.ClassName("re__card-location")).GetAttribute("innerHTML").Trim());
+                        }
+                        else { item.SubItems.Add("Trống"); }
+                        if (product.FindElements(By.ClassName("re__card-published-info-published-at")).Count() > 0)
+                        {
+                            item.SubItems.Add(product.FindElement(By.ClassName("re__card-published-info-published-at")).GetAttribute("aria-label").Trim());
+                        }
+                        else { item.SubItems.Add("Trống"); }
+                        if (product.FindElements(By.ClassName("re__icon-star--sm")).Count() > 0)
+                        {
+                            item.SubItems.Add("Nên xem");
+                        }
+                        else { item.SubItems.Add("Không nên xem"); }
+
+                        listView1.Items.Add(item);
+                    }
+                }
+                i++;
+            }
+            chromeDriver.Quit();
+            label2.Text = "Kết quả";
+            //bật lại tính năng nhấn vào nút
+            button1.Enabled = true;
+            startPageNum.Enabled = true;
+            button6.Enabled = false;
+            button7.Enabled = true;
+            pageRangeNum.Enabled = true;
+        }
+
+    }
 }
