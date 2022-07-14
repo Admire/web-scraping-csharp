@@ -50,6 +50,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.startPageNum = new System.Windows.Forms.NumericUpDown();
             this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pageRangeNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.startPageNum)).BeginInit();
             this.SuspendLayout();
@@ -86,7 +87,7 @@
             this.columnHeader8});
             this.listView1.Location = new System.Drawing.Point(264, 54);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1381, 635);
+            this.listView1.Size = new System.Drawing.Size(1381, 718);
             this.listView1.TabIndex = 4;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -259,11 +260,21 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(31, 722);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(200, 50);
+            this.button8.TabIndex = 0;
+            this.button8.Text = "Xóa cơ sở dữ liệu";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1682, 723);
+            this.ClientSize = new System.Drawing.Size(1682, 803);
             this.Controls.Add(this.startPageNum);
             this.Controls.Add(this.pageRangeNum);
             this.Controls.Add(this.label3);
@@ -271,6 +282,7 @@
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button3);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button2);
@@ -278,8 +290,8 @@
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(1700, 770);
-            this.MinimumSize = new System.Drawing.Size(1700, 770);
+            this.MaximumSize = new System.Drawing.Size(1700, 850);
+            this.MinimumSize = new System.Drawing.Size(1700, 850);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Batdongsan.com.vn Scraping Tool";
@@ -313,5 +325,6 @@
         private Label label3;
         private NumericUpDown startPageNum;
         private Button button7;
+        private Button button8;
     }
 }

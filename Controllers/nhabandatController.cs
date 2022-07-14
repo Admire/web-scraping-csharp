@@ -56,5 +56,15 @@ namespace web_scraping_csharp.Controllers
             }
             return result;
         }
+        public void queryDeleteAll()
+        {
+
+            string sqlDeleteAllNhabandat = $"DELETE FROM nhabandat";
+           
+            using (IDbConnection db = new MySqlConnection("server=localhost;port=5060;user=root;password=140300;database=batdongsan"))
+            {
+                db.Query<nhabandat>(sqlDeleteAllNhabandat);
+            }
+        }
     }
 }

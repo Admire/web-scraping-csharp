@@ -317,5 +317,17 @@ namespace web_scraping_csharp
             pageRangeNum.Enabled = true;
         }
 
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Thread buttonEight = new Thread(deleteAllDB);
+            buttonEight.IsBackground = true;
+            buttonEight.Start();
+        }
+        void deleteAllDB()
+        {
+            listView1.Items.Clear();
+            new nhabandatController().queryDeleteAll();
+            MessageBox.Show("Đã xóa toàn bộ bản ghi có trong cơ sở dữ liệu");
+        }
     }
 }
