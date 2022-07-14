@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace web_scraping_csharp.Models
 {
-    [Table("nhabandat")]
-    public class nhabandat
+    [Table("nhadatban")]
+    public class nhadatban
     {
         [Key]
         public int Id { get; set; }

@@ -1,9 +1,8 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using System.Diagnostics;
 using System.Text;
 using web_scraping_csharp.Controllers;
-using web_scraping_csharp.Models;
-
 namespace web_scraping_csharp 
 {
     public partial class Form1 : Form
@@ -13,10 +12,18 @@ namespace web_scraping_csharp
             InitializeComponent();
             Control.CheckForIllegalCrossThreadCalls = false;
         }
-
-        public string HomePage = "https://batdongsan.com.vn";
-        public string NhaDatBan = "https://batdongsan.com.vn/nha-dat-ban/p";
-
+        //dữ liệu có phân trang
+        public string trangchu = "https://batdongsan.com.vn";
+        public string nhadatban = "https://batdongsan.com.vn/nha-dat-ban/p";
+        public string nhadatchothue = "https://batdongsan.com.vn/nha-dat-cho-thue/p";
+        public string duan = "https://duan.batdongsan.com.vn/du-an-bat-dong-san/p";
+        public string nhamoigioi = "https://batdongsan.com.vn/nha-moi-gioi/p";
+        public string doanhnghiep = "https://batdongsan.com.vn/doanh-nghiep";
+        //dữ liệu không phân trang
+        public string tintuc = "https://batdongsan.com.vn/tin-tuc";
+        public string wiki = "https://batdongsan.com.vn/wiki";
+        public string phongthuy = "https://batdongsan.com.vn/phong-thuy";
+        public string noingoaithat = "https://batdongsan.com.vn/noi-ngoai-that";
         private void button1_Click(object sender, EventArgs e)
         {
             Thread buttonOne = new Thread(RunChrome);
@@ -27,7 +34,7 @@ namespace web_scraping_csharp
 
         void RunChrome()
         {
-            listView1.Items.Clear();
+            listView1.Clear();
             label2.Text = "Đang tiến hành cào dữ liệu (lưu ý: không ẩn trình duyệt chrome)";
             //tạm thời tắt tính năng ấn vào nút để tránh trường hợp cào chồng lên nhau
             button1.Enabled = false;
@@ -41,19 +48,35 @@ namespace web_scraping_csharp
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.AddArgument("user-data-dir=C:/Users/manh/AppData/Local/Google/Chrome/User Data");
             chromeOptions.AddArgument("--profile-directory=Default");
+            // đóng toàn bộ tiến trình chrome trước khi mở ứng dụng
+            foreach (var process in Process.GetProcessesByName("chrome"))
+            {
+                process.Kill();
+            }
+            
+            //ẩn terminal
+            ChromeDriverService service = ChromeDriverService.CreateDefaultService();
+            service.HideCommandPromptWindow = true;
 
-
-            ChromeDriver chromeDriver = new ChromeDriver(chromeOptions);
+            ChromeDriver chromeDriver = new ChromeDriver(service,chromeOptions);
             chromeDriver.Manage().Window.Maximize();
             int pageRangeNumber = Convert.ToInt32(pageRangeNum.Value + startPageNum.Value -1);
             int pageStartNumber = Convert.ToInt32(startPageNum.Value);
+            listView1.Columns.Add("Url bài viết",200);
+            listView1.Columns.Add("Tiêu đề",250);
+            listView1.Columns.Add("Giá",150);
+            listView1.Columns.Add("Giá/m2",150);
+            listView1.Columns.Add("Diện tích",150);
+            listView1.Columns.Add("Địa chỉ",170);
+            listView1.Columns.Add("Ngày đăng bài",150);
+            listView1.Columns.Add("Nên xem",150);
             for (int i = pageStartNumber; i <= pageRangeNumber; i++)
             {
                 if (label2.Text == "Kết quả")
                 {
                     break;
                 }
-                string url = $"{NhaDatBan}{i}";
+                string url = $"{nhadatban}{i}";
                 chromeDriver.Navigate().GoToUrl(url);
 
                 IWebElement productList = chromeDriver.FindElement(By.Id("product-lists-web"));
@@ -132,10 +155,10 @@ namespace web_scraping_csharp
 
         void ClearListView()
         {
-            listView1.Items.Clear();
+            listView1.Clear();
             if(button1.Enabled == true|| button7.Enabled == true || button6.Enabled == false)
             {
-                label2.Text = "Bấm vào \"Cào theo số đã nhập\" hoặc \"Cào tất cả các trang\" để bắt đầu";
+                label2.Text = "Danh sách trống";
                 button2.Enabled = false;
                 button4.Enabled = false;
                 button5.Enabled = false;
@@ -155,7 +178,7 @@ namespace web_scraping_csharp
             {
                 item.Add(listView1.Items[i]);
             }
-            new nhabandatController().queryInsertAll(item);
+            new nhadatbanController().queryInsertAll(item);
             MessageBox.Show("Đã lưu vào cơ sở dữ liệu");
         }
 
@@ -167,11 +190,19 @@ namespace web_scraping_csharp
         }
         void LoadFromDb()
         {
-            listView1.Items.Clear();
-            List<ListViewItem> nhabandats = new nhabandatController().queryFetchAll();
-            foreach(ListViewItem nhabandat in nhabandats)
+            listView1.Clear();
+            listView1.Columns.Add("Url bài viết",200);
+            listView1.Columns.Add("Tiêu đề",250);
+            listView1.Columns.Add("Giá",150);
+            listView1.Columns.Add("Giá/m2",150);
+            listView1.Columns.Add("Diện tích",150);
+            listView1.Columns.Add("Địa chỉ",170);
+            listView1.Columns.Add("Ngày đăng bài",150);
+            listView1.Columns.Add("Nên xem",150);
+            List<ListViewItem> nhadatbans = new nhadatbanController().queryFetchAll();
+            foreach(ListViewItem nhadatban in nhadatbans)
             {
-                listView1.Items.Add(nhabandat);
+                listView1.Items.Add(nhadatban);
             }
             MessageBox.Show("Đã tải từ cơ sở dữ liệu");
         }
@@ -215,7 +246,7 @@ namespace web_scraping_csharp
         }
         void RunChromeAllPages()
         {
-            listView1.Items.Clear();
+            listView1.Clear();
             label2.Text = "Đang tiến hành cào dữ liệu (lưu ý: không ẩn trình duyệt chrome)";
             //tạm thời tắt tính năng ấn vào nút để tránh trường hợp cào chồng lên nhau
             button1.Enabled = false;
@@ -229,10 +260,27 @@ namespace web_scraping_csharp
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.AddArgument("user-data-dir=C:/Users/manh/AppData/Local/Google/Chrome/User Data");
             chromeOptions.AddArgument("--profile-directory=Default");
+            // đóng toàn bộ tiến trình chrome trước khi mở ứng dụng
+            foreach (var process in Process.GetProcessesByName("chrome"))
+            {
+                process.Kill();
+            }
 
+            //ẩn terminal
+            ChromeDriverService service = ChromeDriverService.CreateDefaultService();
+            service.HideCommandPromptWindow = true;
+            
 
-            ChromeDriver chromeDriver = new ChromeDriver(chromeOptions);
+            ChromeDriver chromeDriver = new ChromeDriver(service,chromeOptions);
             chromeDriver.Manage().Window.Maximize();
+            listView1.Columns.Add("Url bài viết",200);
+            listView1.Columns.Add("Tiêu đề",250);
+            listView1.Columns.Add("Giá",150);
+            listView1.Columns.Add("Giá/m2",150);
+            listView1.Columns.Add("Diện tích",150);
+            listView1.Columns.Add("Địa chỉ",170);
+            listView1.Columns.Add("Ngày đăng bài",150);
+            listView1.Columns.Add("Nên xem",150);
             int i = 1;
             while (i<100000000)
             {
@@ -240,7 +288,7 @@ namespace web_scraping_csharp
                 {
                     break;
                 }
-                string url = $"{NhaDatBan}{i}";
+                string url = $"{nhadatban}{i}";
                 chromeDriver.Navigate().GoToUrl(url);
                 if (chromeDriver.FindElements(By.ClassName("re__srp-empty")).Count()>0)
                 {
@@ -315,6 +363,24 @@ namespace web_scraping_csharp
             button6.Enabled = false;
             button7.Enabled = true;
             pageRangeNum.Enabled = true;
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Thread buttonEight = new Thread(deleteAllDB);
+            buttonEight.IsBackground = true;
+            buttonEight.Start();
+        }
+        void deleteAllDB()
+        {
+            listView1.Clear();
+            new nhadatbanController().queryDeleteAll();
+            MessageBox.Show("Đã xóa toàn bộ bản ghi có trong cơ sở dữ liệu");
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            button1_Click(sender, e);
         }
 
     }

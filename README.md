@@ -7,6 +7,8 @@ Kết quả sẽ được lưu vào các table trong cơ sở dữ liệu MySQL.
 ![ảnh test crawl data](/screenshots/2.png)
 ### Ảnh test lấy data đã lưu từ cơ sở dữ liệu
 ![ảnh test lấy data đã lưu từ cơ sở dữ liệu](/screenshots/3.png)
+### Nhập file sql này vào trong MySQL workbench để có các bảng cơ sở dữ liệu bất động sản
+![Nhập file sql này vào trong MySQL workbench để có các bảng cơ sở dữ liệu bất động sản](/screenshots/4.png)
 ## Tool được viết bằng 
 - Ngôn ngữ lập trình C#
 - GUI dùng Winform Net 6.0
