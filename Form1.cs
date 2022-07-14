@@ -1,7 +1,9 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using System.Security.Permissions;
 using System.Text;
+using web_scraping_csharp.Controllers;
+using web_scraping_csharp.Models;
+
 namespace web_scraping_csharp 
 {
     public partial class Form1 : Form
@@ -25,7 +27,7 @@ namespace web_scraping_csharp
 
         void RunChrome()
         {
-
+            listView1.Items.Clear();
             label2.Text = "Đang tiến hành cào dữ liệu (lưu ý: không ẩn trình duyệt chrome)";
             //tạm thời tắt tính năng ấn vào nút để tránh trường hợp cào chồng lên nhau
             button1.Enabled = false;
@@ -33,7 +35,6 @@ namespace web_scraping_csharp
             startPageNum.Enabled = false;
             pageRangeNum.Enabled = false;
             button2.Enabled = true;
-            button3.Enabled = true;
             button4.Enabled = true;
             button5.Enabled = true;
             button6.Enabled = true;
@@ -136,7 +137,6 @@ namespace web_scraping_csharp
             {
                 label2.Text = "Bấm vào \"Cào theo số đã nhập\" hoặc \"Cào tất cả các trang\" để bắt đầu";
                 button2.Enabled = false;
-                button3.Enabled = false;
                 button4.Enabled = false;
                 button5.Enabled = false;
                 button6.Enabled = false;
@@ -150,6 +150,12 @@ namespace web_scraping_csharp
         }
         void SaveToDb()
         {
+            List<ListViewItem> item = new();
+            for(int i = 0; i <listView1.Items.Count; i++)
+            {
+                item.Add(listView1.Items[i]);
+            }
+            new nhabandatController().queryInsertAll(item);
             MessageBox.Show("Đã lưu vào cơ sở dữ liệu");
         }
 
@@ -161,6 +167,12 @@ namespace web_scraping_csharp
         }
         void LoadFromDb()
         {
+            listView1.Items.Clear();
+            List<ListViewItem> nhabandats = new nhabandatController().queryFetchAll();
+            foreach(ListViewItem nhabandat in nhabandats)
+            {
+                listView1.Items.Add(nhabandat);
+            }
             MessageBox.Show("Đã tải từ cơ sở dữ liệu");
         }
 
@@ -203,7 +215,7 @@ namespace web_scraping_csharp
         }
         void RunChromeAllPages()
         {
-
+            listView1.Items.Clear();
             label2.Text = "Đang tiến hành cào dữ liệu (lưu ý: không ẩn trình duyệt chrome)";
             //tạm thời tắt tính năng ấn vào nút để tránh trường hợp cào chồng lên nhau
             button1.Enabled = false;
@@ -211,7 +223,6 @@ namespace web_scraping_csharp
             startPageNum.Enabled = false;
             pageRangeNum.Enabled = false;
             button2.Enabled = true;
-            button3.Enabled = true;
             button4.Enabled = true;
             button5.Enabled = true;
             button6.Enabled = true;
