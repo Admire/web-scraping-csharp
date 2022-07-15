@@ -14,8 +14,25 @@ namespace web_scraping_csharp.Controllers
             string sqlInsertToduan = $"INSERT INTO duan VALUES ";
             foreach (ListViewItem item2 in item)
             {
-                sqlInsertToduan += $"(DEFAULT, '{item2.SubItems[0].Text}','{item2.SubItems[1].Text}','{item2.SubItems[2].Text}','{item2.SubItems[3].Text}','{item2.SubItems[4].Text}','{item2.SubItems[5].Text}','{item2.SubItems[6].Text}','{item2.SubItems[7].Text}','{item2.SubItems[8].Text}')";
-                if(item.IndexOf(item2) != item.Count() - 1)
+                sqlInsertToduan += "(DEFAULT ";
+                List<string> insertList = new();
+                Char value = '\'';
+                for(int i = 0; i < item2.SubItems.Count; i++){
+                    string test = item2.SubItems[i].Text;
+                    if (test.Contains(value)){
+                        insertList.Add(String.Join("\\'", test.Split(value)));
+                    }
+                    else{
+                        insertList.Add(test);
+                    }
+                }
+                foreach(string insert in insertList)
+                {
+                    sqlInsertToduan += $",'{insert}'";
+                }
+                sqlInsertToduan += ") ";
+
+                if (item.IndexOf(item2) != item.Count() - 1)
                 {
                     sqlInsertToduan += ',';
                 }
@@ -27,7 +44,7 @@ namespace web_scraping_csharp.Controllers
         }
         public List<ListViewItem> queryFetchAll()
         {
-            string sqlGetAllduan = "SELECT * FROM duan;";
+            string sqlGetAllduan = "SELECT * FROM duan";
             List<duan> duans = new();
             using (IDbConnection db = new MySqlConnection(new databaseConnectionString().connectionString))
             {

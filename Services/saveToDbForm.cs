@@ -10,14 +10,40 @@ namespace web_scraping_csharp
     public partial class Form1 : Form
     {
         void SaveToDb()
-        {
-            List<ListViewItem> item = new();
-            for (int i = 0; i < listView1.Items.Count; i++)
+        {//chọn trang web muốn lưu vào cơ sở dữ liệu
+            switch (comboBox1.Text)
             {
-                item.Add(listView1.Items[i]);
+                case "Nhà đất bán":
+                    saveToDbnhadatban();
+                    break;
+                case "Nhà đất cho thuê":
+                    saveToDbnhadatchothue();
+                    break;
+                case "Dự án":
+                    saveToDbduan();
+                    break;
+                case "Tin tức":
+                    saveToDbtintuc();
+                    break;
+                case "Wiki BĐS":
+                    saveToDbwiki();
+                    break;
+                case "Phong Thủy":
+                    saveToDbphongthuy();
+                    break;
+                case "Nội-Ngoại thất":
+                    saveToDbnoingoaithat();
+                    break;
+                case "Nhà môi giới":
+                    saveToDbnhamoigioi();
+                    break;
+                case "Doanh nghiệp":
+                    saveToDbdoanhnghiep();
+                    break;
+                default:
+                    break;
             }
-            new nhadatbanController().queryInsertAll(item);
-            MessageBox.Show("Đã lưu vào cơ sở dữ liệu");
+            
         }
 
     }

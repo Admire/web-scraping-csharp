@@ -14,8 +14,25 @@ namespace web_scraping_csharp.Controllers
             string sqlInsertTonhadatban = $"INSERT INTO nhadatban VALUES ";
             foreach (ListViewItem item2 in item)
             {
-                sqlInsertTonhadatban += $"(DEFAULT, '{item2.SubItems[0].Text}','{item2.SubItems[1].Text}','{item2.SubItems[2].Text}','{item2.SubItems[3].Text}','{item2.SubItems[4].Text}','{item2.SubItems[5].Text}','{item2.SubItems[6].Text}','{item2.SubItems[7].Text}')";
-                if(item.IndexOf(item2) != item.Count() - 1)
+                sqlInsertTonhadatban += "(DEFAULT ";
+                List<string> insertList = new();
+                Char value = '\'';
+                for(int i = 0; i < item2.SubItems.Count; i++){
+                    string test = item2.SubItems[i].Text;
+                    if (test.Contains(value)){
+                        insertList.Add(String.Join("\\'", test.Split(value)));
+                    }
+                    else{
+                        insertList.Add(test);
+                    }
+                }
+                foreach(string insert in insertList)
+                {
+                    sqlInsertTonhadatban += $",'{insert}'";
+                }
+                sqlInsertTonhadatban += ") ";
+
+                if (item.IndexOf(item2) != item.Count() - 1)
                 {
                     sqlInsertTonhadatban += ',';
                 }
@@ -27,7 +44,7 @@ namespace web_scraping_csharp.Controllers
         }
         public List<ListViewItem> queryFetchAll()
         {
-            string sqlGetAllnhadatban = "SELECT * FROM nhadatban;";
+            string sqlGetAllnhadatban = "SELECT * FROM nhadatban";
             List<nhadatban> nhadatbans = new();
             using (IDbConnection db = new MySqlConnection(new databaseConnectionString().connectionString))
             {

@@ -14,8 +14,25 @@ namespace web_scraping_csharp.Controllers
             string sqlInsertTonhamoigioi = $"INSERT INTO nhamoigioi VALUES ";
             foreach (ListViewItem item2 in item)
             {
-                sqlInsertTonhamoigioi += $"(DEFAULT, '{item2.SubItems[0].Text}','{item2.SubItems[1].Text}','{item2.SubItems[2].Text}','{item2.SubItems[3].Text}','{item2.SubItems[4].Text}','{item2.SubItems[5].Text}')";
-                if(item.IndexOf(item2) != item.Count() - 1)
+                sqlInsertTonhamoigioi += "(DEFAULT ";
+                List<string> insertList = new();
+                Char value = '\'';
+                for(int i = 0; i < item2.SubItems.Count; i++){
+                    string test = item2.SubItems[i].Text;
+                    if (test.Contains(value)){
+                        insertList.Add(String.Join("\\'", test.Split(value)));
+                    }
+                    else{
+                        insertList.Add(test);
+                    }
+                }
+                foreach(string insert in insertList)
+                {
+                    sqlInsertTonhamoigioi += $",'{insert}'";
+                }
+                sqlInsertTonhamoigioi += ") ";
+
+                if (item.IndexOf(item2) != item.Count() - 1)
                 {
                     sqlInsertTonhamoigioi += ',';
                 }
@@ -27,7 +44,7 @@ namespace web_scraping_csharp.Controllers
         }
         public List<ListViewItem> queryFetchAll()
         {
-            string sqlGetAllnhamoigioi = "SELECT * FROM nhamoigioi;";
+            string sqlGetAllnhamoigioi = "SELECT * FROM nhamoigioi";
             List<nhamoigioi> nhamoigiois = new();
             using (IDbConnection db = new MySqlConnection(new databaseConnectionString().connectionString))
             {
