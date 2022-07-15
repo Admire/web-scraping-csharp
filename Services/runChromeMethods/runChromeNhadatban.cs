@@ -12,22 +12,14 @@ namespace web_scraping_csharp
 
         void runChromeNhadatban()
         {
-            ChromeOptions chromeOptions = new ChromeOptions();
-            // chromeOptions.AddArgument("user-data-dir=C:/Users/manh/AppData/Local/Google/Chrome/User Data");
-            // chromeOptions.AddArgument("--profile-directory=Default");
-             chromeOptions.AddArgument("--incognito");
+
             // đóng toàn bộ tiến trình chrome trước khi mở ứng dụng
             foreach (var process in Process.GetProcessesByName("chrome"))
             {
                 process.Kill();
             }
 
-            //ẩn terminal
-            ChromeDriverService service = ChromeDriverService.CreateDefaultService();
-            service.HideCommandPromptWindow = true;
 
-            ChromeDriver chromeDriver = new ChromeDriver(service, chromeOptions);
-            chromeDriver.Manage().Window.Maximize();
 
             int pageRangeNumber = Convert.ToInt32(pageRangeNum.Value + startPageNum.Value - 1);
             int pageStartNumber = Convert.ToInt32(startPageNum.Value);
@@ -42,6 +34,16 @@ namespace web_scraping_csharp
             listView1.Columns.Add("Nên xem", 150);
             for (int i = pageStartNumber; i <= pageRangeNumber; i++)
             {
+                ChromeOptions chromeOptions = new ChromeOptions();
+                // chromeOptions.AddArgument("user-data-dir=C:/Users/manh/AppData/Local/Google/Chrome/User Data");
+                // chromeOptions.AddArgument("--profile-directory=Default");
+                chromeOptions.AddArgument("--incognito");
+                //ẩn terminal
+                ChromeDriverService service = ChromeDriverService.CreateDefaultService();
+                service.HideCommandPromptWindow = true;
+
+                ChromeDriver chromeDriver = new ChromeDriver(service, chromeOptions);
+                chromeDriver.Manage().Window.Maximize();
                 if (label2.Text == "Kết quả")
                 {
                     break;
@@ -105,8 +107,8 @@ namespace web_scraping_csharp
 
                     listView1.Items.Add(item);
                 }
-            }
             chromeDriver.Quit();
+            }
         }
 
     }
