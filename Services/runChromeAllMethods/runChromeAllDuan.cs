@@ -12,22 +12,10 @@ namespace web_scraping_csharp
 
         void runChromeAllDuan()
         {
-            ChromeOptions chromeOptions = new ChromeOptions();
-             // chromeOptions.AddArgument("user-data-dir=C:/Users/manh/AppData/Local/Google/Chrome/User Data");
-            // chromeOptions.AddArgument("--profile-directory=Default");
-             chromeOptions.AddArgument("--incognito");
-            // đóng toàn bộ tiến trình chrome trước khi mở ứng dụng
-            foreach (var process in Process.GetProcessesByName("chrome"))
+          foreach (var process in Process.GetProcessesByName("chrome"))
             {
                 process.Kill();
             }
-
-            //ẩn terminal
-            ChromeDriverService service = ChromeDriverService.CreateDefaultService();
-            service.HideCommandPromptWindow = true;
-
-            ChromeDriver chromeDriver = new ChromeDriver(service, chromeOptions);
-            chromeDriver.Manage().Window.Maximize();
 
            
             listView1.Columns.Add("Url bài viết", 200);
@@ -42,6 +30,19 @@ namespace web_scraping_csharp
             int i = 1;
             while (i < 100000000)
             {
+                ChromeOptions chromeOptions = new ChromeOptions();
+                // chromeOptions.AddArgument("user-data-dir=C:/Users/manh/AppData/Local/Google/Chrome/User Data");
+                // chromeOptions.AddArgument("--profile-directory=Default");
+                chromeOptions.AddArgument("--incognito");
+                // đóng toàn bộ tiến trình chrome trước khi mở ứng dụng
+
+                //ẩn terminal
+                ChromeDriverService service = ChromeDriverService.CreateDefaultService();
+                service.HideCommandPromptWindow = true;
+
+                ChromeDriver chromeDriver = new ChromeDriver(service, chromeOptions);
+                chromeDriver.Manage().Window.Maximize();
+
                 if (label2.Text == "Kết quả")
                 {
                     break;
@@ -124,8 +125,8 @@ namespace web_scraping_csharp
                     listView1.Items.Add(item);
                 }
                 i++;
-            }
             chromeDriver.Quit();
+            }
         }
 
     }
