@@ -16,4 +16,38 @@
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="103.0.5060.5300" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Services\runChromeMethods\runChromeDuan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Services\runChromeMethods\runChromeNhamoigioi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Services\runChromeMethods\runChromeNoingoaithat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Services\runChromeMethods\runChromePhongthuy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Services\runChromeMethods\runChromeDoanhnghiep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Services\runChromeMethods\runChromeWiki.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Services\runChromeMethods\runChromeTintuc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Services\runChromeMethods\runChromeNhadatchothue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\deleteAllDataInDbMethods\" />
+    <Folder Include="Services\loadFromDbMethods\" />
+    <Folder Include="Services\saveToDbMethods\" />
+    <Folder Include="Services\runChromeAllMethods\" />
+  </ItemGroup>
+
 </Project>

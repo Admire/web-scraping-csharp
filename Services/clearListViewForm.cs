@@ -17,7 +17,7 @@ namespace web_scraping_csharp
                 label2.Text = "Danh sách trống";
                 button2.Enabled = false;
                 button4.Enabled = false;
-                button5.Enabled = false;
+                button5.Enabled = true;
                 button6.Enabled = false;
             }
         }

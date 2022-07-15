@@ -10,6 +10,7 @@ namespace web_scraping_csharp.Models
         public int Id { get; set; }
         public string url { get; set; }
         public string tieude { get; set; }
+        public string giam2 { get; set; }
         public string dientich { get; set; }
         public string socanho { get; set; }
         public string sotoanha { get; set; }
