@@ -9,6 +9,8 @@ Kết quả sẽ được lưu vào các table trong cơ sở dữ liệu MySQL.
 ![ảnh test lấy data đã lưu từ cơ sở dữ liệu](/Screenshots/3.png)
 ### Nhập file sql này vào trong MySQL workbench để có các bảng cơ sở dữ liệu bất động sản
 ![Nhập file sql này vào trong MySQL workbench để có các bảng cơ sở dữ liệu bất động sản](/Screenshots/4.png)
+### URL các danh mục, có 2 url, 1 là có phân trang và 2 là không phân trang
+![URL các danh mục, có 2 url, 1 là có phân trang và 2 là không phân trang](/Screenshots/5.png)
 ## Tool được viết bằng 
 - Ngôn ngữ lập trình C#
 - GUI dùng Winform Net 6.0
