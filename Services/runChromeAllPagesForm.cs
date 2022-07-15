@@ -19,7 +19,6 @@ namespace web_scraping_csharp
             button7.Enabled = false;
             startPageNum.Enabled = false;
             pageRangeNum.Enabled = false;
-            button2.Enabled = true;
             button4.Enabled = true;
             button5.Enabled = true;
             button6.Enabled = true;

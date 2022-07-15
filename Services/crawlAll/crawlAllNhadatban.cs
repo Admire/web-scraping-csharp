@@ -10,47 +10,36 @@ namespace web_scraping_csharp
     public partial class Form1 : Form
     {
 
-        void runChromeNhadatchothue()
+        void crawlAllNhadatban()
         {
+
+            int pageRangeNumber = Convert.ToInt32(pageRangeNum.Value + startPageNum.Value - 1);
+            int pageStartNumber = Convert.ToInt32(startPageNum.Value);
+
+            for (int i = pageStartNumber; i <= pageRangeNumber; i++)
+            {
             ChromeOptions chromeOptions = new ChromeOptions();
             // chromeOptions.AddArgument("user-data-dir=C:/Users/manh/AppData/Local/Google/Chrome/User Data");
             // chromeOptions.AddArgument("--profile-directory=Default");
              chromeOptions.AddArgument("--incognito");
-            // đóng toàn bộ tiến trình chrome trước khi mở ứng dụng
-            foreach (var process in Process.GetProcessesByName("chrome"))
-            {
-                process.Kill();
-            }
-
             //ẩn terminal
             ChromeDriverService service = ChromeDriverService.CreateDefaultService();
             service.HideCommandPromptWindow = true;
 
             ChromeDriver chromeDriver = new ChromeDriver(service, chromeOptions);
             chromeDriver.Manage().Window.Maximize();
-
-            int pageRangeNumber = Convert.ToInt32(pageRangeNum.Value + startPageNum.Value - 1);
-            int pageStartNumber = Convert.ToInt32(startPageNum.Value);
-
-            listView1.Columns.Add("Url bài viết", 200);
-            listView1.Columns.Add("Tiêu đề", 250);
-            listView1.Columns.Add("Giá", 150);
-            listView1.Columns.Add("Giá/m2", 150);
-            listView1.Columns.Add("Diện tích", 150);
-            listView1.Columns.Add("Địa chỉ", 170);
-            listView1.Columns.Add("Ngày đăng bài", 150);
-            listView1.Columns.Add("Nên xem", 150);
-            for (int i = pageStartNumber; i <= pageRangeNumber; i++)
-            {
                 if (label2.Text == "Kết quả")
                 {
                     break;
                 }
-                string url = $"{new batdongsanURL().nhadatchothue}{i}";
+                string url = $"{new batdongsanURL().nhadatban}{i}";
                 chromeDriver.Navigate().GoToUrl(url);
-
+                
                 IWebElement productList = chromeDriver.FindElement(By.Id("product-lists-web"));
                 List<IWebElement> productItem = productList.FindElements(By.ClassName("js__card")).ToList();
+                
+                List<ListViewItem> insertItems = new();
+
                 foreach (var product in productItem)
                 {
                     if (label2.Text == "Kết quả")
@@ -102,11 +91,13 @@ namespace web_scraping_csharp
                         item.SubItems.Add("Nên xem");
                     }
                     else { item.SubItems.Add("Không nên xem"); }
+                    
 
-                    listView1.Items.Add(item);
+                    insertItems.Add(item);
                 }
-            }
+            new nhadatbanController().queryInsertAll(insertItems);
             chromeDriver.Quit();
+            }
         }
 
     }

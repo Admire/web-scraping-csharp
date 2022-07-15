@@ -46,6 +46,7 @@
             this.button9 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pageRangeNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.startPageNum)).BeginInit();
             this.SuspendLayout();
@@ -252,11 +253,21 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Chọn danh mục";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(31, 21);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(189, 20);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Nhập trang để cào toàn bộ";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1682, 803);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.startPageNum);
             this.Controls.Add(this.pageRangeNum);
@@ -306,5 +317,6 @@
         private Button button9;
         private ComboBox comboBox1;
         private Label label4;
+        private Label label5;
     }
 }

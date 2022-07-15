@@ -13,8 +13,9 @@ namespace web_scraping_csharp
         void runChromeNhamoigioi()
         {
             ChromeOptions chromeOptions = new ChromeOptions();
-            chromeOptions.AddArgument("user-data-dir=C:/Users/manh/AppData/Local/Google/Chrome/User Data");
-            chromeOptions.AddArgument("--profile-directory=Default");
+            // chromeOptions.AddArgument("user-data-dir=C:/Users/manh/AppData/Local/Google/Chrome/User Data");
+            // chromeOptions.AddArgument("--profile-directory=Default");
+             chromeOptions.AddArgument("--incognito");
             // đóng toàn bộ tiến trình chrome trước khi mở ứng dụng
             foreach (var process in Process.GetProcessesByName("chrome"))
             {
