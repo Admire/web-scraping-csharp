@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System.Data;
 using web_scraping_csharp.Models;
+using web_scraping_csharp.Services;
 
 namespace web_scraping_csharp.Controllers
 {
@@ -19,7 +20,7 @@ namespace web_scraping_csharp.Controllers
                     sqlInsertTonhadatban += ',';
                 }
             }
-            using (IDbConnection db = new MySqlConnection("server=localhost;port=5060;user=root;password=140300;database=batdongsan"))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().connectionString))
             {
                 db.Query<nhadatban>(sqlInsertTonhadatban);
             }
@@ -28,7 +29,7 @@ namespace web_scraping_csharp.Controllers
         {
             string sqlGetAllnhadatban = "SELECT * FROM nhadatban;";
             List<nhadatban> nhadatbans = new();
-            using (IDbConnection db = new MySqlConnection("server=localhost;port=5060;user=root;password=140300;database=batdongsan"))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().connectionString))
             {
                 nhadatbans = db.Query<nhadatban>(sqlGetAllnhadatban).ToList();
             }
@@ -55,7 +56,7 @@ namespace web_scraping_csharp.Controllers
 
             string sqlDeleteAllnhadatban = $"DELETE FROM nhadatban";
            
-            using (IDbConnection db = new MySqlConnection("server=localhost;port=5060;user=root;password=140300;database=batdongsan"))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().connectionString))
             {
                 db.Query<nhadatban>(sqlDeleteAllnhadatban);
             }

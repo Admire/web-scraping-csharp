@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System.Data;
 using web_scraping_csharp.Models;
+using web_scraping_csharp.Services;
 
 namespace web_scraping_csharp.Controllers
 {
@@ -19,7 +20,7 @@ namespace web_scraping_csharp.Controllers
                     sqlInsertToduan += ',';
                 }
             }
-            using (IDbConnection db = new MySqlConnection("server=localhost;port=5060;user=root;password=140300;database=batdongsan"))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().connectionString))
             {
                 db.Query<duan>(sqlInsertToduan);
             }
@@ -28,7 +29,7 @@ namespace web_scraping_csharp.Controllers
         {
             string sqlGetAllduan = "SELECT * FROM duan;";
             List<duan> duans = new();
-            using (IDbConnection db = new MySqlConnection("server=localhost;port=5060;user=root;password=140300;database=batdongsan"))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().connectionString))
             {
                 duans = db.Query<duan>(sqlGetAllduan).ToList();
             }
@@ -54,7 +55,7 @@ namespace web_scraping_csharp.Controllers
 
             string sqlDeleteAllduan = $"DELETE FROM duan";
            
-            using (IDbConnection db = new MySqlConnection("server=localhost;port=5060;user=root;password=140300;database=batdongsan"))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().connectionString))
             {
                 db.Query<duan>(sqlDeleteAllduan);
             }
