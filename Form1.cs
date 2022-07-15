@@ -71,7 +71,43 @@ namespace web_scraping_csharp
 
         private void button9_Click(object sender, EventArgs e)
         {
-            button1_Click(sender, e);
+            label2.Text = "Đang tiến hành cào toàn bộ danh mục theo trang đã nhập";
+            foreach (var process in Process.GetProcessesByName("chrome"))
+            {
+                process.Kill();
+            }
+            ParallelOptions parallelOptions = new ParallelOptions
+            {
+                MaxDegreeOfParallelism = 3
+            };
+             Parallel.Invoke(
+                    parallelOptions,
+                    // task 1 trang
+                    () => {crawlAllDoanhnghiep();
+                    },
+                    () => {crawlAllTintuc();
+                    },
+                    () => {crawlAllWiki();
+                    },
+                    () => {crawlAllPhongthuy();
+                    },
+                    () => {crawlAllNoingoaithat();
+                    },
+                    // task nhiều trang
+                    () => {crawlAllNhadatban();
+                    },
+                    () => {crawlAllNhadatchothue();
+                    },
+                    () => {crawlAllDuan();
+                    },
+                    () => {crawlAllNhamoigioi();
+                    }
+                );
+
+            if (Process.GetProcessesByName("chrome").Count() == 0)
+            {
+                label2.Text = "Quá trình cào đã kết thúc, hãy chọn từng danh mục để xem dữ liệu đã lưu";
+            }
         }
 
     }
