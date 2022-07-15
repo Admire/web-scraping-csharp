@@ -6,15 +6,15 @@ using web_scraping_csharp.Services;
 
 namespace web_scraping_csharp.Controllers
 {
-    public class nhadatbanController
+    public class duanController
     {
         public void queryInsertAll(List<ListViewItem> item)
         {
 
-            string sqlInsertTonhadatban = $"INSERT INTO nhadatban VALUES ";
+            string sqlInsertToduan = $"INSERT INTO duan VALUES ";
             foreach (ListViewItem item2 in item)
             {
-                sqlInsertTonhadatban += "(DEFAULT ";
+                sqlInsertToduan += "(DEFAULT ";
                 List<string> insertList = new();
                 Char value = '\'';
                 for(int i = 0; i < item2.SubItems.Count; i++){
@@ -28,42 +28,41 @@ namespace web_scraping_csharp.Controllers
                 }
                 foreach(string insert in insertList)
                 {
-                    sqlInsertTonhadatban += $",'{insert}'";
+                    sqlInsertToduan += $",'{insert}'";
                 }
-                sqlInsertTonhadatban += ") ";
+                sqlInsertToduan += ") ";
 
                 if (item.IndexOf(item2) != item.Count() - 1)
                 {
-                    sqlInsertTonhadatban += ',';
+                    sqlInsertToduan += ',';
                 }
             }
             using (IDbConnection db = new MySqlConnection(new databaseConnectionString().connectionString))
             {
-                db.Query<nhadatban>(sqlInsertTonhadatban);
+                db.Query<duan>(sqlInsertToduan);
             }
         }
         public List<ListViewItem> queryFetchAll()
         {
-            string sqlGetAllnhadatban = "SELECT * FROM nhadatban";
-            List<nhadatban> nhadatbans = new();
+            string sqlGetAllduan = "SELECT * FROM duan";
+            List<duan> duans = new();
             using (IDbConnection db = new MySqlConnection(new databaseConnectionString().connectionString))
             {
-                nhadatbans = db.Query<nhadatban>(sqlGetAllnhadatban).ToList();
+                duans = db.Query<duan>(sqlGetAllduan).ToList();
             }
             List< ListViewItem > result = new List<ListViewItem>();
-            foreach (nhadatban nhadatban in nhadatbans)
+            foreach (duan duan in duans)
             {
                 ListViewItem item = new ListViewItem();
 
-                item.Text =  nhadatban.url;
-                item.SubItems.Add(nhadatban.tieude);
-                item.SubItems.Add(nhadatban.gia);
-                item.SubItems.Add(nhadatban.giam2);
-                item.SubItems.Add(nhadatban.dientich);
-                item.SubItems.Add(nhadatban.diachi);
-                item.SubItems.Add(nhadatban.ngaydangbai);
-                item.SubItems.Add(nhadatban.nenxem);
-
+                item.Text =  duan.url;
+                item.SubItems.Add(duan.tieude);
+                item.SubItems.Add(duan.dientich);
+                item.SubItems.Add(duan.socanho);
+                item.SubItems.Add(duan.sotoanha);
+                item.SubItems.Add(duan.diachi);
+                item.SubItems.Add(duan.congty);
+                item.SubItems.Add(duan.tinhtrang);
                 result.Add(item);
             }
             return result;
@@ -71,11 +70,11 @@ namespace web_scraping_csharp.Controllers
         public void queryDeleteAll()
         {
 
-            string sqlDeleteAllnhadatban = $"DELETE FROM nhadatban";
+            string sqlDeleteAllduan = $"DELETE FROM duan";
            
             using (IDbConnection db = new MySqlConnection(new databaseConnectionString().connectionString))
             {
-                db.Query<nhadatban>(sqlDeleteAllnhadatban);
+                db.Query<duan>(sqlDeleteAllduan);
             }
         }
     }
