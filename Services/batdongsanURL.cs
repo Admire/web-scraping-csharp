@@ -14,8 +14,8 @@ namespace web_scraping_csharp.Services
         public string nhadatchothue = "https://batdongsan.com.vn/nha-dat-cho-thue/p";
         public string duan = "https://duan.batdongsan.com.vn/du-an-bat-dong-san/p";
         public string nhamoigioi = "https://batdongsan.com.vn/nha-moi-gioi/p";
-        public string doanhnghiep = "https://batdongsan.com.vn/doanh-nghiep";
         //dữ liệu không phân trang
+        public string doanhnghiep = "https://batdongsan.com.vn/doanh-nghiep";
         public string tintuc = "https://batdongsan.com.vn/tin-tuc";
         public string wiki = "https://batdongsan.com.vn/wiki";
         public string phongthuy = "https://batdongsan.com.vn/phong-thuy";

@@ -17,6 +17,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Services\runChromeAllMethods\runChromeAllDuan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Services\runChromeAllMethods\runChromeAllNhadatban.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Services\runChromeAllMethods\runChromeAllNhadatchothue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Services\runChromeAllMethods\runChromeAllNhamoigioi.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Services\runChromeMethods\runChromeDuan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -47,7 +59,6 @@
     <Folder Include="Services\deleteAllDataInDbMethods\" />
     <Folder Include="Services\loadFromDbMethods\" />
     <Folder Include="Services\saveToDbMethods\" />
-    <Folder Include="Services\runChromeAllMethods\" />
   </ItemGroup>
 
 </Project>
