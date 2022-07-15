@@ -10,44 +10,32 @@ namespace web_scraping_csharp
     public partial class Form1 : Form
     {
 
-        void runChromeAllDuan()
+        void crawlAllDuan()
         {
+
+            int pageRangeNumber = Convert.ToInt32(pageRangeNum.Value + startPageNum.Value - 1);
+            int pageStartNumber = Convert.ToInt32(startPageNum.Value);
+
+            for (int i = pageStartNumber; i <= pageRangeNumber; i++)
+            {
             ChromeOptions chromeOptions = new ChromeOptions();
-             // chromeOptions.AddArgument("user-data-dir=C:/Users/manh/AppData/Local/Google/Chrome/User Data");
+            // chromeOptions.AddArgument("user-data-dir=C:/Users/manh/AppData/Local/Google/Chrome/User Data");
             // chromeOptions.AddArgument("--profile-directory=Default");
              chromeOptions.AddArgument("--incognito");
-            // đóng toàn bộ tiến trình chrome trước khi mở ứng dụng
-            foreach (var process in Process.GetProcessesByName("chrome"))
-            {
-                process.Kill();
-            }
-
             //ẩn terminal
             ChromeDriverService service = ChromeDriverService.CreateDefaultService();
             service.HideCommandPromptWindow = true;
 
             ChromeDriver chromeDriver = new ChromeDriver(service, chromeOptions);
             chromeDriver.Manage().Window.Maximize();
-
-           
-            listView1.Columns.Add("Url bài viết", 200);
-            listView1.Columns.Add("Tiêu đề", 250);
-            listView1.Columns.Add("Giá/m2", 100);
-            listView1.Columns.Add("Diện tích", 100);
-            listView1.Columns.Add("Số căn hộ", 100);
-            listView1.Columns.Add("Số tòa nhà", 100);
-            listView1.Columns.Add("Địa chỉ", 170);
-            listView1.Columns.Add("Công ty", 180);
-            listView1.Columns.Add("Tình trạng", 150);
-            int i = 1;
-            while (i < 100000000)
-            {
                 if (label2.Text == "Kết quả")
                 {
                     break;
                 }
                 string url = $"{new batdongsanURL().duan}{i}";
                 chromeDriver.Navigate().GoToUrl(url);
+                List<ListViewItem> insertItems = new();
+
 
                 List<IWebElement> productItem = chromeDriver.FindElements(By.ClassName("js__project-card")).ToList();
                 foreach (var product in productItem)
@@ -76,7 +64,7 @@ namespace web_scraping_csharp
                     // giá/m2, diện tích, số căn hộ, số tòa nhà
                     string[] arrElements = { "Trống", "Trống", "Trống", "Trống" };
                     List<IWebElement> groupElements = product.FindElements(By.ClassName("re__prj-card-config-value")).ToList();
-                    foreach(var piece in groupElements)
+                    foreach (var piece in groupElements)
                     {
                         if (piece.GetAttribute("innerText").Contains("/m²"))
                         {
@@ -121,11 +109,11 @@ namespace web_scraping_csharp
                     }
                     else { item.SubItems.Add("Trống"); }
 
-                    listView1.Items.Add(item);
+                    insertItems.Add(item);
                 }
-                i++;
-            }
+            new duanController().queryInsertAll(insertItems);
             chromeDriver.Quit();
+            }
         }
 
     }

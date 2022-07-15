@@ -10,18 +10,12 @@ namespace web_scraping_csharp
     public partial class Form1 : Form
     {
 
-        void runChromeNoingoaithat()
+        void crawlAllPhongthuy()
         {
             ChromeOptions chromeOptions = new ChromeOptions();
             // chromeOptions.AddArgument("user-data-dir=C:/Users/manh/AppData/Local/Google/Chrome/User Data");
             // chromeOptions.AddArgument("--profile-directory=Default");
              chromeOptions.AddArgument("--incognito");
-            // đóng toàn bộ tiến trình chrome trước khi mở ứng dụng
-            foreach (var process in Process.GetProcessesByName("chrome"))
-            {
-                process.Kill();
-            }
-
             //ẩn terminal
             ChromeDriverService service = ChromeDriverService.CreateDefaultService();
             service.HideCommandPromptWindow = true;
@@ -29,14 +23,13 @@ namespace web_scraping_csharp
             ChromeDriver chromeDriver = new ChromeDriver(service, chromeOptions);
             chromeDriver.Manage().Window.Maximize();
 
-            listView1.Columns.Add("Url bài viết", 400);
-            listView1.Columns.Add("Tiêu đề", 700);
             if (label2.Text == "Kết quả")
             {
                 return;
             }
-            string url = $"{new batdongsanURL().noingoaithat}";
+            string url = $"{new batdongsanURL().phongthuy}";
             chromeDriver.Navigate().GoToUrl(url);
+            List<ListViewItem> insertItems = new();
 
             IWebElement tintucList = chromeDriver.FindElement(By.ClassName("re__nlcc-main-left"));
             List<IWebElement> productItem = tintucList.FindElements(By.ClassName("re__link-se")).ToList();
@@ -54,8 +47,11 @@ namespace web_scraping_csharp
                 }
                 else { item.Text = ""; item.SubItems.Add("Trống"); }
 
-                listView1.Items.Add(item);
+                insertItems.Add(item);
+
             }
+            new phongthuyController().queryInsertAll(insertItems);
+
             chromeDriver.Quit();
         }
 

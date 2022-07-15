@@ -17,6 +17,33 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Services\crawlAll\crawlAllWiki.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Services\crawlAll\crawlAllTintuc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Services\crawlAll\crawlAllPhongthuy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Services\crawlAll\crawlAllNhamoigioi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Services\crawlAll\crawlAllNoingoaithat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Services\crawlAll\crawlAllDuan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Services\crawlAll\crawlAllNhadatchothue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Services\crawlAll\crawlAllNhadatban.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Services\crawlAll\crawlAllDoanhnghiep.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Services\deleteAllDataInDbMethods\deleteNhamoigioi.cs">
       <SubType>Form</SubType>
     </Compile>
