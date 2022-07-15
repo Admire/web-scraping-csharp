@@ -6,15 +6,15 @@ using web_scraping_csharp.Services;
 
 namespace web_scraping_csharp.Controllers
 {
-    public class nhadatbanController
+    public class tintucController
     {
         public void queryInsertAll(List<ListViewItem> item)
         {
 
-            string sqlInsertTonhadatban = $"INSERT INTO nhadatban VALUES ";
+            string sqlInsertTotintuc = $"INSERT INTO tintuc VALUES ";
             foreach (ListViewItem item2 in item)
             {
-                sqlInsertTonhadatban += "(DEFAULT ";
+                sqlInsertTotintuc += "(DEFAULT ";
                 List<string> insertList = new();
                 Char value = '\'';
                 for(int i = 0; i < item2.SubItems.Count; i++){
@@ -28,42 +28,35 @@ namespace web_scraping_csharp.Controllers
                 }
                 foreach(string insert in insertList)
                 {
-                    sqlInsertTonhadatban += $",'{insert}'";
+                    sqlInsertTotintuc += $",'{insert}'";
                 }
-                sqlInsertTonhadatban += ") ";
+                sqlInsertTotintuc += ") ";
 
                 if (item.IndexOf(item2) != item.Count() - 1)
                 {
-                    sqlInsertTonhadatban += ',';
+                    sqlInsertTotintuc += ',';
                 }
             }
             using (IDbConnection db = new MySqlConnection(new databaseConnectionString().connectionString))
             {
-                db.Query<nhadatban>(sqlInsertTonhadatban);
+                db.Query<tintuc>(sqlInsertTotintuc);
             }
         }
         public List<ListViewItem> queryFetchAll()
         {
-            string sqlGetAllnhadatban = "SELECT * FROM nhadatban";
-            List<nhadatban> nhadatbans = new();
+            string sqlGetAlltintuc = "SELECT * FROM tintuc";
+            List<tintuc> tintucs = new();
             using (IDbConnection db = new MySqlConnection(new databaseConnectionString().connectionString))
             {
-                nhadatbans = db.Query<nhadatban>(sqlGetAllnhadatban).ToList();
+                tintucs = db.Query<tintuc>(sqlGetAlltintuc).ToList();
             }
             List< ListViewItem > result = new List<ListViewItem>();
-            foreach (nhadatban nhadatban in nhadatbans)
+            foreach (tintuc tintuc in tintucs)
             {
                 ListViewItem item = new ListViewItem();
 
-                item.Text =  nhadatban.url;
-                item.SubItems.Add(nhadatban.tieude);
-                item.SubItems.Add(nhadatban.gia);
-                item.SubItems.Add(nhadatban.giam2);
-                item.SubItems.Add(nhadatban.dientich);
-                item.SubItems.Add(nhadatban.diachi);
-                item.SubItems.Add(nhadatban.ngaydangbai);
-                item.SubItems.Add(nhadatban.nenxem);
-
+                item.Text =  tintuc.url;
+                item.SubItems.Add(tintuc.tieude);
                 result.Add(item);
             }
             return result;
@@ -71,11 +64,11 @@ namespace web_scraping_csharp.Controllers
         public void queryDeleteAll()
         {
 
-            string sqlDeleteAllnhadatban = $"DELETE FROM nhadatban";
+            string sqlDeleteAlltintuc = $"DELETE FROM tintuc";
            
             using (IDbConnection db = new MySqlConnection(new databaseConnectionString().connectionString))
             {
-                db.Query<nhadatban>(sqlDeleteAllnhadatban);
+                db.Query<tintuc>(sqlDeleteAlltintuc);
             }
         }
     }
