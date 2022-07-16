@@ -37,7 +37,7 @@ namespace web_scraping_csharp.Controllers
                     sqlInsertTodoanhnghiep += ',';
                 }
             }
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().connectionString))
+            using (IDbConnection db = new MySqlConnection(new Form1().getConnection()))
             {
                 db.Query<doanhnghiep>(sqlInsertTodoanhnghiep);
             }
@@ -46,7 +46,7 @@ namespace web_scraping_csharp.Controllers
         {
             string sqlGetAlldoanhnghiep = "SELECT * FROM doanhnghiep";
             List<doanhnghiep> doanhnghieps = new();
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().connectionString))
+            using (IDbConnection db = new MySqlConnection(new Form1().getConnection()))
             {
                 doanhnghieps = db.Query<doanhnghiep>(sqlGetAlldoanhnghiep).ToList();
             }
@@ -66,7 +66,7 @@ namespace web_scraping_csharp.Controllers
 
             string sqlDeleteAlldoanhnghiep = $"DELETE FROM doanhnghiep";
            
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().connectionString))
+            using (IDbConnection db = new MySqlConnection(new Form1().getConnection()))
             {
                 db.Query<doanhnghiep>(sqlDeleteAlldoanhnghiep);
             }

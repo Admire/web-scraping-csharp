@@ -37,7 +37,7 @@ namespace web_scraping_csharp.Controllers
                     sqlInsertTonoingoaithat += ',';
                 }
             }
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().connectionString))
+            using (IDbConnection db = new MySqlConnection(new Form1().getConnection()))
             {
                 db.Query<noingoaithat>(sqlInsertTonoingoaithat);
             }
@@ -46,7 +46,7 @@ namespace web_scraping_csharp.Controllers
         {
             string sqlGetAllnoingoaithat = "SELECT * FROM noingoaithat";
             List<noingoaithat> noingoaithats = new();
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().connectionString))
+            using (IDbConnection db = new MySqlConnection(new Form1().getConnection()))
             {
                 noingoaithats = db.Query<noingoaithat>(sqlGetAllnoingoaithat).ToList();
             }
@@ -66,7 +66,7 @@ namespace web_scraping_csharp.Controllers
 
             string sqlDeleteAllnoingoaithat = $"DELETE FROM noingoaithat";
            
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().connectionString))
+            using (IDbConnection db = new MySqlConnection(new Form1().getConnection()))
             {
                 db.Query<noingoaithat>(sqlDeleteAllnoingoaithat);
             }

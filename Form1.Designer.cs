@@ -47,6 +47,16 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.serverDBname = new System.Windows.Forms.TextBox();
+            this.serverDBport = new System.Windows.Forms.TextBox();
+            this.userDBname = new System.Windows.Forms.TextBox();
+            this.userDBpassword = new System.Windows.Forms.TextBox();
+            this.DBname = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pageRangeNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.startPageNum)).BeginInit();
             this.SuspendLayout();
@@ -64,7 +74,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(264, 21);
+            this.label2.Location = new System.Drawing.Point(264, 113);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(415, 20);
             this.label2.TabIndex = 3;
@@ -72,9 +82,9 @@
             // 
             // listView1
             // 
-            this.listView1.Location = new System.Drawing.Point(264, 54);
+            this.listView1.Location = new System.Drawing.Point(264, 142);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1381, 718);
+            this.listView1.Size = new System.Drawing.Size(1381, 630);
             this.listView1.TabIndex = 4;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -262,11 +272,107 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Nhập trang để cào toàn bộ";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(264, 21);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(97, 20);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Tên server db";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(490, 21);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 20);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Port";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(703, 21);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(113, 20);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Tên người dùng";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(911, 21);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(70, 20);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Mật khẩu";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(1133, 21);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(97, 20);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "Tên database";
+            // 
+            // serverDBname
+            // 
+            this.serverDBname.Location = new System.Drawing.Point(264, 66);
+            this.serverDBname.Name = "serverDBname";
+            this.serverDBname.Size = new System.Drawing.Size(190, 27);
+            this.serverDBname.TabIndex = 10;
+            this.serverDBname.Text = "localhost";
+            // 
+            // serverDBport
+            // 
+            this.serverDBport.Location = new System.Drawing.Point(489, 66);
+            this.serverDBport.Name = "serverDBport";
+            this.serverDBport.Size = new System.Drawing.Size(190, 27);
+            this.serverDBport.TabIndex = 10;
+            this.serverDBport.Text = "5060";
+            // 
+            // userDBname
+            // 
+            this.userDBname.Location = new System.Drawing.Point(703, 66);
+            this.userDBname.Name = "userDBname";
+            this.userDBname.Size = new System.Drawing.Size(190, 27);
+            this.userDBname.TabIndex = 10;
+            this.userDBname.Text = "root";
+            // 
+            // userDBpassword
+            // 
+            this.userDBpassword.Location = new System.Drawing.Point(911, 66);
+            this.userDBpassword.Name = "userDBpassword";
+            this.userDBpassword.Size = new System.Drawing.Size(190, 27);
+            this.userDBpassword.TabIndex = 10;
+            this.userDBpassword.Text = "140300";
+            // 
+            // DBname
+            // 
+            this.DBname.Location = new System.Drawing.Point(1133, 66);
+            this.DBname.Name = "DBname";
+            this.DBname.ReadOnly = true;
+            this.DBname.Size = new System.Drawing.Size(190, 27);
+            this.DBname.TabIndex = 10;
+            this.DBname.Text = "batdongsan";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1682, 803);
+            this.Controls.Add(this.DBname);
+            this.Controls.Add(this.userDBpassword);
+            this.Controls.Add(this.userDBname);
+            this.Controls.Add(this.serverDBport);
+            this.Controls.Add(this.serverDBname);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.startPageNum);
@@ -318,5 +424,15 @@
         private ComboBox comboBox1;
         private Label label4;
         private Label label5;
+        private Label label6;
+        private Label label7;
+        private Label label8;
+        private Label label9;
+        private Label label10;
+        private TextBox serverDBname;
+        private TextBox serverDBport;
+        private TextBox userDBname;
+        private TextBox userDBpassword;
+        private TextBox DBname;
     }
 }
