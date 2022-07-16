@@ -323,7 +323,6 @@
             this.serverDBname.Name = "serverDBname";
             this.serverDBname.Size = new System.Drawing.Size(190, 27);
             this.serverDBname.TabIndex = 10;
-            this.serverDBname.Text = "localhost";
             // 
             // serverDBport
             // 
@@ -331,7 +330,6 @@
             this.serverDBport.Name = "serverDBport";
             this.serverDBport.Size = new System.Drawing.Size(190, 27);
             this.serverDBport.TabIndex = 10;
-            this.serverDBport.Text = "5060";
             // 
             // userDBname
             // 
@@ -339,7 +337,6 @@
             this.userDBname.Name = "userDBname";
             this.userDBname.Size = new System.Drawing.Size(190, 27);
             this.userDBname.TabIndex = 10;
-            this.userDBname.Text = "root";
             // 
             // userDBpassword
             // 
@@ -347,7 +344,6 @@
             this.userDBpassword.Name = "userDBpassword";
             this.userDBpassword.Size = new System.Drawing.Size(190, 27);
             this.userDBpassword.TabIndex = 10;
-            this.userDBpassword.Text = "140300";
             // 
             // DBname
             // 
