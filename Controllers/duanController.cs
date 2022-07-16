@@ -37,7 +37,7 @@ namespace web_scraping_csharp.Controllers
                     sqlInsertToduan += ',';
                 }
             }
-            using (IDbConnection db = new MySqlConnection(new Form1().getConnection()))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
             {
                 db.Query<duan>(sqlInsertToduan);
             }
@@ -46,7 +46,7 @@ namespace web_scraping_csharp.Controllers
         {
             string sqlGetAllduan = "SELECT * FROM duan";
             List<duan> duans = new();
-            using (IDbConnection db = new MySqlConnection(new Form1().getConnection()))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
             {
                 duans = db.Query<duan>(sqlGetAllduan).ToList();
             }
@@ -72,7 +72,7 @@ namespace web_scraping_csharp.Controllers
 
             string sqlDeleteAllduan = $"DELETE FROM duan";
            
-            using (IDbConnection db = new MySqlConnection(new Form1().getConnection()))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
             {
                 db.Query<duan>(sqlDeleteAllduan);
             }
