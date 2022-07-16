@@ -37,7 +37,7 @@ namespace web_scraping_csharp.Controllers
                     sqlInsertTowiki += ',';
                 }
             }
-            using (IDbConnection db = new MySqlConnection(new Form1().getConnection()))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
             {
                 db.Query<wiki>(sqlInsertTowiki);
             }
@@ -46,7 +46,7 @@ namespace web_scraping_csharp.Controllers
         {
             string sqlGetAllwiki = "SELECT * FROM wiki";
             List<wiki> wikis = new();
-            using (IDbConnection db = new MySqlConnection(new Form1().getConnection()))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
             {
                 wikis = db.Query<wiki>(sqlGetAllwiki).ToList();
             }
@@ -66,7 +66,7 @@ namespace web_scraping_csharp.Controllers
 
             string sqlDeleteAllwiki = $"DELETE FROM wiki";
            
-            using (IDbConnection db = new MySqlConnection(new Form1().getConnection()))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
             {
                 db.Query<wiki>(sqlDeleteAllwiki);
             }

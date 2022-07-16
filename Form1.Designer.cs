@@ -425,10 +425,10 @@
         private Label label8;
         private Label label9;
         private Label label10;
-        private TextBox serverDBname;
-        private TextBox serverDBport;
-        private TextBox userDBname;
-        private TextBox userDBpassword;
-        private TextBox DBname;
+        public TextBox serverDBname;
+        public TextBox serverDBport;
+        public TextBox userDBname;
+        public TextBox userDBpassword;
+        public TextBox DBname;
     }
 }

@@ -37,7 +37,7 @@ namespace web_scraping_csharp.Controllers
                     sqlInsertTotintuc += ',';
                 }
             }
-            using (IDbConnection db = new MySqlConnection(new Form1().getConnection()))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
             {
                 db.Query<tintuc>(sqlInsertTotintuc);
             }
@@ -46,7 +46,7 @@ namespace web_scraping_csharp.Controllers
         {
             string sqlGetAlltintuc = "SELECT * FROM tintuc";
             List<tintuc> tintucs = new();
-            using (IDbConnection db = new MySqlConnection(new Form1().getConnection()))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
             {
                 tintucs = db.Query<tintuc>(sqlGetAlltintuc).ToList();
             }
@@ -66,7 +66,7 @@ namespace web_scraping_csharp.Controllers
 
             string sqlDeleteAlltintuc = $"DELETE FROM tintuc";
            
-            using (IDbConnection db = new MySqlConnection(new Form1().getConnection()))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
             {
                 db.Query<tintuc>(sqlDeleteAlltintuc);
             }
