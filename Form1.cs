@@ -71,7 +71,7 @@ namespace web_scraping_csharp
 
         private void button9_Click(object sender, EventArgs e)
         {
-            label2.Text = "Đang tiến hành cào toàn bộ danh mục theo trang đã nhập";
+            label2.Text = "Dữ liệu cào của từng danh mục được lưu tự động vào database";
             foreach (var process in Process.GetProcessesByName("chrome"))
             {
                 process.Kill();
@@ -104,10 +104,6 @@ namespace web_scraping_csharp
                     }
                 );
 
-            if (Process.GetProcessesByName("chrome").Count() == 0)
-            {
-                label2.Text = "Quá trình cào đã kết thúc, hãy chọn từng danh mục để xem dữ liệu đã lưu";
-            }
         }
 
     }

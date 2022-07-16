@@ -16,7 +16,8 @@ namespace web_scraping_csharp
             // chromeOptions.AddArgument("user-data-dir=C:/Users/manh/AppData/Local/Google/Chrome/User Data");
             // chromeOptions.AddArgument("--profile-directory=Default");
              chromeOptions.AddArgument("--incognito");
-            //ẩn terminal
+                        chromeOptions.BinaryLocation = "Chromium\\102.0.5005.0\\chrome.exe";
+//ẩn terminal
             ChromeDriverService service = ChromeDriverService.CreateDefaultService();
             service.HideCommandPromptWindow = true;
 
