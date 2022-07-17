@@ -92,8 +92,6 @@ namespace web_scraping_csharp
             TaskFour.Start();
             Task TaskFive = new Task(crawlAllNoingoaithat);
             TaskFive.Start();
-            //đợi những cái trên xong thì ta tới cái phân trang
-            Task.WaitAll(TaskOne, TaskTwo, TaskThree, TaskFour, TaskFive);
             Task TaskSix = new Task(crawlAllNhadatban);
             TaskSix.Start();
             Task TaskSeven = new Task(crawlAllNhadatchothue);
@@ -102,12 +100,6 @@ namespace web_scraping_csharp
             TaskEight.Start();
             Task TaskNine = new Task(crawlAllNhamoigioi);
             TaskNine.Start();
-            Task.WaitAll(TaskSix, TaskSeven, TaskEight, TaskNine);
-            button1.Enabled = true;
-            button9.Enabled = true;
-            button7.Enabled = true;
-            button6.Enabled = false;
-            label2.Text = "Lưu ý: Tool sẽ đóng tiến trình Chrome hiện tại khi bắt đầu cào";
            
         }
 
