@@ -26,6 +26,7 @@ namespace web_scraping_csharp
 
             if (label2.Text == "Kết quả")
             {
+                chromeDriver.Quit();
                 return;
             }
             string url = $"{new batdongsanURL().doanhnghiep}";

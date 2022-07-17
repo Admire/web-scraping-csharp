@@ -30,16 +30,51 @@ namespace web_scraping_csharp
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            Thread buttonThree = new Thread(SaveToDb);
-            buttonThree.IsBackground = true;
-            buttonThree.Start();
+            TextBox serverDBname = Application.OpenForms["Form1"].Controls["serverDBname"] as TextBox;
+            TextBox serverDBport = Application.OpenForms["Form1"].Controls["serverDBport"] as TextBox;
+            TextBox userDBname = Application.OpenForms["Form1"].Controls["userDBname"] as TextBox;
+            TextBox userDBpassword = Application.OpenForms["Form1"].Controls["userDBpassword"] as TextBox;
+            TextBox DBname = Application.OpenForms["Form1"].Controls["DBname"] as TextBox;
+            string serverName = serverDBname.Text.Trim();
+            string serverPort = serverDBport.Text.Trim();
+            string userName = userDBname.Text.Trim();
+            string password = userDBpassword.Text.Trim();
+            string dbName = DBname.Text.Trim();
+            if (serverName != "" && serverPort != "" && userName != "" && password != "")
+            {
+                Thread buttonThree = new Thread(SaveToDb);
+                buttonThree.IsBackground = true;
+                buttonThree.Start();     
+            }
+            else
+            {
+                MessageBox.Show("Hãy nhập đầy đủ thông tin của cơ sở dữ liệu MySQL trước khi cào");
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Thread buttonFour = new Thread(LoadFromDb);
-            buttonFour.IsBackground = true;
-            buttonFour.Start();
+            TextBox serverDBname = Application.OpenForms["Form1"].Controls["serverDBname"] as TextBox;
+            TextBox serverDBport = Application.OpenForms["Form1"].Controls["serverDBport"] as TextBox;
+            TextBox userDBname = Application.OpenForms["Form1"].Controls["userDBname"] as TextBox;
+            TextBox userDBpassword = Application.OpenForms["Form1"].Controls["userDBpassword"] as TextBox;
+            TextBox DBname = Application.OpenForms["Form1"].Controls["DBname"] as TextBox;
+            string serverName = serverDBname.Text.Trim();
+            string serverPort = serverDBport.Text.Trim();
+            string userName = userDBname.Text.Trim();
+            string password = userDBpassword.Text.Trim();
+            string dbName = DBname.Text.Trim();
+            if (serverName != "" && serverPort != "" && userName != "" && password != "")
+            {
+                Thread buttonFour = new Thread(LoadFromDb);
+                buttonFour.IsBackground = true;
+                buttonFour.Start();
+            }
+            else
+            {
+                MessageBox.Show("Hãy nhập đầy đủ thông tin của cơ sở dữ liệu MySQL trước khi cào");
+            }
+
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -71,44 +106,70 @@ namespace web_scraping_csharp
 
         private void button9_Click(object sender, EventArgs e)
         {
-            label2.Text = "Dữ liệu cào của từng danh mục được lưu tự động vào database";
-            foreach (var process in Process.GetProcessesByName("chrome"))
+            TextBox serverDBname = Application.OpenForms["Form1"].Controls["serverDBname"] as TextBox;
+            TextBox serverDBport = Application.OpenForms["Form1"].Controls["serverDBport"] as TextBox;
+            TextBox userDBname = Application.OpenForms["Form1"].Controls["userDBname"] as TextBox;
+            TextBox userDBpassword = Application.OpenForms["Form1"].Controls["userDBpassword"] as TextBox;
+            TextBox DBname = Application.OpenForms["Form1"].Controls["DBname"] as TextBox;
+            string serverName = serverDBname.Text.Trim();
+            string serverPort = serverDBport.Text.Trim();
+            string userName = userDBname.Text.Trim();
+            string password = userDBpassword.Text.Trim();
+            string dbName = DBname.Text.Trim();
+            if(serverName != "" && serverPort != "" && userName != "" && password != "")
             {
-                process.Kill();
-            }
-            button1.Enabled = false;
-            button9.Enabled = false;
-            button7.Enabled = false;
-            button6.Enabled = true;
+                label2.Text = "Dữ liệu cào của từng danh mục được lưu tự động vào database";
+                foreach (var process in Process.GetProcessesByName("chrome"))
+                {
+                    process.Kill();
+                }
+                button1.Enabled = false;
+                button9.Enabled = false;
+                button7.Enabled = false;
+                button6.Enabled = true;
 
-            // Những cái k phân trang thì cào trước vì nó ít data
-            Task TaskOne = new Task(crawlAllDoanhnghiep);
-            TaskOne.Start();
-            Task TaskTwo = new Task(crawlAllTintuc);
-            TaskTwo.Start();
-            Task TaskThree = new Task(crawlAllWiki);
-            TaskThree.Start();
-            Task TaskFour = new Task(crawlAllPhongthuy);
-            TaskFour.Start();
-            Task TaskFive = new Task(crawlAllNoingoaithat);
-            TaskFive.Start();
-            //đợi những cái trên xong thì ta tới cái phân trang
-            Task.WaitAll(TaskOne, TaskTwo, TaskThree, TaskFour, TaskFive);
-            Task TaskSix = new Task(crawlAllNhadatban);
-            TaskSix.Start();
-            Task TaskSeven = new Task(crawlAllNhadatchothue);
-            TaskSeven.Start();
-            Task TaskEight = new Task(crawlAllDuan);
-            TaskEight.Start();
-            Task TaskNine = new Task(crawlAllNhamoigioi);
-            TaskNine.Start();
-            Task.WaitAll(TaskSix, TaskSeven, TaskEight, TaskNine);
-            button1.Enabled = true;
-            button9.Enabled = true;
-            button7.Enabled = true;
-            button6.Enabled = false;
-            label2.Text = "Lưu ý: Tool sẽ đóng tiến trình Chrome hiện tại khi bắt đầu cào";
-           
+                //dùng new task() để tạo thread mới run ở bg, tách biệt với UI của winform
+                Task bgTask = new Task(() =>
+                {
+                    //option giới hạn lượng thread chạy
+                    ParallelOptions parallelOptions = new ParallelOptions
+                    {
+                        MaxDegreeOfParallelism = 3
+                    };
+                    // dùng parallel.invoke để thêm 1 nhóm các thread mới
+                    Parallel.Invoke(
+                           parallelOptions,
+                           // task 1 trang
+                           () => { crawlAllDoanhnghiep(); },
+                           () => { crawlAllTintuc(); },
+                           () => { crawlAllWiki(); },
+                           () => { crawlAllPhongthuy(); },
+                           () => { crawlAllNoingoaithat(); },
+                           // task nhiều trang
+                           () => { crawlAllNhadatban(); },
+                           () => { crawlAllNhadatchothue(); },
+                           () => { crawlAllDuan(); },
+                           () => { crawlAllNhamoigioi(); }
+                       );
+                    //hết cái trên mới chạy tới cái dưới
+                    Parallel.Invoke(
+                            () => {
+                                button1.Enabled = true;
+                                button9.Enabled = true;
+                                button7.Enabled = true;
+                                button6.Enabled = false;
+                                label2.Text = "Lưu ý: Tool sẽ đóng tiến trình Chrome hiện tại khi bắt đầu cào";
+                            }
+                        );
+                });
+                bgTask.Start();
+
+            }
+            else
+            {
+                MessageBox.Show("Hãy nhập đầy đủ thông tin của cơ sở dữ liệu MySQL trước khi cào");
+            }
+
         }
 
 
