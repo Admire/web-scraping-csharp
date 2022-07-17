@@ -97,7 +97,13 @@ namespace web_scraping_csharp
 
                     insertItems.Add(item);
                 }
-            new nhadatbanController().queryInsertAll(insertItems);
+                if (label2.Text == "Kết quả")
+                {
+                    chromeDriver.Quit();
+                    return;
+                }else{
+                    new doanhnghiepController().queryInsertAll(insertItems);
+                }
             chromeDriver.Quit();
             }
         }

@@ -13,6 +13,9 @@ namespace web_scraping_csharp
         void StopGetData()
         {
             label2.Text = "Kết quả";
+            button1.Enabled = true;
+            button7.Enabled = true;
+            button9.Enabled = true;
         }
     }
 }

@@ -76,33 +76,40 @@ namespace web_scraping_csharp
             {
                 process.Kill();
             }
-            ParallelOptions parallelOptions = new ParallelOptions
-            {
-                MaxDegreeOfParallelism = 3
-            };
-             Parallel.Invoke(
-                    parallelOptions,
-                    // task 1 trang
-                    () => {crawlAllDoanhnghiep();
-                    },
-                    () => {crawlAllTintuc();
-                    },
-                    () => {crawlAllWiki();
-                    },
-                    () => {crawlAllPhongthuy();
-                    },
-                    () => {crawlAllNoingoaithat();
-                    },
-                    // task nhiều trang
-                    () => {crawlAllNhadatban();
-                    },
-                    () => {crawlAllNhadatchothue();
-                    },
-                    () => {crawlAllDuan();
-                    },
-                    () => {crawlAllNhamoigioi();
-                    }
-                );
+            button1.Enabled = false;
+            button9.Enabled = false;
+            button7.Enabled = false;
+            button6.Enabled = true;
+            Thread buttonOne = new Thread(crawlAllDoanhnghiep);
+            buttonOne.IsBackground = true;
+            buttonOne.Start();
+            /*         ParallelOptions parallelOptions = new ParallelOptions
+                     {
+                         MaxDegreeOfParallelism = 3
+                     };
+                      Parallel.Invoke(
+                             parallelOptions,
+                             // task 1 trang
+                             () => {crawlAllDoanhnghiep();
+                             },
+                             () => {crawlAllTintuc();
+                             },
+                             () => {crawlAllWiki();
+                             },
+                             () => {crawlAllPhongthuy();
+                             },
+                             () => {crawlAllNoingoaithat();
+                             },
+                             // task nhiều trang
+                             () => {crawlAllNhadatban();
+                             },
+                             () => {crawlAllNhadatchothue();
+                             },
+                             () => {crawlAllDuan();
+                             },
+                             () => {crawlAllNhamoigioi();
+                             }
+                         );*/
 
         }
 
