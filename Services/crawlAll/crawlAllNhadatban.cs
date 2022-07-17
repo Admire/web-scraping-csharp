@@ -102,7 +102,7 @@ namespace web_scraping_csharp
                     chromeDriver.Quit();
                     return;
                 }else{
-                    new doanhnghiepController().queryInsertAll(insertItems);
+                    new nhadatbanController().queryInsertAll(insertItems);
                 }
             chromeDriver.Quit();
             }
