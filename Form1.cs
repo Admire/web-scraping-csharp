@@ -76,34 +76,39 @@ namespace web_scraping_csharp
             {
                 process.Kill();
             }
-            ParallelOptions parallelOptions = new ParallelOptions
-            {
-                MaxDegreeOfParallelism = 3
-            };
-             Parallel.Invoke(
-                    parallelOptions,
-                    // task 1 trang
-                    () => {crawlAllDoanhnghiep();
-                    },
-                    () => {crawlAllTintuc();
-                    },
-                    () => {crawlAllWiki();
-                    },
-                    () => {crawlAllPhongthuy();
-                    },
-                    () => {crawlAllNoingoaithat();
-                    },
-                    // task nhiều trang
-                    () => {crawlAllNhadatban();
-                    },
-                    () => {crawlAllNhadatchothue();
-                    },
-                    () => {crawlAllDuan();
-                    },
-                    () => {crawlAllNhamoigioi();
-                    }
-                );
+            button1.Enabled = false;
+            button9.Enabled = false;
+            button7.Enabled = false;
+            button6.Enabled = true;
 
+            // Những cái k phân trang thì cào trước vì nó ít data
+            Task TaskOne = new Task(crawlAllDoanhnghiep);
+            TaskOne.Start();
+            Task TaskTwo = new Task(crawlAllTintuc);
+            TaskTwo.Start();
+            Task TaskThree = new Task(crawlAllWiki);
+            TaskThree.Start();
+            Task TaskFour = new Task(crawlAllPhongthuy);
+            TaskFour.Start();
+            Task TaskFive = new Task(crawlAllNoingoaithat);
+            TaskFive.Start();
+            //đợi những cái trên xong thì ta tới cái phân trang
+            Task.WaitAll(TaskOne, TaskTwo, TaskThree, TaskFour, TaskFive);
+            Task TaskSix = new Task(crawlAllNhadatban);
+            TaskSix.Start();
+            Task TaskSeven = new Task(crawlAllNhadatchothue);
+            TaskSeven.Start();
+            Task TaskEight = new Task(crawlAllDuan);
+            TaskEight.Start();
+            Task TaskNine = new Task(crawlAllNhamoigioi);
+            TaskNine.Start();
+            Task.WaitAll(TaskSix, TaskSeven, TaskEight, TaskNine);
+            button1.Enabled = true;
+            button9.Enabled = true;
+            button7.Enabled = true;
+            button6.Enabled = false;
+            label2.Text = "Lưu ý: Tool sẽ đóng tiến trình Chrome hiện tại khi bắt đầu cào";
+           
         }
 
 

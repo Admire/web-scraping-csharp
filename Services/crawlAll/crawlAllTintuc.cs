@@ -52,8 +52,13 @@ namespace web_scraping_csharp
                 insertItems.Add(item);
 
             }
-            new tintucController().queryInsertAll(insertItems);
-
+                if (label2.Text == "Kết quả")
+                {
+                    chromeDriver.Quit();
+                    return;
+                }else{
+                    new tintucController().queryInsertAll(insertItems);
+                }
             chromeDriver.Quit();
         }
 

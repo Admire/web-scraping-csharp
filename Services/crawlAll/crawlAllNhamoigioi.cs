@@ -72,7 +72,13 @@ namespace web_scraping_csharp
 
                     insertItems.Add(item);
                 }
-            new nhamoigioiController().queryInsertAll(insertItems);
+                if (label2.Text == "Kết quả")
+                {
+                    chromeDriver.Quit();
+                    return;
+                }else{
+                    new nhamoigioiController().queryInsertAll(insertItems);
+                }
             chromeDriver.Quit();
             }
         }
