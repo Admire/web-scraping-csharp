@@ -81,26 +81,42 @@ namespace web_scraping_csharp
             button7.Enabled = false;
             button6.Enabled = true;
 
-            // Những cái k phân trang thì cào trước vì nó ít data
-            Task TaskOne = new Task(crawlAllDoanhnghiep);
-            TaskOne.Start();
-            Task TaskTwo = new Task(crawlAllTintuc);
-            TaskTwo.Start();
-            Task TaskThree = new Task(crawlAllWiki);
-            TaskThree.Start();
-            Task TaskFour = new Task(crawlAllPhongthuy);
-            TaskFour.Start();
-            Task TaskFive = new Task(crawlAllNoingoaithat);
-            TaskFive.Start();
-            Task TaskSix = new Task(crawlAllNhadatban);
-            TaskSix.Start();
-            Task TaskSeven = new Task(crawlAllNhadatchothue);
-            TaskSeven.Start();
-            Task TaskEight = new Task(crawlAllDuan);
-            TaskEight.Start();
-            Task TaskNine = new Task(crawlAllNhamoigioi);
-            TaskNine.Start();
-           
+            //dùng new task() để tạo thread mới run ở bg, tách biệt với UI của winform
+            Task bgTask = new Task(() =>
+            {
+                //option giới hạn lượng thread chạy
+                ParallelOptions parallelOptions = new ParallelOptions
+                {
+                    MaxDegreeOfParallelism = 3
+                };
+                // dùng parallel.invoke để thêm 1 nhóm các thread mới
+                Parallel.Invoke(
+                       parallelOptions,
+                       // task 1 trang
+                       () => {crawlAllDoanhnghiep();},
+                       () => {crawlAllTintuc();},
+                       () => {crawlAllWiki();},
+                       () => {crawlAllPhongthuy();},
+                       () => {crawlAllNoingoaithat();},
+                       // task nhiều trang
+                       () => {crawlAllNhadatban();},
+                       () => {crawlAllNhadatchothue();},
+                       () => {crawlAllDuan();},
+                       () => {crawlAllNhamoigioi();}
+                   );
+                //hết cái trên mới chạy tới cái dưới
+                Parallel.Invoke(
+                        () => {
+                            button1.Enabled = true;
+                            button9.Enabled = true;
+                            button7.Enabled = true;
+                            button6.Enabled = false;
+                            label2.Text = "Lưu ý: Tool sẽ đóng tiến trình Chrome hiện tại khi bắt đầu cào";
+                        }
+                    );
+            });
+            bgTask.Start();
+
         }
 
 
