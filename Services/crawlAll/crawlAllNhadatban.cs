@@ -32,6 +32,8 @@ namespace web_scraping_csharp
             chromeDriver.Manage().Window.Maximize();
                 if (label2.Text == "Kết quả")
                 {
+                chromeDriver.Quit();
+
                     break;
                 }
                 string url = $"{new batdongsanURL().nhadatban}{i}";
