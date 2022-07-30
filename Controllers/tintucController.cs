@@ -42,7 +42,7 @@ namespace web_scraping_csharp.Controllers
                 db.Query<Tintuc>(sqlInsertToTintuc);
             }
         }
-        public List<ListViewItem> queryFetchAll()
+        public List<ListViewItem> QueryFetchAll()
         {
             string sqlGetAllTintuc = "SELECT * FROM Tintuc";
             List<Tintuc> Tintucs = new();

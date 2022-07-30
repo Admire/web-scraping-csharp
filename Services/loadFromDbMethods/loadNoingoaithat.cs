@@ -14,7 +14,7 @@ namespace web_scraping_csharp
             TableResult.Clear();
             TableResult.Columns.Add("Url bài viết", 400);
             TableResult.Columns.Add("Tiêu đề", 700);
-            List<ListViewItem> Noingoaithats = new NoingoaithatController().queryFetchAll();
+            List<ListViewItem> Noingoaithats = new NoingoaithatController().QueryFetchAll();
             foreach (ListViewItem Noingoaithat in Noingoaithats)
             {
                 TableResult.Items.Add(Noingoaithat);

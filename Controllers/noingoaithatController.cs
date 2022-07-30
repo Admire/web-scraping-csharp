@@ -42,7 +42,7 @@ namespace web_scraping_csharp.Controllers
                 db.Query<Noingoaithat>(sqlInsertToNoingoaithat);
             }
         }
-        public List<ListViewItem> queryFetchAll()
+        public List<ListViewItem> QueryFetchAll()
         {
             string sqlGetAllNoingoaithat = "SELECT * FROM Noingoaithat";
             List<Noingoaithat> Noingoaithats = new();

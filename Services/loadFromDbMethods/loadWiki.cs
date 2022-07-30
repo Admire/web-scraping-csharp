@@ -14,7 +14,7 @@ namespace web_scraping_csharp
             TableResult.Clear();
             TableResult.Columns.Add("Url bài viết", 400);
             TableResult.Columns.Add("Tiêu đề", 700);
-            List<ListViewItem> Wikis = new WikiController().queryFetchAll();
+            List<ListViewItem> Wikis = new WikiController().QueryFetchAll();
             foreach (ListViewItem Wiki in Wikis)
             {
                 TableResult.Items.Add(Wiki);

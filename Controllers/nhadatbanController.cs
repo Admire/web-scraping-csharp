@@ -42,7 +42,7 @@ namespace web_scraping_csharp.Controllers
                 db.Query<Nhadatban>(sqlInsertToNhadatban);
             }
         }
-        public List<ListViewItem> queryFetchAll()
+        public List<ListViewItem> QueryFetchAll()
         {
             string sqlGetAllNhadatban = "SELECT * FROM Nhadatban";
             List<Nhadatban> Nhadatbans = new();

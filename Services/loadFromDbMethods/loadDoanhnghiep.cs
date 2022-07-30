@@ -14,7 +14,7 @@ namespace web_scraping_csharp
             TableResult.Clear();
             TableResult.Columns.Add("Url thông tin", 400);
             TableResult.Columns.Add("Tên doanh nghiệp", 700);
-            List<ListViewItem> Doanhnghieps = new DoanhnghiepController().queryFetchAll();
+            List<ListViewItem> Doanhnghieps = new DoanhnghiepController().QueryFetchAll();
             foreach (ListViewItem Doanhnghiep in Doanhnghieps)
             {
                 TableResult.Items.Add(Doanhnghiep);

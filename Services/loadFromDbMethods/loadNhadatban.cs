@@ -20,7 +20,7 @@ namespace web_scraping_csharp
             TableResult.Columns.Add("Địa chỉ", 170);
             TableResult.Columns.Add("Ngày đăng bài", 150);
             TableResult.Columns.Add("Nên xem", 150);
-            List<ListViewItem> Nhadatbans = new NhadatbanController().queryFetchAll();
+            List<ListViewItem> Nhadatbans = new NhadatbanController().QueryFetchAll();
             foreach (ListViewItem Nhadatban in Nhadatbans)
             {
                 TableResult.Items.Add(Nhadatban);

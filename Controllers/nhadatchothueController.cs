@@ -42,7 +42,7 @@ namespace web_scraping_csharp.Controllers
                 db.Query<Nhadatchothue>(sqlInsertToNhadatchothue);
             }
         }
-        public List<ListViewItem> queryFetchAll()
+        public List<ListViewItem> QueryFetchAll()
         {
             string sqlGetAllNhadatchothue = "SELECT * FROM Nhadatchothue";
             List<Nhadatchothue> Nhadatchothues = new();

@@ -14,7 +14,7 @@ namespace web_scraping_csharp
             TableResult.Clear();
             TableResult.Columns.Add("Url bài viết", 400);
             TableResult.Columns.Add("Tiêu đề", 700);
-            List<ListViewItem> Phongthuys = new PhongthuyController().queryFetchAll();
+            List<ListViewItem> Phongthuys = new PhongthuyController().QueryFetchAll();
             foreach (ListViewItem Phongthuy in Phongthuys)
             {
                 TableResult.Items.Add(Phongthuy);

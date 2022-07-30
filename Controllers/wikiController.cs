@@ -42,7 +42,7 @@ namespace web_scraping_csharp.Controllers
                 db.Query<Wiki>(sqlInsertToWiki);
             }
         }
-        public List<ListViewItem> queryFetchAll()
+        public List<ListViewItem> QueryFetchAll()
         {
             string sqlGetAllWiki = "SELECT * FROM Wiki";
             List<Wiki> Wikis = new();

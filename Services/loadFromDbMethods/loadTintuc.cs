@@ -14,7 +14,7 @@ namespace web_scraping_csharp
             TableResult.Clear();
             TableResult.Columns.Add("Url bài viết", 400);
             TableResult.Columns.Add("Tiêu đề", 700);
-            List<ListViewItem> Tintucs = new TintucController().queryFetchAll();
+            List<ListViewItem> Tintucs = new TintucController().QueryFetchAll();
             foreach (ListViewItem Tintuc in Tintucs)
             {
                 TableResult.Items.Add(Tintuc);

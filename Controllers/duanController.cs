@@ -42,7 +42,7 @@ namespace web_scraping_csharp.Controllers
                 db.Query<Duan>(sqlInsertToDuan);
             }
         }
-        public List<ListViewItem> queryFetchAll()
+        public List<ListViewItem> QueryFetchAll()
         {
             string sqlGetAllDuan = "SELECT * FROM Duan";
             List<Duan> Duans = new();

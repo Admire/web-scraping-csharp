@@ -17,7 +17,7 @@ namespace web_scraping_csharp
             TableResult.Columns.Add("Địa chỉ", 250);
             TableResult.Columns.Add("Điện thoại", 150);
             TableResult.Columns.Add("Email", 200);
-            List<ListViewItem> Nhamoigiois = new NhamoigioiController().queryFetchAll();
+            List<ListViewItem> Nhamoigiois = new NhamoigioiController().QueryFetchAll();
             foreach (ListViewItem Nhamoigioi in Nhamoigiois)
             {
                 TableResult.Items.Add(Nhamoigioi);

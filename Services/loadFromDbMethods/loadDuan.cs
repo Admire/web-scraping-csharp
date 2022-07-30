@@ -21,7 +21,7 @@ namespace web_scraping_csharp
             TableResult.Columns.Add("Địa chỉ", 170);
             TableResult.Columns.Add("Công ty", 180);
             TableResult.Columns.Add("Tình trạng", 150);
-            List<ListViewItem> Duans = new DuanController().queryFetchAll();
+            List<ListViewItem> Duans = new DuanController().QueryFetchAll();
             foreach (ListViewItem Duan in Duans)
             {
                 TableResult.Items.Add(Duan);
