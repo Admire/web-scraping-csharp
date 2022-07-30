@@ -15,20 +15,20 @@ namespace web_scraping_csharp
             Control.CheckForIllegalCrossThreadCalls = false;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void CrawlSomePagesButton_Click(object sender, EventArgs e)
         {
             Thread buttonOne = new Thread(RunChrome);
             buttonOne.IsBackground = true;
 
             buttonOne.Start();
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void DeleteResultButton_Click(object sender, EventArgs e)
         {
             Thread buttonTwo = new Thread(ClearListView);
             buttonTwo.IsBackground = true;
             buttonTwo.Start();
         }
-        private void button3_Click(object sender, EventArgs e)
+        private void SaveToDbButton_Click(object sender, EventArgs e)
         {
             TextBox serverDBname = Application.OpenForms["Form1"].Controls["serverDBname"] as TextBox;
             TextBox serverDBport = Application.OpenForms["Form1"].Controls["serverDBport"] as TextBox;
@@ -52,7 +52,7 @@ namespace web_scraping_csharp
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void LoadDbButton_Click(object sender, EventArgs e)
         {
             TextBox serverDBname = Application.OpenForms["Form1"].Controls["serverDBname"] as TextBox;
             TextBox serverDBport = Application.OpenForms["Form1"].Controls["serverDBport"] as TextBox;
@@ -77,19 +77,19 @@ namespace web_scraping_csharp
 
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void SaveToFileButton_Click(object sender, EventArgs e)
         {
-            resultToTextFile();
+            ResultToTextFile();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void StopCrawl_Click(object sender, EventArgs e)
         {
             Thread button6 = new Thread(StopGetData);
             button6.IsBackground = true;
             button6.Start();
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void CrawlAllPagesButton_Click(object sender, EventArgs e)
         {
             Thread buttonSeven = new Thread(RunChromeAllPages);
             buttonSeven.IsBackground = true;
@@ -97,14 +97,14 @@ namespace web_scraping_csharp
             buttonSeven.Start();
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void DeleteDbButton_Click(object sender, EventArgs e)
         {
-            Thread buttonEight = new Thread(deleteAllDataInDbForm);
+            Thread buttonEight = new Thread(DeleteAllDataInDbForm);
             buttonEight.IsBackground = true;
             buttonEight.Start();
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void CrawlAllButton_Click(object sender, EventArgs e)
         {
             TextBox serverDBname = Application.OpenForms["Form1"].Controls["serverDBname"] as TextBox;
             TextBox serverDBport = Application.OpenForms["Form1"].Controls["serverDBport"] as TextBox;
@@ -118,15 +118,15 @@ namespace web_scraping_csharp
             string dbName = DBname.Text.Trim();
             if(serverName != "" && serverPort != "" && userName != "" && password != "")
             {
-                label2.Text = "Dữ liệu cào của từng danh mục được lưu tự động vào database";
+                TableTitle.Text = "Dữ liệu cào của từng danh mục được lưu tự động vào database";
                 foreach (var process in Process.GetProcessesByName("chrome"))
                 {
                     process.Kill();
                 }
-                button1.Enabled = false;
-                button9.Enabled = false;
-                button7.Enabled = false;
-                button6.Enabled = true;
+                CrawlSomePagesButton.Enabled = false;
+                CrawlAllButton.Enabled = false;
+                CrawlAllPagesButton.Enabled = false;
+                StopCrawl.Enabled = true;
 
                 //dùng new task() để tạo thread mới run ở bg, tách biệt với UI của winform
                 Task bgTask = new Task(() =>
@@ -140,25 +140,25 @@ namespace web_scraping_csharp
                     Parallel.Invoke(
                            parallelOptions,
                            // task 1 trang
-                           () => { crawlAllDoanhnghiep(); },
-                           () => { crawlAllTintuc(); },
-                           () => { crawlAllWiki(); },
-                           () => { crawlAllPhongthuy(); },
-                           () => { crawlAllNoingoaithat(); },
+                           () => { CrawlAllDoanhnghiep(); },
+                           () => { CrawlAllTintuc(); },
+                           () => { CrawlAllWiki(); },
+                           () => { CrawlAllPhongthuy(); },
+                           () => { CrawlAllNoingoaithat(); },
                            // task nhiều trang
-                           () => { crawlAllNhadatban(); },
-                           () => { crawlAllNhadatchothue(); },
-                           () => { crawlAllDuan(); },
-                           () => { crawlAllNhamoigioi(); }
+                           () => { CrawlAllNhadatban(); },
+                           () => { CrawlAllNhadatchothue(); },
+                           () => { CrawlAllDuan(); },
+                           () => { CrawlAllNhamoigioi(); }
                        );
                     //hết cái trên mới chạy tới cái dưới
                     Parallel.Invoke(
                             () => {
-                                button1.Enabled = true;
-                                button9.Enabled = true;
-                                button7.Enabled = true;
-                                button6.Enabled = false;
-                                label2.Text = "Lưu ý: Tool sẽ đóng tiến trình Chrome hiện tại khi bắt đầu cào";
+                                CrawlSomePagesButton.Enabled = true;
+                                CrawlAllButton.Enabled = true;
+                                CrawlAllPagesButton.Enabled = true;
+                                StopCrawl.Enabled = false;
+                                TableTitle.Text = "Lưu ý: Tool sẽ đóng tiến trình Chrome hiện tại khi bắt đầu cào";
                             }
                         );
                 });
@@ -171,7 +171,6 @@ namespace web_scraping_csharp
             }
 
         }
-
 
     }
 }

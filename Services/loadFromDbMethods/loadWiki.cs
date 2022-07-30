@@ -9,17 +9,17 @@ namespace web_scraping_csharp
 {
     public partial class Form1 : Form
     {
-        void loadWiki()
+        void LoadWiki()
         {
-            listView1.Clear();
-            listView1.Columns.Add("Url bài viết", 400);
-            listView1.Columns.Add("Tiêu đề", 700);
-            List<ListViewItem> wikis = new wikiController().queryFetchAll();
-            foreach (ListViewItem wiki in wikis)
+            TableResult.Clear();
+            TableResult.Columns.Add("Url bài viết", 400);
+            TableResult.Columns.Add("Tiêu đề", 700);
+            List<ListViewItem> Wikis = new WikiController().queryFetchAll();
+            foreach (ListViewItem Wiki in Wikis)
             {
-                listView1.Items.Add(wiki);
+                TableResult.Items.Add(Wiki);
             }
-            MessageBox.Show("Đã tải từ cơ sở dữ liệu wikiBĐS");
+            MessageBox.Show("Đã tải từ cơ sở dữ liệu WikiBĐS");
         }
     }
 }

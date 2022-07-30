@@ -6,15 +6,15 @@ using web_scraping_csharp.Services;
 
 namespace web_scraping_csharp.Controllers
 {
-    public class wikiController
+    public class WikiController
     {
-        public void queryInsertAll(List<ListViewItem> item)
+        public void QueryInsertAll(List<ListViewItem> item)
         {
 
-            string sqlInsertTowiki = $"INSERT INTO wiki VALUES ";
+            string sqlInsertToWiki = $"INSERT INTO Wiki VALUES ";
             foreach (ListViewItem item2 in item)
             {
-                sqlInsertTowiki += "(DEFAULT ";
+                sqlInsertToWiki += "(DEFAULT ";
                 List<string> insertList = new();
                 Char value = '\'';
                 for(int i = 0; i < item2.SubItems.Count; i++){
@@ -28,47 +28,47 @@ namespace web_scraping_csharp.Controllers
                 }
                 foreach(string insert in insertList)
                 {
-                    sqlInsertTowiki += $",'{insert}'";
+                    sqlInsertToWiki += $",'{insert}'";
                 }
-                sqlInsertTowiki += ") ";
+                sqlInsertToWiki += ") ";
 
                 if (item.IndexOf(item2) != item.Count() - 1)
                 {
-                    sqlInsertTowiki += ',';
+                    sqlInsertToWiki += ',';
                 }
             }
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                db.Query<wiki>(sqlInsertTowiki);
+                db.Query<Wiki>(sqlInsertToWiki);
             }
         }
         public List<ListViewItem> queryFetchAll()
         {
-            string sqlGetAllwiki = "SELECT * FROM wiki";
-            List<wiki> wikis = new();
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
+            string sqlGetAllWiki = "SELECT * FROM Wiki";
+            List<Wiki> Wikis = new();
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                wikis = db.Query<wiki>(sqlGetAllwiki).ToList();
+                Wikis = db.Query<Wiki>(sqlGetAllWiki).ToList();
             }
             List< ListViewItem > result = new List<ListViewItem>();
-            foreach (wiki wiki in wikis)
+            foreach (Wiki Wiki in Wikis)
             {
                 ListViewItem item = new ListViewItem();
 
-                item.Text =  wiki.url;
-                item.SubItems.Add(wiki.tieude);
+                item.Text =  Wiki.url;
+                item.SubItems.Add(Wiki.tieude);
                 result.Add(item);
             }
             return result;
         }
-        public void queryDeleteAll()
+        public void QueryDeleteAll()
         {
 
-            string sqlDeleteAllwiki = $"DELETE FROM wiki";
+            string sqlDeleteAllWiki = $"DELETE FROM Wiki";
            
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                db.Query<wiki>(sqlDeleteAllwiki);
+                db.Query<Wiki>(sqlDeleteAllWiki);
             }
         }
     }

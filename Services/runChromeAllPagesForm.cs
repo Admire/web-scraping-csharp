@@ -12,57 +12,57 @@ namespace web_scraping_csharp
         //những method khác có điều kiện là khi label 2 là Kết quả thì sẽ dừng vòng lặp đang chạya
         void RunChromeAllPages()
         {
-            listView1.Clear();
-            label2.Text = "Đang tiến hành cào dữ liệu (lưu ý: không ẩn trình duyệt chrome)";
+            TableResult.Clear();
+            TableTitle.Text = "Đang tiến hành cào dữ liệu (lưu ý: không ẩn trình duyệt chrome)";
             //tạm thời tắt tính năng ấn vào nút để tránh trường hợp cào chồng lên nhau
-            button1.Enabled = false;
-            button7.Enabled = false;
-            startPageNum.Enabled = false;
-            pageRangeNum.Enabled = false;
-            button4.Enabled = true;
-            button5.Enabled = true;
-            button6.Enabled = true;
+            CrawlSomePagesButton.Enabled = false;
+            CrawlAllPagesButton.Enabled = false;
+            StartPageNum.Enabled = false;
+            PageRangeNum.Enabled = false;
+            SaveToDbButton.Enabled = true;
+            SaveToFileButton.Enabled = true;
+            StopCrawl.Enabled = true;
             //chọn trang web muốn runChrome
-            switch (comboBox1.Text)
+            switch (ListCategories.Text)
             {
                 case "Nhà đất bán":
-                    runChromeAllNhadatban();
+                    RunChromeAllNhadatban();
                     break;
                 case "Nhà đất cho thuê":
-                    runChromeAllNhadatchothue();
+                    RunChromeAllNhadatchothue();
                     break;
                 case "Dự án":
-                    runChromeAllDuan();
+                    RunChromeAllDuan();
                     break;
                 case "Tin tức":
-                    runChromeTintuc();
+                    RunChromeTintuc();
                     break;
                 case "Wiki BĐS":
-                    runChromeWiki();
+                    RunChromeWiki();
                     break;
                 case "Phong Thủy":
-                    runChromePhongthuy();
+                    RunChromePhongthuy();
                     break;
                 case "Nội-Ngoại thất":
-                    runChromeNoingoaithat();
+                    RunChromeNoingoaithat();
                     break;
                 case "Nhà môi giới":
-                    runChromeAllNhamoigioi();
+                    RunChromeAllNhamoigioi();
                     break;
                 case "Doanh nghiệp":
-                    runChromeDoanhnghiep();
+                    RunChromeDoanhnghiep();
                     break;
                 default:
                     break;
             }
 
-            label2.Text = "Kết quả";
+            TableTitle.Text = "Kết quả";
             //bật lại tính năng nhấn vào nút
-            button1.Enabled = true;
-            startPageNum.Enabled = true;
-            button6.Enabled = false;
-            button7.Enabled = true;
-            pageRangeNum.Enabled = true;
+            CrawlSomePagesButton.Enabled = true;
+            StartPageNum.Enabled = true;
+            StopCrawl.Enabled = false;
+            CrawlAllPagesButton.Enabled = true;
+            PageRangeNum.Enabled = true;
         }
 
     }

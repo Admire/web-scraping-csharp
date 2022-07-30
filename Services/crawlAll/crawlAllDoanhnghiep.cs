@@ -10,7 +10,7 @@ namespace web_scraping_csharp
     public partial class Form1 : Form
     {
 
-        void crawlAllDoanhnghiep()
+        void CrawlAllDoanhnghiep()
         {
             ChromeOptions chromeOptions = new ChromeOptions();
             // chromeOptions.AddArgument("user-data-dir=C:/Users/manh/AppData/Local/Google/Chrome/User Data");
@@ -24,22 +24,22 @@ namespace web_scraping_csharp
             ChromeDriver chromeDriver = new ChromeDriver(service, chromeOptions);
             chromeDriver.Manage().Window.Maximize();
 
-            if (label2.Text == "Kết quả")
+            if (TableTitle.Text == "Kết quả")
             {
                 chromeDriver.Quit();
                 return;
             }
-            string url = $"{new batdongsanURL().doanhnghiep}";
+            string url = $"{new BatdongsanURL().Doanhnghiep}";
             chromeDriver.Navigate().GoToUrl(url);
             List<ListViewItem> insertItems = new();
 
-            IWebElement tintucList = chromeDriver.FindElement(By.ClassName("re__nlcc-main-left"));
-            List<IWebElement> productItem = tintucList.FindElements(By.ClassName("re__link-se-gray")).ToList();
+            IWebElement TintucList = chromeDriver.FindElement(By.ClassName("re__nlcc-main-left"));
+            List<IWebElement> productItem = TintucList.FindElements(By.ClassName("re__link-se-gray")).ToList();
 
 
             foreach (var product in productItem)
             {
-                if (label2.Text == "Kết quả")
+                if (TableTitle.Text == "Kết quả")
                 {
                     break;
                 }
@@ -54,12 +54,12 @@ namespace web_scraping_csharp
                 insertItems.Add(item);
 
             }
-                if (label2.Text == "Kết quả")
+                if (TableTitle.Text == "Kết quả")
                 {
                     chromeDriver.Quit();
                     return;
                 }else{
-                    new doanhnghiepController().queryInsertAll(insertItems);
+                    new DoanhnghiepController().QueryInsertAll(insertItems);
                 }
 
             chromeDriver.Quit();

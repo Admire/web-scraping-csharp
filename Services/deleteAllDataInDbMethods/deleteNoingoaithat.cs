@@ -9,10 +9,10 @@ namespace web_scraping_csharp
 {
     public partial class Form1 : Form
     {
-        void deleteNoingoaithat()
+        void DeleteNoingoaithat()
         {
-            listView1.Clear();
-            new noingoaithatController().queryDeleteAll();
+            TableResult.Clear();
+            new NoingoaithatController().QueryDeleteAll();
             MessageBox.Show("Đã xóa toàn bộ bản ghi có trong cơ sở dữ liệu Nội-Ngoại thất");
         }
 

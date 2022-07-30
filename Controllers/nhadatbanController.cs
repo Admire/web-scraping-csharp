@@ -6,15 +6,15 @@ using web_scraping_csharp.Services;
 
 namespace web_scraping_csharp.Controllers
 {
-    public class nhadatbanController
+    public class NhadatbanController
     {
-        public void queryInsertAll(List<ListViewItem> item)
+        public void QueryInsertAll(List<ListViewItem> item)
         {
 
-            string sqlInsertTonhadatban = $"INSERT INTO nhadatban VALUES ";
+            string sqlInsertToNhadatban = $"INSERT INTO Nhadatban VALUES ";
             foreach (ListViewItem item2 in item)
             {
-                sqlInsertTonhadatban += "(DEFAULT ";
+                sqlInsertToNhadatban += "(DEFAULT ";
                 List<string> insertList = new();
                 Char value = '\'';
                 for(int i = 0; i < item2.SubItems.Count; i++){
@@ -28,54 +28,54 @@ namespace web_scraping_csharp.Controllers
                 }
                 foreach(string insert in insertList)
                 {
-                    sqlInsertTonhadatban += $",'{insert}'";
+                    sqlInsertToNhadatban += $",'{insert}'";
                 }
-                sqlInsertTonhadatban += ") ";
+                sqlInsertToNhadatban += ") ";
 
                 if (item.IndexOf(item2) != item.Count() - 1)
                 {
-                    sqlInsertTonhadatban += ',';
+                    sqlInsertToNhadatban += ',';
                 }
             }
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                db.Query<nhadatban>(sqlInsertTonhadatban);
+                db.Query<Nhadatban>(sqlInsertToNhadatban);
             }
         }
         public List<ListViewItem> queryFetchAll()
         {
-            string sqlGetAllnhadatban = "SELECT * FROM nhadatban";
-            List<nhadatban> nhadatbans = new();
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
+            string sqlGetAllNhadatban = "SELECT * FROM Nhadatban";
+            List<Nhadatban> Nhadatbans = new();
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                nhadatbans = db.Query<nhadatban>(sqlGetAllnhadatban).ToList();
+                Nhadatbans = db.Query<Nhadatban>(sqlGetAllNhadatban).ToList();
             }
             List< ListViewItem > result = new List<ListViewItem>();
-            foreach (nhadatban nhadatban in nhadatbans)
+            foreach (Nhadatban Nhadatban in Nhadatbans)
             {
                 ListViewItem item = new ListViewItem();
 
-                item.Text =  nhadatban.url;
-                item.SubItems.Add(nhadatban.tieude);
-                item.SubItems.Add(nhadatban.gia);
-                item.SubItems.Add(nhadatban.giam2);
-                item.SubItems.Add(nhadatban.dientich);
-                item.SubItems.Add(nhadatban.diachi);
-                item.SubItems.Add(nhadatban.ngaydangbai);
-                item.SubItems.Add(nhadatban.nenxem);
+                item.Text =  Nhadatban.url;
+                item.SubItems.Add(Nhadatban.tieude);
+                item.SubItems.Add(Nhadatban.gia);
+                item.SubItems.Add(Nhadatban.giam2);
+                item.SubItems.Add(Nhadatban.dientich);
+                item.SubItems.Add(Nhadatban.diachi);
+                item.SubItems.Add(Nhadatban.ngaydangbai);
+                item.SubItems.Add(Nhadatban.nenxem);
 
                 result.Add(item);
             }
             return result;
         }
-        public void queryDeleteAll()
+        public void QueryDeleteAll()
         {
 
-            string sqlDeleteAllnhadatban = $"DELETE FROM nhadatban";
+            string sqlDeleteAllNhadatban = $"DELETE FROM Nhadatban";
            
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                db.Query<nhadatban>(sqlDeleteAllnhadatban);
+                db.Query<Nhadatban>(sqlDeleteAllNhadatban);
             }
         }
     }

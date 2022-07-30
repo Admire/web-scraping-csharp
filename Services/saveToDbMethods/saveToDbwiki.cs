@@ -9,15 +9,15 @@ namespace web_scraping_csharp
 {
     public partial class Form1 : Form
     {
-        void saveToDbwiki()
+        void SaveToDbWiki()
         {
             List<ListViewItem> item = new();
-            for (int i = 0; i < listView1.Items.Count; i++)
+            for (int i = 0; i < TableResult.Items.Count; i++)
             {
-                item.Add(listView1.Items[i]);
+                item.Add(TableResult.Items[i]);
             }
-            new wikiController().queryInsertAll(item);
-            MessageBox.Show("Đã lưu vào cơ sở dữ liệu wiki");
+            new WikiController().QueryInsertAll(item);
+            MessageBox.Show("Đã lưu vào cơ sở dữ liệu Wiki");
         }
 
     }

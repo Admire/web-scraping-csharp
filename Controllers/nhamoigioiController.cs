@@ -6,15 +6,15 @@ using web_scraping_csharp.Services;
 
 namespace web_scraping_csharp.Controllers
 {
-    public class nhamoigioiController
+    public class NhamoigioiController
     {
-        public void queryInsertAll(List<ListViewItem> item)
+        public void QueryInsertAll(List<ListViewItem> item)
         {
 
-            string sqlInsertTonhamoigioi = $"INSERT INTO nhamoigioi VALUES ";
+            string sqlInsertToNhamoigioi = $"INSERT INTO Nhamoigioi VALUES ";
             foreach (ListViewItem item2 in item)
             {
-                sqlInsertTonhamoigioi += "(DEFAULT ";
+                sqlInsertToNhamoigioi += "(DEFAULT ";
                 List<string> insertList = new();
                 Char value = '\'';
                 for(int i = 0; i < item2.SubItems.Count; i++){
@@ -28,50 +28,50 @@ namespace web_scraping_csharp.Controllers
                 }
                 foreach(string insert in insertList)
                 {
-                    sqlInsertTonhamoigioi += $",'{insert}'";
+                    sqlInsertToNhamoigioi += $",'{insert}'";
                 }
-                sqlInsertTonhamoigioi += ") ";
+                sqlInsertToNhamoigioi += ") ";
 
                 if (item.IndexOf(item2) != item.Count() - 1)
                 {
-                    sqlInsertTonhamoigioi += ',';
+                    sqlInsertToNhamoigioi += ',';
                 }
             }
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                db.Query<nhamoigioi>(sqlInsertTonhamoigioi);
+                db.Query<Nhamoigioi>(sqlInsertToNhamoigioi);
             }
         }
         public List<ListViewItem> queryFetchAll()
         {
-            string sqlGetAllnhamoigioi = "SELECT * FROM nhamoigioi";
-            List<nhamoigioi> nhamoigiois = new();
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
+            string sqlGetAllNhamoigioi = "SELECT * FROM Nhamoigioi";
+            List<Nhamoigioi> Nhamoigiois = new();
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                nhamoigiois = db.Query<nhamoigioi>(sqlGetAllnhamoigioi).ToList();
+                Nhamoigiois = db.Query<Nhamoigioi>(sqlGetAllNhamoigioi).ToList();
             }
             List< ListViewItem > result = new List<ListViewItem>();
-            foreach (nhamoigioi nhamoigioi in nhamoigiois)
+            foreach (Nhamoigioi Nhamoigioi in Nhamoigiois)
             {
                 ListViewItem item = new ListViewItem();
 
-                item.Text =  nhamoigioi.url;
-                item.SubItems.Add(nhamoigioi.ten);
-                item.SubItems.Add(nhamoigioi.diachi);
-                item.SubItems.Add(nhamoigioi.dienthoai);
-                item.SubItems.Add(nhamoigioi.email);
+                item.Text =  Nhamoigioi.url;
+                item.SubItems.Add(Nhamoigioi.ten);
+                item.SubItems.Add(Nhamoigioi.diachi);
+                item.SubItems.Add(Nhamoigioi.dienthoai);
+                item.SubItems.Add(Nhamoigioi.email);
                 result.Add(item);
             }
             return result;
         }
-        public void queryDeleteAll()
+        public void QueryDeleteAll()
         {
 
-            string sqlDeleteAllnhamoigioi = $"DELETE FROM nhamoigioi";
+            string sqlDeleteAllNhamoigioi = $"DELETE FROM Nhamoigioi";
            
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                db.Query<nhamoigioi>(sqlDeleteAllnhamoigioi);
+                db.Query<Nhamoigioi>(sqlDeleteAllNhamoigioi);
             }
         }
     }

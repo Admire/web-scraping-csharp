@@ -10,11 +10,11 @@ namespace web_scraping_csharp
     public partial class Form1 : Form
     {
 
-        void crawlAllNhadatchothue()
+        void CrawlAllNhadatchothue()
         {
 
-            int pageRangeNumber = Convert.ToInt32(pageRangeNum.Value + startPageNum.Value - 1);
-            int pageStartNumber = Convert.ToInt32(startPageNum.Value);
+            int pageRangeNumber = Convert.ToInt32(PageRangeNum.Value + StartPageNum.Value - 1);
+            int pageStartNumber = Convert.ToInt32(StartPageNum.Value);
 
             for (int i = pageStartNumber; i <= pageRangeNumber; i++)
             {
@@ -30,12 +30,12 @@ namespace web_scraping_csharp
 
             ChromeDriver chromeDriver = new ChromeDriver(service, chromeOptions);
             chromeDriver.Manage().Window.Maximize();
-                if (label2.Text == "Kết quả")
+                if (TableTitle.Text == "Kết quả")
                 {
                 chromeDriver.Quit();
                     break;
                 }
-                string url = $"{new batdongsanURL().nhadatban}{i}";
+                string url = $"{new BatdongsanURL().Nhadatban}{i}";
                 chromeDriver.Navigate().GoToUrl(url);
 
                 IWebElement productList = chromeDriver.FindElement(By.Id("product-lists-web"));
@@ -45,7 +45,7 @@ namespace web_scraping_csharp
 
                 foreach (var product in productItem)
                 {
-                    if (label2.Text == "Kết quả")
+                    if (TableTitle.Text == "Kết quả")
                     {
                         break;
                     }
@@ -97,12 +97,12 @@ namespace web_scraping_csharp
 
                     insertItems.Add(item);
                 }
-                if (label2.Text == "Kết quả")
+                if (TableTitle.Text == "Kết quả")
                 {
                     chromeDriver.Quit();
                     return;
                 }else{
-                    new nhadatchothueController().queryInsertAll(insertItems);
+                    new NhadatchothueController().QueryInsertAll(insertItems);
                 }
             chromeDriver.Quit();
             }

@@ -6,15 +6,15 @@ using web_scraping_csharp.Services;
 
 namespace web_scraping_csharp.Controllers
 {
-    public class duanController
+    public class DuanController
     {
-        public void queryInsertAll(List<ListViewItem> item)
+        public void QueryInsertAll(List<ListViewItem> item)
         {
 
-            string sqlInsertToduan = $"INSERT INTO duan VALUES ";
+            string sqlInsertToDuan = $"INSERT INTO Duan VALUES ";
             foreach (ListViewItem item2 in item)
             {
-                sqlInsertToduan += "(DEFAULT ";
+                sqlInsertToDuan += "(DEFAULT ";
                 List<string> insertList = new();
                 Char value = '\'';
                 for(int i = 0; i < item2.SubItems.Count; i++){
@@ -28,53 +28,53 @@ namespace web_scraping_csharp.Controllers
                 }
                 foreach(string insert in insertList)
                 {
-                    sqlInsertToduan += $",'{insert}'";
+                    sqlInsertToDuan += $",'{insert}'";
                 }
-                sqlInsertToduan += ") ";
+                sqlInsertToDuan += ") ";
 
                 if (item.IndexOf(item2) != item.Count() - 1)
                 {
-                    sqlInsertToduan += ',';
+                    sqlInsertToDuan += ',';
                 }
             }
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                db.Query<duan>(sqlInsertToduan);
+                db.Query<Duan>(sqlInsertToDuan);
             }
         }
         public List<ListViewItem> queryFetchAll()
         {
-            string sqlGetAllduan = "SELECT * FROM duan";
-            List<duan> duans = new();
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
+            string sqlGetAllDuan = "SELECT * FROM Duan";
+            List<Duan> Duans = new();
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                duans = db.Query<duan>(sqlGetAllduan).ToList();
+                Duans = db.Query<Duan>(sqlGetAllDuan).ToList();
             }
             List< ListViewItem > result = new List<ListViewItem>();
-            foreach (duan duan in duans)
+            foreach (Duan Duan in Duans)
             {
                 ListViewItem item = new ListViewItem();
 
-                item.Text =  duan.url;
-                item.SubItems.Add(duan.tieude);
-                item.SubItems.Add(duan.dientich);
-                item.SubItems.Add(duan.socanho);
-                item.SubItems.Add(duan.sotoanha);
-                item.SubItems.Add(duan.diachi);
-                item.SubItems.Add(duan.congty);
-                item.SubItems.Add(duan.tinhtrang);
+                item.Text =  Duan.url;
+                item.SubItems.Add(Duan.tieude);
+                item.SubItems.Add(Duan.dientich);
+                item.SubItems.Add(Duan.socanho);
+                item.SubItems.Add(Duan.sotoanha);
+                item.SubItems.Add(Duan.diachi);
+                item.SubItems.Add(Duan.congty);
+                item.SubItems.Add(Duan.tinhtrang);
                 result.Add(item);
             }
             return result;
         }
-        public void queryDeleteAll()
+        public void QueryDeleteAll()
         {
 
-            string sqlDeleteAllduan = $"DELETE FROM duan";
+            string sqlDeleteAllDuan = $"DELETE FROM Duan";
            
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                db.Query<duan>(sqlDeleteAllduan);
+                db.Query<Duan>(sqlDeleteAllDuan);
             }
         }
     }

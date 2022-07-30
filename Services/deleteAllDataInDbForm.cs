@@ -9,37 +9,37 @@ namespace web_scraping_csharp
 {
     public partial class Form1 : Form
     {
-        void deleteAllDataInDbForm()
+        void DeleteAllDataInDbForm()
         {
             //chọn trang web muốn lưu vào cơ sở dữ liệu
-            switch (comboBox1.Text)
+            switch (ListCategories.Text)
             {
                 case "Nhà đất bán":
-                    deleteNhadatban();
+                    DeleteNhadatban();
                     break;
                 case "Nhà đất cho thuê":
-                    deleteNhadatchothue();
+                    DeleteNhadatchothue();
                     break;
                 case "Dự án":
-                    deleteDuan();
+                    DeleteDuan();
                     break;
                 case "Tin tức":
-                    deleteTintuc();
+                    DeleteTintuc();
                     break;
                 case "Wiki BĐS":
-                    deleteWiki();
+                    DeleteWiki();
                     break;
                 case "Phong Thủy":
-                    deletePhongthuy();
+                    DeletePhongthuy();
                     break;
                 case "Nội-Ngoại thất":
-                    deleteNoingoaithat();
+                    DeleteNoingoaithat();
                     break;
                 case "Nhà môi giới":
-                    deleteNhamoigioi();
+                    DeleteNhamoigioi();
                     break;
                 case "Doanh nghiệp":
-                    deleteDoanhnghiep();
+                    DeleteDoanhnghiep();
                     break;
                 default:
                     break;

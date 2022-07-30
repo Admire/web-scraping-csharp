@@ -10,7 +10,7 @@ namespace web_scraping_csharp.Services;
 public class databaseConnectionString
 {
     // địa chỉ kết nối tới server
-    public string getConnection()
+    public string GetConnection()
     {
         TextBox serverDBname = Application.OpenForms["Form1"].Controls["serverDBname"] as TextBox;
         TextBox serverDBport = Application.OpenForms["Form1"].Controls["serverDBport"] as TextBox;

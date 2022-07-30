@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace web_scraping_csharp.Models
 {
     [Table("nhadatchothue")]
-    public class nhadatchothue
+    public class Nhadatchothue
     {
         [Key]
         public int Id { get; set; }

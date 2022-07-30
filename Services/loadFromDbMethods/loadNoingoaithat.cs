@@ -9,15 +9,15 @@ namespace web_scraping_csharp
 {
     public partial class Form1 : Form
     {
-        void loadNoingoaithat()
+        void LoadNoingoaithat()
         {
-            listView1.Clear();
-            listView1.Columns.Add("Url bài viết", 400);
-            listView1.Columns.Add("Tiêu đề", 700);
-            List<ListViewItem> noingoaithats = new noingoaithatController().queryFetchAll();
-            foreach (ListViewItem noingoaithat in noingoaithats)
+            TableResult.Clear();
+            TableResult.Columns.Add("Url bài viết", 400);
+            TableResult.Columns.Add("Tiêu đề", 700);
+            List<ListViewItem> Noingoaithats = new NoingoaithatController().queryFetchAll();
+            foreach (ListViewItem Noingoaithat in Noingoaithats)
             {
-                listView1.Items.Add(noingoaithat);
+                TableResult.Items.Add(Noingoaithat);
             }
             MessageBox.Show("Đã tải từ cơ sở dữ liệu Nội-Ngoại thất");
         }
