@@ -9,18 +9,18 @@ namespace web_scraping_csharp
 {
     public partial class Form1 : Form
     {
-        void loadNhamoigioi()
+        void LoadNhamoigioi()
         {
-            listView1.Clear();
-            listView1.Columns.Add("Url bài viết", 200);
-            listView1.Columns.Add("Tên nhà môi giới", 300);
-            listView1.Columns.Add("Địa chỉ", 250);
-            listView1.Columns.Add("Điện thoại", 150);
-            listView1.Columns.Add("Email", 200);
-            List<ListViewItem> nhamoigiois = new nhamoigioiController().queryFetchAll();
-            foreach (ListViewItem nhamoigioi in nhamoigiois)
+            TableResult.Clear();
+            TableResult.Columns.Add("Url bài viết", 200);
+            TableResult.Columns.Add("Tên nhà môi giới", 300);
+            TableResult.Columns.Add("Địa chỉ", 250);
+            TableResult.Columns.Add("Điện thoại", 150);
+            TableResult.Columns.Add("Email", 200);
+            List<ListViewItem> Nhamoigiois = new NhamoigioiController().queryFetchAll();
+            foreach (ListViewItem Nhamoigioi in Nhamoigiois)
             {
-                listView1.Items.Add(nhamoigioi);
+                TableResult.Items.Add(Nhamoigioi);
             }
             MessageBox.Show("Đã tải từ cơ sở dữ liệu nhà môi giới");
         }

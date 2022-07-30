@@ -9,15 +9,15 @@ namespace web_scraping_csharp
 {
     public partial class Form1 : Form
     {
-        void loadPhongthuy()
+        void LoadPhongthuy()
         {
-            listView1.Clear();
-            listView1.Columns.Add("Url bài viết", 400);
-            listView1.Columns.Add("Tiêu đề", 700);
-            List<ListViewItem> phongthuys = new phongthuyController().queryFetchAll();
-            foreach (ListViewItem phongthuy in phongthuys)
+            TableResult.Clear();
+            TableResult.Columns.Add("Url bài viết", 400);
+            TableResult.Columns.Add("Tiêu đề", 700);
+            List<ListViewItem> Phongthuys = new PhongthuyController().queryFetchAll();
+            foreach (ListViewItem Phongthuy in Phongthuys)
             {
-                listView1.Items.Add(phongthuy);
+                TableResult.Items.Add(Phongthuy);
             }
             MessageBox.Show("Đã tải từ cơ sở dữ liệu phong thủy");
         }

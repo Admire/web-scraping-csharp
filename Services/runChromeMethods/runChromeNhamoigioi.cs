@@ -10,7 +10,7 @@ namespace web_scraping_csharp
     public partial class Form1 : Form
     {
 
-        void runChromeNhamoigioi()
+        void RunChromeNhamoigioi()
         {
 
             // đóng toàn bộ tiến trình chrome trước khi mở ứng dụng
@@ -21,14 +21,14 @@ namespace web_scraping_csharp
 
 
 
-            int pageRangeNumber = Convert.ToInt32(pageRangeNum.Value + startPageNum.Value - 1);
-            int pageStartNumber = Convert.ToInt32(startPageNum.Value);
+            int pageRangeNumber = Convert.ToInt32(PageRangeNum.Value + StartPageNum.Value - 1);
+            int pageStartNumber = Convert.ToInt32(StartPageNum.Value);
 
-            listView1.Columns.Add("Url bài viết", 200);
-            listView1.Columns.Add("Tên nhà môi giới", 300);
-            listView1.Columns.Add("Địa chỉ", 250);
-            listView1.Columns.Add("Điện thoại", 150);
-            listView1.Columns.Add("Email", 200);
+            TableResult.Columns.Add("Url bài viết", 200);
+            TableResult.Columns.Add("Tên nhà môi giới", 300);
+            TableResult.Columns.Add("Địa chỉ", 250);
+            TableResult.Columns.Add("Điện thoại", 150);
+            TableResult.Columns.Add("Email", 200);
             for (int i = pageStartNumber; i <= pageRangeNumber; i++)
             {
                 ChromeOptions chromeOptions = new ChromeOptions();
@@ -43,18 +43,18 @@ namespace web_scraping_csharp
 
                 ChromeDriver chromeDriver = new ChromeDriver(service, chromeOptions);
                 chromeDriver.Manage().Window.Maximize();
-                if (label2.Text == "Kết quả")
+                if (TableTitle.Text == "Kết quả")
                 {
                     break;
                 }
-                string url = $"{new batdongsanURL().nhamoigioi}{i}";
+                string url = $"{new BatdongsanURL().Nhamoigioi}{i}";
                 chromeDriver.Navigate().GoToUrl(url);
 
                 IWebElement productList = chromeDriver.FindElement(By.Id("broker-page"));
                 List <IWebElement> productItem = productList.FindElements(By.ClassName("re__broker-item")).ToList();
                 foreach (var product in productItem)
                 {
-                    if (label2.Text == "Kết quả")
+                    if (TableTitle.Text == "Kết quả")
                     {
                         break;
                     }
@@ -82,7 +82,7 @@ namespace web_scraping_csharp
                     }
                     else { item.SubItems.Add("Trống"); }
 
-                    listView1.Items.Add(item);
+                    TableResult.Items.Add(item);
                 }
             chromeDriver.Quit();
             }

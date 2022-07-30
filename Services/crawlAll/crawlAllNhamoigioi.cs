@@ -10,11 +10,11 @@ namespace web_scraping_csharp
     public partial class Form1 : Form
     {
 
-        void crawlAllNhamoigioi()
+        void CrawlAllNhamoigioi()
         {
 
-            int pageRangeNumber = Convert.ToInt32(pageRangeNum.Value + startPageNum.Value - 1);
-            int pageStartNumber = Convert.ToInt32(startPageNum.Value);
+            int pageRangeNumber = Convert.ToInt32(PageRangeNum.Value + StartPageNum.Value - 1);
+            int pageStartNumber = Convert.ToInt32(StartPageNum.Value);
 
             for (int i = pageStartNumber; i <= pageRangeNumber; i++)
             {
@@ -30,13 +30,13 @@ namespace web_scraping_csharp
 
             ChromeDriver chromeDriver = new ChromeDriver(service, chromeOptions);
             chromeDriver.Manage().Window.Maximize();
-                if (label2.Text == "Kết quả")
+                if (TableTitle.Text == "Kết quả")
                 {
                 chromeDriver.Quit();
 
                     break;
                 }
-                string url = $"{new batdongsanURL().nhamoigioi}{i}";
+                string url = $"{new BatdongsanURL().Nhamoigioi}{i}";
                 chromeDriver.Navigate().GoToUrl(url);
                 List<ListViewItem> insertItems = new();
 
@@ -44,7 +44,7 @@ namespace web_scraping_csharp
                 List<IWebElement> productItem = productList.FindElements(By.ClassName("re__broker-item")).ToList();
                 foreach (var product in productItem)
                 {
-                    if (label2.Text == "Kết quả")
+                    if (TableTitle.Text == "Kết quả")
                     {
                         break;
                     }
@@ -74,12 +74,12 @@ namespace web_scraping_csharp
 
                     insertItems.Add(item);
                 }
-                if (label2.Text == "Kết quả")
+                if (TableTitle.Text == "Kết quả")
                 {
                     chromeDriver.Quit();
                     return;
                 }else{
-                    new nhamoigioiController().queryInsertAll(insertItems);
+                    new NhamoigioiController().QueryInsertAll(insertItems);
                 }
             chromeDriver.Quit();
             }

@@ -9,10 +9,10 @@ namespace web_scraping_csharp
 {
     public partial class Form1 : Form
     {
-        void deleteTintuc()
+        void DeleteTintuc()
         {
-            listView1.Clear();
-            new tintucController().queryDeleteAll();
+            TableResult.Clear();
+            new TintucController().QueryDeleteAll();
             MessageBox.Show("Đã xóa toàn bộ bản ghi có trong cơ sở dữ liệu tin tức");
         }
 

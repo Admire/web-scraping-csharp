@@ -9,14 +9,14 @@ namespace web_scraping_csharp
 {
     public partial class Form1 : Form
     {
-     void resultToTextFile()
+     void ResultToTextFile()
         {
             SaveFileDialog sfd = new SaveFileDialog() { Filter = "Text Document|*.txt", ValidateNames = true };
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 TextWriter tw = new StreamWriter(new FileStream(sfd.FileName, FileMode.Create), Encoding.UTF8);
                 {
-                    foreach (ListViewItem item in listView1.Items)
+                    foreach (ListViewItem item in TableResult.Items)
                     {
                         for (int i = 0; i < item.SubItems.Count; i++)
                         {

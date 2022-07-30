@@ -6,15 +6,15 @@ using web_scraping_csharp.Services;
 
 namespace web_scraping_csharp.Controllers
 {
-    public class doanhnghiepController
+    public class DoanhnghiepController
     {
-        public void queryInsertAll(List<ListViewItem> item)
+        public void QueryInsertAll(List<ListViewItem> item)
         {
 
-            string sqlInsertTodoanhnghiep = $"INSERT INTO doanhnghiep VALUES ";
+            string sqlInsertToDoanhnghiep = $"INSERT INTO Doanhnghiep VALUES ";
             foreach (ListViewItem item2 in item)
             {
-                sqlInsertTodoanhnghiep += "(DEFAULT ";
+                sqlInsertToDoanhnghiep += "(DEFAULT ";
                 List<string> insertList = new();
                 Char value = '\'';
                 for(int i = 0; i < item2.SubItems.Count; i++){
@@ -28,47 +28,47 @@ namespace web_scraping_csharp.Controllers
                 }
                 foreach(string insert in insertList)
                 {
-                    sqlInsertTodoanhnghiep += $",'{insert}'";
+                    sqlInsertToDoanhnghiep += $",'{insert}'";
                 }
-                sqlInsertTodoanhnghiep += ") ";
+                sqlInsertToDoanhnghiep += ") ";
 
                 if (item.IndexOf(item2) != item.Count() - 1)
                 {
-                    sqlInsertTodoanhnghiep += ',';
+                    sqlInsertToDoanhnghiep += ',';
                 }
             }
-            using (IDbConnection db = new MySqlConnection( new databaseConnectionString().getConnection()))
+            using (IDbConnection db = new MySqlConnection( new databaseConnectionString().GetConnection()))
             {
-                db.Query<doanhnghiep>(sqlInsertTodoanhnghiep);
+                db.Query<Doanhnghiep>(sqlInsertToDoanhnghiep);
             }
         }
         public List<ListViewItem> queryFetchAll()
         {
-            string sqlGetAlldoanhnghiep = "SELECT * FROM doanhnghiep";
-            List<doanhnghiep> doanhnghieps = new();
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
+            string sqlGetAllDoanhnghiep = "SELECT * FROM Doanhnghiep";
+            List<Doanhnghiep> Doanhnghieps = new();
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                doanhnghieps = db.Query<doanhnghiep>(sqlGetAlldoanhnghiep).ToList();
+                Doanhnghieps = db.Query<Doanhnghiep>(sqlGetAllDoanhnghiep).ToList();
             }
             List< ListViewItem > result = new List<ListViewItem>();
-            foreach (doanhnghiep doanhnghiep in doanhnghieps)
+            foreach (Doanhnghiep Doanhnghiep in Doanhnghieps)
             {
                 ListViewItem item = new ListViewItem();
 
-                item.Text =  doanhnghiep.url;
-                item.SubItems.Add(doanhnghiep.ten);
+                item.Text =  Doanhnghiep.url;
+                item.SubItems.Add(Doanhnghiep.ten);
                 result.Add(item);
             }
             return result;
         }
-        public void queryDeleteAll()
+        public void QueryDeleteAll()
         {
 
-            string sqlDeleteAlldoanhnghiep = $"DELETE FROM doanhnghiep";
+            string sqlDeleteAllDoanhnghiep = $"DELETE FROM Doanhnghiep";
            
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                db.Query<doanhnghiep>(sqlDeleteAlldoanhnghiep);
+                db.Query<Doanhnghiep>(sqlDeleteAllDoanhnghiep);
             }
         }
     }

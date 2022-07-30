@@ -10,7 +10,7 @@ namespace web_scraping_csharp
     public partial class Form1 : Form
     {
 
-        void runChromeAllNhadatban()
+        void RunChromeAllNhadatban()
         {
 
             // đóng toàn bộ tiến trình chrome trước khi mở ứng dụng
@@ -20,14 +20,14 @@ namespace web_scraping_csharp
             }
 
 
-            listView1.Columns.Add("Url bài viết", 200);
-            listView1.Columns.Add("Tiêu đề", 250);
-            listView1.Columns.Add("Giá", 150);
-            listView1.Columns.Add("Giá/m2", 150);
-            listView1.Columns.Add("Diện tích", 150);
-            listView1.Columns.Add("Địa chỉ", 170);
-            listView1.Columns.Add("Ngày đăng bài", 150);
-            listView1.Columns.Add("Nên xem", 150);
+            TableResult.Columns.Add("Url bài viết", 200);
+            TableResult.Columns.Add("Tiêu đề", 250);
+            TableResult.Columns.Add("Giá", 150);
+            TableResult.Columns.Add("Giá/m2", 150);
+            TableResult.Columns.Add("Diện tích", 150);
+            TableResult.Columns.Add("Địa chỉ", 170);
+            TableResult.Columns.Add("Ngày đăng bài", 150);
+            TableResult.Columns.Add("Nên xem", 150);
             int i = 1;
             while (i < 100000000)
             {
@@ -44,11 +44,11 @@ namespace web_scraping_csharp
 
                 ChromeDriver chromeDriver = new ChromeDriver(service, chromeOptions);
                 chromeDriver.Manage().Window.Maximize();
-                if (label2.Text == "Kết quả")
+                if (TableTitle.Text == "Kết quả")
                 {
                     break;
                 }
-                string url = $"{new batdongsanURL().nhadatban}{i}";
+                string url = $"{new BatdongsanURL().Nhadatban}{i}";
                 chromeDriver.Navigate().GoToUrl(url);
                 if (chromeDriver.FindElements(By.ClassName("re__srp-empty")).Count() > 0)
                 {
@@ -60,7 +60,7 @@ namespace web_scraping_csharp
                     List<IWebElement> productItem = productList.FindElements(By.ClassName("js__card")).ToList();
                     foreach (var product in productItem)
                     {
-                        if (label2.Text == "Kết quả")
+                        if (TableTitle.Text == "Kết quả")
                         {
                             break;
                         }
@@ -110,7 +110,7 @@ namespace web_scraping_csharp
                         }
                         else { item.SubItems.Add("Không nên xem"); }
 
-                        listView1.Items.Add(item);
+                        TableResult.Items.Add(item);
                     }
                 }
                 i++;

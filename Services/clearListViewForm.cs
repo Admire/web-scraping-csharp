@@ -11,13 +11,13 @@ namespace web_scraping_csharp
     {
         void ClearListView()
         {
-            listView1.Clear();
-            if (button1.Enabled == true || button7.Enabled == true || button6.Enabled == false)
+            TableResult.Clear();
+            if (CrawlSomePagesButton.Enabled == true || CrawlAllPagesButton.Enabled == true || StopCrawl.Enabled == false)
             {
-                label2.Text = "Danh sách trống";
-                button4.Enabled = false;
-                button5.Enabled = true;
-                button6.Enabled = false;
+                TableTitle.Text = "Danh sách trống";
+                SaveToDbButton.Enabled = false;
+                SaveToFileButton.Enabled = true;
+                StopCrawl.Enabled = false;
             }
         }
     }

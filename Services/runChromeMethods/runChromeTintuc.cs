@@ -10,7 +10,7 @@ namespace web_scraping_csharp
     public partial class Form1 : Form
     {
 
-        void runChromeTintuc()
+        void RunChromeTintuc()
         {
             ChromeOptions chromeOptions = new ChromeOptions();
             // chromeOptions.AddArgument("user-data-dir=C:/Users/manh/AppData/Local/Google/Chrome/User Data");
@@ -31,20 +31,20 @@ namespace web_scraping_csharp
             ChromeDriver chromeDriver = new ChromeDriver(service, chromeOptions);
             chromeDriver.Manage().Window.Maximize();
 
-            listView1.Columns.Add("Url bài viết", 400);
-            listView1.Columns.Add("Tiêu đề", 700);
-            if (label2.Text == "Kết quả")
+            TableResult.Columns.Add("Url bài viết", 400);
+            TableResult.Columns.Add("Tiêu đề", 700);
+            if (TableTitle.Text == "Kết quả")
             {
                 return;
             }
-            string url = $"{new batdongsanURL().tintuc}";
+            string url = $"{new BatdongsanURL().Tintuc}";
             chromeDriver.Navigate().GoToUrl(url);
 
-            IWebElement tintucList = chromeDriver.FindElement(By.ClassName("re__nlcc-main-left"));
-            List<IWebElement> productItem = tintucList.FindElements(By.ClassName("re__link-se")).ToList();
+            IWebElement TintucList = chromeDriver.FindElement(By.ClassName("re__nlcc-main-left"));
+            List<IWebElement> productItem = TintucList.FindElements(By.ClassName("re__link-se")).ToList();
             foreach (var product in productItem)
             {
-                if (label2.Text == "Kết quả")
+                if (TableTitle.Text == "Kết quả")
                 {
                     break;
                 }
@@ -56,7 +56,7 @@ namespace web_scraping_csharp
                 }
                 else { item.Text = ""; item.SubItems.Add("Trống"); }
 
-                listView1.Items.Add(item);
+                TableResult.Items.Add(item);
             }
             chromeDriver.Quit();
         }

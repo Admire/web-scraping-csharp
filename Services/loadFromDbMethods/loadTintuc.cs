@@ -9,15 +9,15 @@ namespace web_scraping_csharp
 {
     public partial class Form1 : Form
     {
-        void loadTintuc()
+        void LoadTintuc()
         {
-            listView1.Clear();
-            listView1.Columns.Add("Url bài viết", 400);
-            listView1.Columns.Add("Tiêu đề", 700);
-            List<ListViewItem> tintucs = new tintucController().queryFetchAll();
-            foreach (ListViewItem tintuc in tintucs)
+            TableResult.Clear();
+            TableResult.Columns.Add("Url bài viết", 400);
+            TableResult.Columns.Add("Tiêu đề", 700);
+            List<ListViewItem> Tintucs = new TintucController().queryFetchAll();
+            foreach (ListViewItem Tintuc in Tintucs)
             {
-                listView1.Items.Add(tintuc);
+                TableResult.Items.Add(Tintuc);
             }
             MessageBox.Show("Đã tải từ cơ sở dữ liệu tin tức");
         }

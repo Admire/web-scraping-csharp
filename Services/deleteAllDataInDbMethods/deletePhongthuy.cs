@@ -9,10 +9,10 @@ namespace web_scraping_csharp
 {
     public partial class Form1 : Form
     {
-        void deletePhongthuy()
+        void DeletePhongthuy()
         {
-            listView1.Clear();
-            new phongthuyController().queryDeleteAll();
+            TableResult.Clear();
+            new PhongthuyController().QueryDeleteAll();
             MessageBox.Show("Đã xóa toàn bộ bản ghi có trong cơ sở dữ liệu phong thủy");
         }
 

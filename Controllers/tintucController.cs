@@ -6,15 +6,15 @@ using web_scraping_csharp.Services;
 
 namespace web_scraping_csharp.Controllers
 {
-    public class tintucController
+    public class TintucController
     {
-        public void queryInsertAll(List<ListViewItem> item)
+        public void QueryInsertAll(List<ListViewItem> item)
         {
 
-            string sqlInsertTotintuc = $"INSERT INTO tintuc VALUES ";
+            string sqlInsertToTintuc = $"INSERT INTO Tintuc VALUES ";
             foreach (ListViewItem item2 in item)
             {
-                sqlInsertTotintuc += "(DEFAULT ";
+                sqlInsertToTintuc += "(DEFAULT ";
                 List<string> insertList = new();
                 Char value = '\'';
                 for(int i = 0; i < item2.SubItems.Count; i++){
@@ -28,47 +28,47 @@ namespace web_scraping_csharp.Controllers
                 }
                 foreach(string insert in insertList)
                 {
-                    sqlInsertTotintuc += $",'{insert}'";
+                    sqlInsertToTintuc += $",'{insert}'";
                 }
-                sqlInsertTotintuc += ") ";
+                sqlInsertToTintuc += ") ";
 
                 if (item.IndexOf(item2) != item.Count() - 1)
                 {
-                    sqlInsertTotintuc += ',';
+                    sqlInsertToTintuc += ',';
                 }
             }
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                db.Query<tintuc>(sqlInsertTotintuc);
+                db.Query<Tintuc>(sqlInsertToTintuc);
             }
         }
         public List<ListViewItem> queryFetchAll()
         {
-            string sqlGetAlltintuc = "SELECT * FROM tintuc";
-            List<tintuc> tintucs = new();
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
+            string sqlGetAllTintuc = "SELECT * FROM Tintuc";
+            List<Tintuc> Tintucs = new();
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                tintucs = db.Query<tintuc>(sqlGetAlltintuc).ToList();
+                Tintucs = db.Query<Tintuc>(sqlGetAllTintuc).ToList();
             }
             List< ListViewItem > result = new List<ListViewItem>();
-            foreach (tintuc tintuc in tintucs)
+            foreach (Tintuc Tintuc in Tintucs)
             {
                 ListViewItem item = new ListViewItem();
 
-                item.Text =  tintuc.url;
-                item.SubItems.Add(tintuc.tieude);
+                item.Text =  Tintuc.url;
+                item.SubItems.Add(Tintuc.tieude);
                 result.Add(item);
             }
             return result;
         }
-        public void queryDeleteAll()
+        public void QueryDeleteAll()
         {
 
-            string sqlDeleteAlltintuc = $"DELETE FROM tintuc";
+            string sqlDeleteAllTintuc = $"DELETE FROM Tintuc";
            
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                db.Query<tintuc>(sqlDeleteAlltintuc);
+                db.Query<Tintuc>(sqlDeleteAllTintuc);
             }
         }
     }

@@ -11,34 +11,34 @@ namespace web_scraping_csharp
     {
         void SaveToDb()
         {//chọn trang web muốn lưu vào cơ sở dữ liệu
-            switch (comboBox1.Text)
+            switch (ListCategories.Text)
             {
                 case "Nhà đất bán":
-                    saveToDbnhadatban();
+                    SaveToDbNhadatban();
                     break;
                 case "Nhà đất cho thuê":
-                    saveToDbnhadatchothue();
+                    SaveToDbNhadatchothue();
                     break;
                 case "Dự án":
-                    saveToDbduan();
+                    SaveToDbDuan();
                     break;
                 case "Tin tức":
-                    saveToDbtintuc();
+                    SaveToDbTintuc();
                     break;
                 case "Wiki BĐS":
-                    saveToDbwiki();
+                    SaveToDbWiki();
                     break;
                 case "Phong Thủy":
-                    saveToDbphongthuy();
+                    SaveToDbPhongthuy();
                     break;
                 case "Nội-Ngoại thất":
-                    saveToDbnoingoaithat();
+                    SaveToDbNoingoaithat();
                     break;
                 case "Nhà môi giới":
-                    saveToDbnhamoigioi();
+                    SaveToDbNhamoigioi();
                     break;
                 case "Doanh nghiệp":
-                    saveToDbdoanhnghiep();
+                    SaveToDbDoanhnghiep();
                     break;
                 default:
                     break;
