@@ -6,69 +6,30 @@ using web_scraping_csharp.Services;
 
 namespace web_scraping_csharp.Controllers
 {
-    public class NoingoaithatController
+    public class NoingoaithatController : BaseController
     {
+        private string tableName = "Noingoaithat";
         public void QueryInsertAll(List<ListViewItem> item)
         {
-
-            string sqlInsertToNoingoaithat = $"INSERT INTO Noingoaithat VALUES ";
-            foreach (ListViewItem item2 in item)
-            {
-                sqlInsertToNoingoaithat += "(DEFAULT ";
-                List<string> insertList = new();
-                Char value = '\'';
-                for(int i = 0; i < item2.SubItems.Count; i++){
-                    string test = item2.SubItems[i].Text;
-                    if (test.Contains(value)){
-                        insertList.Add(String.Join("\\'", test.Split(value)));
-                    }
-                    else{
-                        insertList.Add(test);
-                    }
-                }
-                foreach(string insert in insertList)
-                {
-                    sqlInsertToNoingoaithat += $",'{insert}'";
-                }
-                sqlInsertToNoingoaithat += ") ";
-
-                if (item.IndexOf(item2) != item.Count() - 1)
-                {
-                    sqlInsertToNoingoaithat += ',';
-                }
-            }
             using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                db.Query<Noingoaithat>(sqlInsertToNoingoaithat);
+                db.Query<Noingoaithat>(InsertString(item, tableName));
             }
         }
-        public List<ListViewItem> queryFetchAll()
+        public List<ListViewItem> QueryFetchAll()
         {
-            string sqlGetAllNoingoaithat = "SELECT * FROM Noingoaithat";
             List<Noingoaithat> Noingoaithats = new();
             using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                Noingoaithats = db.Query<Noingoaithat>(sqlGetAllNoingoaithat).ToList();
+                Noingoaithats = db.Query<Noingoaithat>(SelectString(tableName)).ToList();
             }
-            List< ListViewItem > result = new List<ListViewItem>();
-            foreach (Noingoaithat Noingoaithat in Noingoaithats)
-            {
-                ListViewItem item = new ListViewItem();
-
-                item.Text =  Noingoaithat.url;
-                item.SubItems.Add(Noingoaithat.tieude);
-                result.Add(item);
-            }
-            return result;
+            return GenerateTable(Noingoaithats);
         }
         public void QueryDeleteAll()
         {
-
-            string sqlDeleteAllNoingoaithat = $"DELETE FROM Noingoaithat";
-           
             using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                db.Query<Noingoaithat>(sqlDeleteAllNoingoaithat);
+                db.Query<Noingoaithat>(DeleteString(tableName));
             }
         }
     }

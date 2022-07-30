@@ -11,39 +11,45 @@ namespace web_scraping_csharp
     {
         void SaveToDb()
         {//chọn trang web muốn lưu vào cơ sở dữ liệu
+            List<ListViewItem> item = new();
+            for (int i = 0; i < TableResult.Items.Count; i++)
+            {
+                item.Add(TableResult.Items[i]);
+            }
             switch (ListCategories.Text)
             {
                 case "Nhà đất bán":
-                    SaveToDbNhadatban();
+                    new NhadatbanController().QueryInsertAll(item);
                     break;
                 case "Nhà đất cho thuê":
-                    SaveToDbNhadatchothue();
+                    new NhadatchothueController().QueryInsertAll(item);
                     break;
                 case "Dự án":
-                    SaveToDbDuan();
+                    new DuanController().QueryInsertAll(item);
                     break;
                 case "Tin tức":
-                    SaveToDbTintuc();
+                    new TintucController().QueryInsertAll(item);
                     break;
                 case "Wiki BĐS":
-                    SaveToDbWiki();
+                    new WikiController().QueryInsertAll(item);
                     break;
                 case "Phong Thủy":
-                    SaveToDbPhongthuy();
+                    new PhongthuyController().QueryInsertAll(item);
                     break;
                 case "Nội-Ngoại thất":
-                    SaveToDbNoingoaithat();
+                    new NoingoaithatController().QueryInsertAll(item);
                     break;
                 case "Nhà môi giới":
-                    SaveToDbNhamoigioi();
+                    new NhamoigioiController().QueryInsertAll(item);
                     break;
                 case "Doanh nghiệp":
-                    SaveToDbDoanhnghiep();
+                    new DoanhnghiepController().QueryInsertAll(item);
                     break;
                 default:
                     break;
             }
-            
+
+            MessageBox.Show($"Đã lưu vào cơ sở dữ liệu {ListCategories.Text}");
         }
 
     }

@@ -6,75 +6,31 @@ using web_scraping_csharp.Services;
 
 namespace web_scraping_csharp.Controllers
 {
-    public class DuanController
+    public class DuanController : BaseController
     {
+        private string tableName = "Duan";
         public void QueryInsertAll(List<ListViewItem> item)
         {
-
-            string sqlInsertToDuan = $"INSERT INTO Duan VALUES ";
-            foreach (ListViewItem item2 in item)
-            {
-                sqlInsertToDuan += "(DEFAULT ";
-                List<string> insertList = new();
-                Char value = '\'';
-                for(int i = 0; i < item2.SubItems.Count; i++){
-                    string test = item2.SubItems[i].Text;
-                    if (test.Contains(value)){
-                        insertList.Add(String.Join("\\'", test.Split(value)));
-                    }
-                    else{
-                        insertList.Add(test);
-                    }
-                }
-                foreach(string insert in insertList)
-                {
-                    sqlInsertToDuan += $",'{insert}'";
-                }
-                sqlInsertToDuan += ") ";
-
-                if (item.IndexOf(item2) != item.Count() - 1)
-                {
-                    sqlInsertToDuan += ',';
-                }
-            }
             using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                db.Query<Duan>(sqlInsertToDuan);
+                db.Query<Duan>(InsertString(item, tableName));
             }
         }
-        public List<ListViewItem> queryFetchAll()
+        public List<ListViewItem> QueryFetchAll()
         {
-            string sqlGetAllDuan = "SELECT * FROM Duan";
             List<Duan> Duans = new();
             using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                Duans = db.Query<Duan>(sqlGetAllDuan).ToList();
+                Duans = db.Query<Duan>(SelectString(tableName)).ToList();
             }
-            List< ListViewItem > result = new List<ListViewItem>();
-            foreach (Duan Duan in Duans)
-            {
-                ListViewItem item = new ListViewItem();
+            return GenerateTable(Duans);
 
-                item.Text =  Duan.url;
-                item.SubItems.Add(Duan.tieude);
-                item.SubItems.Add(Duan.dientich);
-                item.SubItems.Add(Duan.socanho);
-                item.SubItems.Add(Duan.sotoanha);
-                item.SubItems.Add(Duan.diachi);
-                item.SubItems.Add(Duan.congty);
-                item.SubItems.Add(Duan.tinhtrang);
-                result.Add(item);
-            }
-            return result;
         }
         public void QueryDeleteAll()
         {
-
-            string sqlDeleteAllDuan = $"DELETE FROM Duan";
-           
             using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                db.Query<Duan>(sqlDeleteAllDuan);
+                db.Query<Duan>(DeleteString(tableName));
             }
         }
     }
