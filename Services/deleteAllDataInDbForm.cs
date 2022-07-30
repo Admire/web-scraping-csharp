@@ -11,39 +11,41 @@ namespace web_scraping_csharp
     {
         void DeleteAllDataInDbForm()
         {
+            TableResult.Clear();
             //chọn trang web muốn lưu vào cơ sở dữ liệu
             switch (ListCategories.Text)
             {
                 case "Nhà đất bán":
-                    DeleteNhadatban();
+                    new NhadatbanController().QueryDeleteAll();
                     break;
                 case "Nhà đất cho thuê":
-                    DeleteNhadatchothue();
+                    new NhadatchothueController().QueryDeleteAll();
                     break;
                 case "Dự án":
-                    DeleteDuan();
+                    new DuanController().QueryDeleteAll();
                     break;
                 case "Tin tức":
-                    DeleteTintuc();
+                    new TintucController().QueryDeleteAll();
                     break;
                 case "Wiki BĐS":
-                    DeleteWiki();
+                    new WikiController().QueryDeleteAll();
                     break;
                 case "Phong Thủy":
-                    DeletePhongthuy();
+                    new PhongthuyController().QueryDeleteAll();
                     break;
                 case "Nội-Ngoại thất":
-                    DeleteNoingoaithat();
+                    new NoingoaithatController().QueryDeleteAll();
                     break;
                 case "Nhà môi giới":
-                    DeleteNhamoigioi();
+                    new NhamoigioiController().QueryDeleteAll();
                     break;
                 case "Doanh nghiệp":
-                    DeleteDoanhnghiep();
+                    new DoanhnghiepController().QueryDeleteAll();
                     break;
                 default:
                     break;
             }
+            MessageBox.Show($"Đã xóa toàn bộ bản ghi có trong cơ sở dữ liệu {ListCategories.Text}");
         }
 
     }
