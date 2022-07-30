@@ -17,121 +17,121 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Services\deleteAllDataInDbMethods\deleteNhamoigioi.cs">
+    <Compile Update="Services\deleteAllDataInDbMethods\DeleteNhamoigioi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\deleteAllDataInDbMethods\deleteNoingoaithat.cs">
+    <Compile Update="Services\deleteAllDataInDbMethods\DeleteNoingoaithat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\deleteAllDataInDbMethods\deletePhongthuy.cs">
+    <Compile Update="Services\deleteAllDataInDbMethods\DeletePhongthuy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\deleteAllDataInDbMethods\deleteWiki.cs">
+    <Compile Update="Services\deleteAllDataInDbMethods\DeleteWiki.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\deleteAllDataInDbMethods\deleteTintuc.cs">
+    <Compile Update="Services\deleteAllDataInDbMethods\DeleteTintuc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\deleteAllDataInDbMethods\deleteDuan.cs">
+    <Compile Update="Services\deleteAllDataInDbMethods\DeleteDuan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\deleteAllDataInDbMethods\deleteDoanhnghiep.cs">
+    <Compile Update="Services\deleteAllDataInDbMethods\DeleteDoanhnghiep.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\deleteAllDataInDbMethods\deleteNhadatchothue.cs">
+    <Compile Update="Services\deleteAllDataInDbMethods\DeleteNhadatchothue.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\deleteAllDataInDbMethods\deleteNhadatban.cs">
+    <Compile Update="Services\deleteAllDataInDbMethods\DeleteNhadatban.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\loadFromDbMethods\loadDoanhnghiep.cs">
+    <Compile Update="Services\loadFromDbMethods\LoadDoanhnghiep.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\loadFromDbMethods\loadNhamoigioi.cs">
+    <Compile Update="Services\loadFromDbMethods\LoadNhamoigioi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\loadFromDbMethods\loadNoingoaithat.cs">
+    <Compile Update="Services\loadFromDbMethods\LoadNoingoaithat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\loadFromDbMethods\loadPhongthuy.cs">
+    <Compile Update="Services\loadFromDbMethods\LoadPhongthuy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\loadFromDbMethods\loadWiki.cs">
+    <Compile Update="Services\loadFromDbMethods\LoadWiki.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\loadFromDbMethods\loadTintuc.cs">
+    <Compile Update="Services\loadFromDbMethods\LoadTintuc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\loadFromDbMethods\loadDuan.cs">
+    <Compile Update="Services\loadFromDbMethods\LoadDuan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\loadFromDbMethods\loadNhadatchothue.cs">
+    <Compile Update="Services\loadFromDbMethods\LoadNhadatchothue.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\loadFromDbMethods\loadNhadatban.cs">
+    <Compile Update="Services\loadFromDbMethods\LoadNhadatban.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\runChromeAllMethods\runChromeAllDuan.cs">
+    <Compile Update="Services\runChromeAllMethods\RunChromeAllDuan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\runChromeAllMethods\runChromeAllNhadatban.cs">
+    <Compile Update="Services\runChromeAllMethods\RunChromeAllNhadatban.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\runChromeAllMethods\runChromeAllNhadatchothue.cs">
+    <Compile Update="Services\runChromeAllMethods\RunChromeAllNhadatchothue.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\runChromeAllMethods\runChromeAllNhamoigioi.cs">
+    <Compile Update="Services\runChromeAllMethods\RunChromeAllNhamoigioi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\runChromeMethods\runChromeDuan.cs">
+    <Compile Update="Services\runChromeMethods\RunChromeDuan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\runChromeMethods\runChromeNhamoigioi.cs">
+    <Compile Update="Services\runChromeMethods\RunChromeNhamoigioi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\runChromeMethods\runChromeNoingoaithat.cs">
+    <Compile Update="Services\runChromeMethods\RunChromeNoingoaithat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\runChromeMethods\runChromePhongthuy.cs">
+    <Compile Update="Services\runChromeMethods\RunChromePhongthuy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\runChromeMethods\runChromeDoanhnghiep.cs">
+    <Compile Update="Services\runChromeMethods\RunChromeDoanhnghiep.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\runChromeMethods\runChromeWiki.cs">
+    <Compile Update="Services\runChromeMethods\RunChromeWiki.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\runChromeMethods\runChromeTintuc.cs">
+    <Compile Update="Services\runChromeMethods\RunChromeTintuc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\runChromeMethods\runChromeNhadatchothue.cs">
+    <Compile Update="Services\runChromeMethods\RunChromeNhadatchothue.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\saveToDbMethods\saveToDbdoanhnghiep.cs">
+    <Compile Update="Services\saveToDbMethods\SaveToDbDoanhnghiep.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\saveToDbMethods\saveToDbnhamoigioi.cs">
+    <Compile Update="Services\saveToDbMethods\SaveToDbNhamoigioi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\saveToDbMethods\saveToDbnoingoaithat.cs">
+    <Compile Update="Services\saveToDbMethods\SaveToDbNoingoaithat.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Services\saveToDbMethods\saveToDbphonthuy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\saveToDbMethods\saveToDbwiki.cs">
+    <Compile Update="Services\saveToDbMethods\SaveToDbWiki.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\saveToDbMethods\saveToDbtintuc.cs">
+    <Compile Update="Services\saveToDbMethods\SaveToDbTintuc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\saveToDbMethods\saveToDbduan.cs">
+    <Compile Update="Services\saveToDbMethods\SaveToDbDuan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\saveToDbMethods\saveToDbnhadatchothue.cs">
+    <Compile Update="Services\saveToDbMethods\SaveToDbNhadatchothue.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Services\saveToDbMethods\saveToDbnhadatban.cs">
+    <Compile Update="Services\saveToDbMethods\SaveToDbNhadatban.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

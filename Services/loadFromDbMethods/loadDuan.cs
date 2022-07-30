@@ -9,22 +9,22 @@ namespace web_scraping_csharp
 {
     public partial class Form1 : Form
     {
-        void loadDuan()
+        void LoadDuan()
         {
-            listView1.Clear();
-            listView1.Columns.Add("Url bài viết", 200);
-            listView1.Columns.Add("Tiêu đề", 250);
-            listView1.Columns.Add("Giá/m2", 100);
-            listView1.Columns.Add("Diện tích", 100);
-            listView1.Columns.Add("Số căn hộ", 100);
-            listView1.Columns.Add("Số tòa nhà", 100);
-            listView1.Columns.Add("Địa chỉ", 170);
-            listView1.Columns.Add("Công ty", 180);
-            listView1.Columns.Add("Tình trạng", 150);
-            List<ListViewItem> duans = new duanController().queryFetchAll();
-            foreach (ListViewItem duan in duans)
+            TableResult.Clear();
+            TableResult.Columns.Add("Url bài viết", 200);
+            TableResult.Columns.Add("Tiêu đề", 250);
+            TableResult.Columns.Add("Giá/m2", 100);
+            TableResult.Columns.Add("Diện tích", 100);
+            TableResult.Columns.Add("Số căn hộ", 100);
+            TableResult.Columns.Add("Số tòa nhà", 100);
+            TableResult.Columns.Add("Địa chỉ", 170);
+            TableResult.Columns.Add("Công ty", 180);
+            TableResult.Columns.Add("Tình trạng", 150);
+            List<ListViewItem> Duans = new DuanController().queryFetchAll();
+            foreach (ListViewItem Duan in Duans)
             {
-                listView1.Items.Add(duan);
+                TableResult.Items.Add(Duan);
             }
             MessageBox.Show("Đã tải từ cơ sở dữ liệu dự án");
         }

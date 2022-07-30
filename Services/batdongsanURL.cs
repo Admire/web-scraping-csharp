@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace web_scraping_csharp.Services
 {
-    internal class batdongsanURL
+    internal class BatdongsanURL
     {
         //dữ liệu có phân trang
         public string trangchu = "https://batdongsan.com.vn";
-        public string nhadatban = "https://batdongsan.com.vn/nha-dat-ban/p";
-        public string nhadatchothue = "https://batdongsan.com.vn/nha-dat-cho-thue/p";
-        public string duan = "https://duan.batdongsan.com.vn/du-an-bat-dong-san/p";
-        public string nhamoigioi = "https://batdongsan.com.vn/nha-moi-gioi/p";
+        public string Nhadatban = "https://batdongsan.com.vn/nha-dat-ban/p";
+        public string Nhadatchothue = "https://batdongsan.com.vn/nha-dat-cho-thue/p";
+        public string Duan = "https://Duan.batdongsan.com.vn/du-an-bat-dong-san/p";
+        public string Nhamoigioi = "https://batdongsan.com.vn/nha-moi-gioi/p";
         //dữ liệu không phân trang
-        public string doanhnghiep = "https://batdongsan.com.vn/doanh-nghiep";
-        public string tintuc = "https://batdongsan.com.vn/tin-tuc";
-        public string wiki = "https://batdongsan.com.vn/wiki";
-        public string phongthuy = "https://batdongsan.com.vn/phong-thuy";
-        public string noingoaithat = "https://batdongsan.com.vn/noi-ngoai-that";
+        public string Doanhnghiep = "https://batdongsan.com.vn/doanh-nghiep";
+        public string Tintuc = "https://batdongsan.com.vn/tin-tuc";
+        public string Wiki = "https://batdongsan.com.vn/Wiki";
+        public string Phongthuy = "https://batdongsan.com.vn/phong-thuy";
+        public string Noingoaithat = "https://batdongsan.com.vn/noi-ngoai-that";
     }
 }

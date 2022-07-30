@@ -29,216 +29,216 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.button1 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pageRangeNum = new System.Windows.Forms.NumericUpDown();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.startPageNum = new System.Windows.Forms.NumericUpDown();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.CrawlSomePagesButton = new System.Windows.Forms.Button();
+            this.TableTitle = new System.Windows.Forms.Label();
+            this.TableResult = new System.Windows.Forms.ListView();
+            this.DeleteResultButton = new System.Windows.Forms.Button();
+            this.SaveToDbButton = new System.Windows.Forms.Button();
+            this.PageRangeTitle = new System.Windows.Forms.Label();
+            this.PageRangeNum = new System.Windows.Forms.NumericUpDown();
+            this.LoadDbButton = new System.Windows.Forms.Button();
+            this.SaveToFileButton = new System.Windows.Forms.Button();
+            this.StopCrawl = new System.Windows.Forms.Button();
+            this.StartPageTitle = new System.Windows.Forms.Label();
+            this.StartPageNum = new System.Windows.Forms.NumericUpDown();
+            this.CrawlAllPagesButton = new System.Windows.Forms.Button();
+            this.DeleteDbButton = new System.Windows.Forms.Button();
+            this.CrawlAllButton = new System.Windows.Forms.Button();
+            this.ListCategories = new System.Windows.Forms.ComboBox();
+            this.ListCategoriesTitle = new System.Windows.Forms.Label();
+            this.CrawlAllTitle = new System.Windows.Forms.Label();
+            this.serverDBnameTitle = new System.Windows.Forms.Label();
+            this.serverDBportTitle = new System.Windows.Forms.Label();
+            this.userDBnameTitle = new System.Windows.Forms.Label();
+            this.userDBpasswordTitle = new System.Windows.Forms.Label();
+            this.DBnameTitle = new System.Windows.Forms.Label();
             this.serverDBname = new System.Windows.Forms.TextBox();
             this.serverDBport = new System.Windows.Forms.TextBox();
             this.userDBname = new System.Windows.Forms.TextBox();
             this.userDBpassword = new System.Windows.Forms.TextBox();
             this.DBname = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pageRangeNum)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.startPageNum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PageRangeNum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartPageNum)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // CrawlSomePagesButton
             // 
-            this.button1.Location = new System.Drawing.Point(31, 309);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 50);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Cào danh mục theo trang";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.CrawlSomePagesButton.Location = new System.Drawing.Point(31, 309);
+            this.CrawlSomePagesButton.Name = "CrawlSomePagesButton";
+            this.CrawlSomePagesButton.Size = new System.Drawing.Size(200, 50);
+            this.CrawlSomePagesButton.TabIndex = 0;
+            this.CrawlSomePagesButton.Text = "Cào danh mục theo trang";
+            this.CrawlSomePagesButton.UseVisualStyleBackColor = true;
+            this.CrawlSomePagesButton.Click += new System.EventHandler(this.CrawlSomePagesButton_Click);
             // 
-            // label2
+            // TableTitle
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(264, 113);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(415, 20);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Lưu ý: Tool sẽ đóng tiến trình Chrome hiện tại khi bắt đầu cào";
+            this.TableTitle.AutoSize = true;
+            this.TableTitle.Location = new System.Drawing.Point(264, 113);
+            this.TableTitle.Name = "TableTitle";
+            this.TableTitle.Size = new System.Drawing.Size(415, 20);
+            this.TableTitle.TabIndex = 3;
+            this.TableTitle.Text = "Lưu ý: Tool sẽ đóng tiến trình Chrome hiện tại khi bắt đầu cào";
             // 
-            // listView1
+            // TableResult
             // 
-            this.listView1.Location = new System.Drawing.Point(264, 142);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1381, 630);
-            this.listView1.TabIndex = 4;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.TableResult.Location = new System.Drawing.Point(264, 142);
+            this.TableResult.Name = "TableResult";
+            this.TableResult.Size = new System.Drawing.Size(1381, 630);
+            this.TableResult.TabIndex = 4;
+            this.TableResult.UseCompatibleStateImageBehavior = false;
+            this.TableResult.View = System.Windows.Forms.View.Details;
             // 
-            // button2
+            // DeleteResultButton
             // 
-            this.button2.Location = new System.Drawing.Point(31, 486);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(200, 50);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Xóa bảng";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.DeleteResultButton.Location = new System.Drawing.Point(31, 486);
+            this.DeleteResultButton.Name = "DeleteResultButton";
+            this.DeleteResultButton.Size = new System.Drawing.Size(200, 50);
+            this.DeleteResultButton.TabIndex = 0;
+            this.DeleteResultButton.Text = "Xóa bảng";
+            this.DeleteResultButton.UseVisualStyleBackColor = true;
+            this.DeleteResultButton.Click += new System.EventHandler(this.DeleteResultButton_Click);
             // 
-            // button4
+            // SaveToDbButton
             // 
-            this.button4.Enabled = false;
-            this.button4.Location = new System.Drawing.Point(31, 545);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(200, 50);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "Lưu vào cơ sở dữ liệu";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button3_Click);
+            this.SaveToDbButton.Enabled = false;
+            this.SaveToDbButton.Location = new System.Drawing.Point(31, 545);
+            this.SaveToDbButton.Name = "SaveToDbButton";
+            this.SaveToDbButton.Size = new System.Drawing.Size(200, 50);
+            this.SaveToDbButton.TabIndex = 0;
+            this.SaveToDbButton.Text = "Lưu vào cơ sở dữ liệu";
+            this.SaveToDbButton.UseVisualStyleBackColor = true;
+            this.SaveToDbButton.Click += new System.EventHandler(this.SaveToDbButton_Click);
             // 
-            // label1
+            // PageRangeTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 244);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 20);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Nhập số trang";
+            this.PageRangeTitle.AutoSize = true;
+            this.PageRangeTitle.Location = new System.Drawing.Point(31, 244);
+            this.PageRangeTitle.Name = "PageRangeTitle";
+            this.PageRangeTitle.Size = new System.Drawing.Size(103, 20);
+            this.PageRangeTitle.TabIndex = 6;
+            this.PageRangeTitle.Text = "Nhập số trang";
             // 
-            // pageRangeNum
+            // PageRangeNum
             // 
-            this.pageRangeNum.Location = new System.Drawing.Point(31, 273);
-            this.pageRangeNum.Maximum = new decimal(new int[] {
+            this.PageRangeNum.Location = new System.Drawing.Point(31, 273);
+            this.PageRangeNum.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.pageRangeNum.Minimum = new decimal(new int[] {
+            this.PageRangeNum.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.pageRangeNum.Name = "pageRangeNum";
-            this.pageRangeNum.Size = new System.Drawing.Size(200, 27);
-            this.pageRangeNum.TabIndex = 7;
-            this.pageRangeNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.pageRangeNum.Value = new decimal(new int[] {
+            this.PageRangeNum.Name = "PageRangeNum";
+            this.PageRangeNum.Size = new System.Drawing.Size(200, 27);
+            this.PageRangeNum.TabIndex = 7;
+            this.PageRangeNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.PageRangeNum.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // button3
+            // LoadDbButton
             // 
-            this.button3.Location = new System.Drawing.Point(31, 604);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(200, 50);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Tải từ cơ sở dữ liệu";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button4_Click);
+            this.LoadDbButton.Location = new System.Drawing.Point(31, 604);
+            this.LoadDbButton.Name = "LoadDbButton";
+            this.LoadDbButton.Size = new System.Drawing.Size(200, 50);
+            this.LoadDbButton.TabIndex = 0;
+            this.LoadDbButton.Text = "Tải từ cơ sở dữ liệu";
+            this.LoadDbButton.UseVisualStyleBackColor = true;
+            this.LoadDbButton.Click += new System.EventHandler(this.LoadDbButton_Click);
             // 
-            // button5
+            // SaveToFileButton
             // 
-            this.button5.Location = new System.Drawing.Point(31, 663);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(200, 50);
-            this.button5.TabIndex = 0;
-            this.button5.Text = "Lưu dưới dạng txt";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.SaveToFileButton.Location = new System.Drawing.Point(31, 663);
+            this.SaveToFileButton.Name = "SaveToFileButton";
+            this.SaveToFileButton.Size = new System.Drawing.Size(200, 50);
+            this.SaveToFileButton.TabIndex = 0;
+            this.SaveToFileButton.Text = "Lưu dưới dạng txt";
+            this.SaveToFileButton.UseVisualStyleBackColor = true;
+            this.SaveToFileButton.Click += new System.EventHandler(this.SaveToFileButton_Click);
             // 
-            // button6
+            // StopCrawl
             // 
-            this.button6.Enabled = false;
-            this.button6.Location = new System.Drawing.Point(31, 427);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(200, 50);
-            this.button6.TabIndex = 0;
-            this.button6.Text = "Dừng cào";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.StopCrawl.Enabled = false;
+            this.StopCrawl.Location = new System.Drawing.Point(31, 427);
+            this.StopCrawl.Name = "StopCrawl";
+            this.StopCrawl.Size = new System.Drawing.Size(200, 50);
+            this.StopCrawl.TabIndex = 0;
+            this.StopCrawl.Text = "Dừng cào";
+            this.StopCrawl.UseVisualStyleBackColor = true;
+            this.StopCrawl.Click += new System.EventHandler(this.StopCrawl_Click);
             // 
-            // label3
+            // StartPageTitle
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 179);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(139, 20);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Nhập trang bắt đầu";
+            this.StartPageTitle.AutoSize = true;
+            this.StartPageTitle.Location = new System.Drawing.Point(31, 179);
+            this.StartPageTitle.Name = "StartPageTitle";
+            this.StartPageTitle.Size = new System.Drawing.Size(139, 20);
+            this.StartPageTitle.TabIndex = 6;
+            this.StartPageTitle.Text = "Nhập trang bắt đầu";
             // 
-            // startPageNum
+            // StartPageNum
             // 
-            this.startPageNum.Location = new System.Drawing.Point(31, 208);
-            this.startPageNum.Maximum = new decimal(new int[] {
+            this.StartPageNum.Location = new System.Drawing.Point(31, 208);
+            this.StartPageNum.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.startPageNum.Minimum = new decimal(new int[] {
+            this.StartPageNum.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.startPageNum.Name = "startPageNum";
-            this.startPageNum.Size = new System.Drawing.Size(200, 27);
-            this.startPageNum.TabIndex = 7;
-            this.startPageNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.startPageNum.Value = new decimal(new int[] {
+            this.StartPageNum.Name = "StartPageNum";
+            this.StartPageNum.Size = new System.Drawing.Size(200, 27);
+            this.StartPageNum.TabIndex = 7;
+            this.StartPageNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.StartPageNum.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // button7
+            // CrawlAllPagesButton
             // 
-            this.button7.Location = new System.Drawing.Point(31, 368);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(200, 50);
-            this.button7.TabIndex = 0;
-            this.button7.Text = "Cào danh mục mọi trang";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.CrawlAllPagesButton.Location = new System.Drawing.Point(31, 368);
+            this.CrawlAllPagesButton.Name = "CrawlAllPagesButton";
+            this.CrawlAllPagesButton.Size = new System.Drawing.Size(200, 50);
+            this.CrawlAllPagesButton.TabIndex = 0;
+            this.CrawlAllPagesButton.Text = "Cào danh mục mọi trang";
+            this.CrawlAllPagesButton.UseVisualStyleBackColor = true;
+            this.CrawlAllPagesButton.Click += new System.EventHandler(this.CrawlAllPagesButton_Click);
             // 
-            // button8
+            // DeleteDbButton
             // 
-            this.button8.Location = new System.Drawing.Point(31, 722);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(200, 50);
-            this.button8.TabIndex = 0;
-            this.button8.Text = "Xóa cơ sở dữ liệu";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.DeleteDbButton.Location = new System.Drawing.Point(31, 722);
+            this.DeleteDbButton.Name = "DeleteDbButton";
+            this.DeleteDbButton.Size = new System.Drawing.Size(200, 50);
+            this.DeleteDbButton.TabIndex = 0;
+            this.DeleteDbButton.Text = "Xóa cơ sở dữ liệu";
+            this.DeleteDbButton.UseVisualStyleBackColor = true;
+            this.DeleteDbButton.Click += new System.EventHandler(this.DeleteDbButton_Click);
             // 
-            // button9
+            // CrawlAllButton
             // 
-            this.button9.Location = new System.Drawing.Point(31, 54);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(200, 50);
-            this.button9.TabIndex = 0;
-            this.button9.Text = "Cào toàn bộ trang web";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.CrawlAllButton.Location = new System.Drawing.Point(31, 54);
+            this.CrawlAllButton.Name = "CrawlAllButton";
+            this.CrawlAllButton.Size = new System.Drawing.Size(200, 50);
+            this.CrawlAllButton.TabIndex = 0;
+            this.CrawlAllButton.Text = "Cào toàn bộ trang web";
+            this.CrawlAllButton.UseVisualStyleBackColor = true;
+            this.CrawlAllButton.Click += new System.EventHandler(this.CrawlAllButton_Click);
             // 
-            // comboBox1
+            // ListCategories
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.ListCategories.FormattingEnabled = true;
+            this.ListCategories.Items.AddRange(new object[] {
             "Nhà đất bán",
             "Nhà đất cho thuê",
             "Dự án",
@@ -248,74 +248,74 @@
             "Nội-Ngoại thất",
             "Nhà môi giới",
             "Doanh nghiệp"});
-            this.comboBox1.Location = new System.Drawing.Point(31, 142);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 28);
-            this.comboBox1.TabIndex = 8;
-            this.comboBox1.Text = "Nhà đất bán";
+            this.ListCategories.Location = new System.Drawing.Point(31, 142);
+            this.ListCategories.Name = "ListCategories";
+            this.ListCategories.Size = new System.Drawing.Size(200, 28);
+            this.ListCategories.TabIndex = 8;
+            this.ListCategories.Text = "Nhà đất bán";
             // 
-            // label4
+            // ListCategoriesTitle
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(31, 113);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(112, 20);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Chọn danh mục";
+            this.ListCategoriesTitle.AutoSize = true;
+            this.ListCategoriesTitle.Location = new System.Drawing.Point(31, 113);
+            this.ListCategoriesTitle.Name = "ListCategoriesTitle";
+            this.ListCategoriesTitle.Size = new System.Drawing.Size(112, 20);
+            this.ListCategoriesTitle.TabIndex = 6;
+            this.ListCategoriesTitle.Text = "Chọn danh mục";
             // 
-            // label5
+            // CrawlAllTitle
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(31, 21);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(189, 20);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Nhập trang để cào toàn bộ";
+            this.CrawlAllTitle.AutoSize = true;
+            this.CrawlAllTitle.Location = new System.Drawing.Point(31, 21);
+            this.CrawlAllTitle.Name = "CrawlAllTitle";
+            this.CrawlAllTitle.Size = new System.Drawing.Size(189, 20);
+            this.CrawlAllTitle.TabIndex = 9;
+            this.CrawlAllTitle.Text = "Nhập trang để cào toàn bộ";
             // 
-            // label6
+            // serverDBnameTitle
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(264, 21);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(97, 20);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Tên server db";
+            this.serverDBnameTitle.AutoSize = true;
+            this.serverDBnameTitle.Location = new System.Drawing.Point(264, 21);
+            this.serverDBnameTitle.Name = "serverDBnameTitle";
+            this.serverDBnameTitle.Size = new System.Drawing.Size(97, 20);
+            this.serverDBnameTitle.TabIndex = 9;
+            this.serverDBnameTitle.Text = "Tên server db";
             // 
-            // label7
+            // serverDBportTitle
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(490, 21);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 20);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Port";
+            this.serverDBportTitle.AutoSize = true;
+            this.serverDBportTitle.Location = new System.Drawing.Point(490, 21);
+            this.serverDBportTitle.Name = "serverDBportTitle";
+            this.serverDBportTitle.Size = new System.Drawing.Size(35, 20);
+            this.serverDBportTitle.TabIndex = 9;
+            this.serverDBportTitle.Text = "Port";
             // 
-            // label8
+            // userDBnameTitle
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(703, 21);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(113, 20);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "Tên người dùng";
+            this.userDBnameTitle.AutoSize = true;
+            this.userDBnameTitle.Location = new System.Drawing.Point(703, 21);
+            this.userDBnameTitle.Name = "userDBnameTitle";
+            this.userDBnameTitle.Size = new System.Drawing.Size(113, 20);
+            this.userDBnameTitle.TabIndex = 9;
+            this.userDBnameTitle.Text = "Tên người dùng";
             // 
-            // label9
+            // userDBpasswordTitle
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(911, 21);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(70, 20);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "Mật khẩu";
+            this.userDBpasswordTitle.AutoSize = true;
+            this.userDBpasswordTitle.Location = new System.Drawing.Point(911, 21);
+            this.userDBpasswordTitle.Name = "userDBpasswordTitle";
+            this.userDBpasswordTitle.Size = new System.Drawing.Size(70, 20);
+            this.userDBpasswordTitle.TabIndex = 9;
+            this.userDBpasswordTitle.Text = "Mật khẩu";
             // 
-            // label10
+            // DBnameTitle
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(1133, 21);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(97, 20);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "Tên database";
+            this.DBnameTitle.AutoSize = true;
+            this.DBnameTitle.Location = new System.Drawing.Point(1133, 21);
+            this.DBnameTitle.Name = "DBnameTitle";
+            this.DBnameTitle.Size = new System.Drawing.Size(97, 20);
+            this.DBnameTitle.TabIndex = 9;
+            this.DBnameTitle.Text = "Tên database";
             // 
             // serverDBname
             // 
@@ -368,37 +368,37 @@
             this.Controls.Add(this.userDBname);
             this.Controls.Add(this.serverDBport);
             this.Controls.Add(this.serverDBname);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.startPageNum);
-            this.Controls.Add(this.pageRangeNum);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.DBnameTitle);
+            this.Controls.Add(this.userDBpasswordTitle);
+            this.Controls.Add(this.userDBnameTitle);
+            this.Controls.Add(this.serverDBportTitle);
+            this.Controls.Add(this.serverDBnameTitle);
+            this.Controls.Add(this.CrawlAllTitle);
+            this.Controls.Add(this.ListCategories);
+            this.Controls.Add(this.StartPageNum);
+            this.Controls.Add(this.PageRangeNum);
+            this.Controls.Add(this.StartPageTitle);
+            this.Controls.Add(this.ListCategoriesTitle);
+            this.Controls.Add(this.PageRangeTitle);
+            this.Controls.Add(this.TableResult);
+            this.Controls.Add(this.TableTitle);
+            this.Controls.Add(this.LoadDbButton);
+            this.Controls.Add(this.DeleteDbButton);
+            this.Controls.Add(this.SaveToFileButton);
+            this.Controls.Add(this.SaveToDbButton);
+            this.Controls.Add(this.DeleteResultButton);
+            this.Controls.Add(this.StopCrawl);
+            this.Controls.Add(this.CrawlAllPagesButton);
+            this.Controls.Add(this.CrawlAllButton);
+            this.Controls.Add(this.CrawlSomePagesButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1700, 850);
             this.MinimumSize = new System.Drawing.Size(1700, 850);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Batdongsan.com.vn Scraping Tool";
-            ((System.ComponentModel.ISupportInitialize)(this.pageRangeNum)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.startPageNum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PageRangeNum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartPageNum)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -406,29 +406,29 @@
 
         #endregion
 
-        private Button button1;
-        private Label label2;
-        private ListView listView1;
-        private Button button2;
-        private Button button4;
-        private Label label1;
-        private NumericUpDown pageRangeNum;
-        private Button button3;
-        private Button button5;
-        private Button button6;
-        private Label label3;
-        private NumericUpDown startPageNum;
-        private Button button7;
-        private Button button8;
-        private Button button9;
-        private ComboBox comboBox1;
-        private Label label4;
-        private Label label5;
-        private Label label6;
-        private Label label7;
-        private Label label8;
-        private Label label9;
-        private Label label10;
+        private Button CrawlSomePagesButton;
+        private Label TableTitle;
+        private ListView TableResult;
+        private Button DeleteResultButton;
+        private Button SaveToDbButton;
+        private Label PageRangeTitle;
+        private NumericUpDown PageRangeNum;
+        private Button LoadDbButton;
+        private Button SaveToFileButton;
+        private Button StopCrawl;
+        private Label StartPageTitle;
+        private NumericUpDown StartPageNum;
+        private Button CrawlAllPagesButton;
+        private Button DeleteDbButton;
+        private Button CrawlAllButton;
+        private ComboBox ListCategories;
+        private Label ListCategoriesTitle;
+        private Label CrawlAllTitle;
+        private Label serverDBnameTitle;
+        private Label serverDBportTitle;
+        private Label userDBnameTitle;
+        private Label userDBpasswordTitle;
+        private Label DBnameTitle;
         public TextBox serverDBname;
         public TextBox serverDBport;
         public TextBox userDBname;

@@ -9,14 +9,14 @@ namespace web_scraping_csharp
 {
     public partial class Form1 : Form
     {
-        void saveToDbdoanhnghiep()
+        void SaveToDbDoanhnghiep()
         {
             List<ListViewItem> item = new();
-            for (int i = 0; i < listView1.Items.Count; i++)
+            for (int i = 0; i < TableResult.Items.Count; i++)
             {
-                item.Add(listView1.Items[i]);
+                item.Add(TableResult.Items[i]);
             }
-            new doanhnghiepController().queryInsertAll(item);
+            new DoanhnghiepController().QueryInsertAll(item);
             MessageBox.Show("Đã lưu vào cơ sở dữ liệu doanh nghiệp");
         }
 

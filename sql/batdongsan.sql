@@ -22,11 +22,11 @@ CREATE SCHEMA IF NOT EXISTS `batdongsan` DEFAULT CHARACTER SET utf8mb4 COLLATE u
 USE `batdongsan` ;
 
 -- -----------------------------------------------------
--- Table `batdongsan`.`doanhnghiep`
+-- Table `batdongsan`.`Doanhnghiep`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `batdongsan`.`doanhnghiep` ;
+DROP TABLE IF EXISTS `batdongsan`.`Doanhnghiep` ;
 
-CREATE TABLE IF NOT EXISTS `batdongsan`.`doanhnghiep` (
+CREATE TABLE IF NOT EXISTS `batdongsan`.`Doanhnghiep` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `url` VARCHAR(1000) NULL DEFAULT NULL,
   `ten` VARCHAR(1000) NULL DEFAULT NULL,
@@ -38,11 +38,11 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `batdongsan`.`duan`
+-- Table `batdongsan`.`Duan`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `batdongsan`.`duan` ;
+DROP TABLE IF EXISTS `batdongsan`.`Duan` ;
 
-CREATE TABLE IF NOT EXISTS `batdongsan`.`duan` (
+CREATE TABLE IF NOT EXISTS `batdongsan`.`Duan` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `url` VARCHAR(1000) NULL DEFAULT NULL,
   `tieude` VARCHAR(1000) NULL DEFAULT NULL,
@@ -61,11 +61,11 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `batdongsan`.`nhadatban`
+-- Table `batdongsan`.`Nhadatban`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `batdongsan`.`nhadatban` ;
+DROP TABLE IF EXISTS `batdongsan`.`Nhadatban` ;
 
-CREATE TABLE IF NOT EXISTS `batdongsan`.`nhadatban` (
+CREATE TABLE IF NOT EXISTS `batdongsan`.`Nhadatban` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `url` VARCHAR(1000) NULL DEFAULT NULL,
   `tieude` VARCHAR(1000) NULL DEFAULT NULL,
@@ -83,11 +83,11 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `batdongsan`.`nhadatchothue`
+-- Table `batdongsan`.`Nhadatchothue`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `batdongsan`.`nhadatchothue` ;
+DROP TABLE IF EXISTS `batdongsan`.`Nhadatchothue` ;
 
-CREATE TABLE IF NOT EXISTS `batdongsan`.`nhadatchothue` (
+CREATE TABLE IF NOT EXISTS `batdongsan`.`Nhadatchothue` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `url` VARCHAR(1000) NULL DEFAULT NULL,
   `tieude` VARCHAR(1000) NULL DEFAULT NULL,
@@ -105,11 +105,11 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `batdongsan`.`nhamoigioi`
+-- Table `batdongsan`.`Nhamoigioi`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `batdongsan`.`nhamoigioi` ;
+DROP TABLE IF EXISTS `batdongsan`.`Nhamoigioi` ;
 
-CREATE TABLE IF NOT EXISTS `batdongsan`.`nhamoigioi` (
+CREATE TABLE IF NOT EXISTS `batdongsan`.`Nhamoigioi` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `url` VARCHAR(1000) NULL DEFAULT NULL,
   `ten` VARCHAR(1000) NULL DEFAULT NULL,
@@ -124,11 +124,11 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `batdongsan`.`noingoaithat`
+-- Table `batdongsan`.`Noingoaithat`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `batdongsan`.`noingoaithat` ;
+DROP TABLE IF EXISTS `batdongsan`.`Noingoaithat` ;
 
-CREATE TABLE IF NOT EXISTS `batdongsan`.`noingoaithat` (
+CREATE TABLE IF NOT EXISTS `batdongsan`.`Noingoaithat` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `url` VARCHAR(1000) NULL DEFAULT NULL,
   `tieude` VARCHAR(1000) NULL DEFAULT NULL,
@@ -140,11 +140,11 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `batdongsan`.`phongthuy`
+-- Table `batdongsan`.`Phongthuy`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `batdongsan`.`phongthuy` ;
+DROP TABLE IF EXISTS `batdongsan`.`Phongthuy` ;
 
-CREATE TABLE IF NOT EXISTS `batdongsan`.`phongthuy` (
+CREATE TABLE IF NOT EXISTS `batdongsan`.`Phongthuy` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `url` VARCHAR(1000) NULL DEFAULT NULL,
   `tieude` VARCHAR(1000) NULL DEFAULT NULL,
@@ -156,11 +156,11 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `batdongsan`.`tintuc`
+-- Table `batdongsan`.`Tintuc`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `batdongsan`.`tintuc` ;
+DROP TABLE IF EXISTS `batdongsan`.`Tintuc` ;
 
-CREATE TABLE IF NOT EXISTS `batdongsan`.`tintuc` (
+CREATE TABLE IF NOT EXISTS `batdongsan`.`Tintuc` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `url` VARCHAR(1000) NULL DEFAULT NULL,
   `tieude` VARCHAR(1000) NULL DEFAULT NULL,
@@ -172,11 +172,11 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `batdongsan`.`wiki`
+-- Table `batdongsan`.`Wiki`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `batdongsan`.`wiki` ;
+DROP TABLE IF EXISTS `batdongsan`.`Wiki` ;
 
-CREATE TABLE IF NOT EXISTS `batdongsan`.`wiki` (
+CREATE TABLE IF NOT EXISTS `batdongsan`.`Wiki` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `url` VARCHAR(1000) NULL DEFAULT NULL,
   `tieude` VARCHAR(1000) NULL DEFAULT NULL,

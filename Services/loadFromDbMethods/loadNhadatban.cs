@@ -9,21 +9,21 @@ namespace web_scraping_csharp
 {
     public partial class Form1 : Form
     {
-        void loadNhadatban()
+        void LoadNhadatban()
         {
-            listView1.Clear();
-            listView1.Columns.Add("Url bài viết", 200);
-            listView1.Columns.Add("Tiêu đề", 250);
-            listView1.Columns.Add("Giá", 150);
-            listView1.Columns.Add("Giá/m2", 150);
-            listView1.Columns.Add("Diện tích", 150);
-            listView1.Columns.Add("Địa chỉ", 170);
-            listView1.Columns.Add("Ngày đăng bài", 150);
-            listView1.Columns.Add("Nên xem", 150);
-            List<ListViewItem> nhadatbans = new nhadatbanController().queryFetchAll();
-            foreach (ListViewItem nhadatban in nhadatbans)
+            TableResult.Clear();
+            TableResult.Columns.Add("Url bài viết", 200);
+            TableResult.Columns.Add("Tiêu đề", 250);
+            TableResult.Columns.Add("Giá", 150);
+            TableResult.Columns.Add("Giá/m2", 150);
+            TableResult.Columns.Add("Diện tích", 150);
+            TableResult.Columns.Add("Địa chỉ", 170);
+            TableResult.Columns.Add("Ngày đăng bài", 150);
+            TableResult.Columns.Add("Nên xem", 150);
+            List<ListViewItem> Nhadatbans = new NhadatbanController().queryFetchAll();
+            foreach (ListViewItem Nhadatban in Nhadatbans)
             {
-                listView1.Items.Add(nhadatban);
+                TableResult.Items.Add(Nhadatban);
             }
             MessageBox.Show("Đã tải từ cơ sở dữ liệu nhà đất bán");
         }

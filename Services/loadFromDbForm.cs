@@ -11,34 +11,34 @@ namespace web_scraping_csharp
     {
         void LoadFromDb()
         {//chọn trang web muốn tải từ cơ sở dữ liệu
-            switch (comboBox1.Text)
+            switch (ListCategories.Text)
             {
                 case "Nhà đất bán":
-                    loadNhadatban();
+                    LoadNhadatban();
                     break;
                 case "Nhà đất cho thuê":
-                    loadNhadatchothue();
+                    LoadNhadatchothue();
                     break;
                 case "Dự án":
-                    loadDuan();
+                    LoadDuan();
                     break;
                 case "Tin tức":
-                    loadTintuc();
+                    LoadTintuc();
                     break;
                 case "Wiki BĐS":
-                    loadWiki();
+                    LoadWiki();
                     break;
                 case "Phong Thủy":
-                    loadPhongthuy();
+                    LoadPhongthuy();
                     break;
                 case "Nội-Ngoại thất":
-                    loadNoingoaithat();
+                    LoadNoingoaithat();
                     break;
                 case "Nhà môi giới":
-                    loadNhamoigioi();
+                    LoadNhamoigioi();
                     break;
                 case "Doanh nghiệp":
-                    loadDoanhnghiep();
+                    LoadDoanhnghiep();
                     break;
                 default:
                     break;

@@ -6,15 +6,15 @@ using web_scraping_csharp.Services;
 
 namespace web_scraping_csharp.Controllers
 {
-    public class nhadatchothueController
+    public class NhadatchothueController
     {
-        public void queryInsertAll(List<ListViewItem> item)
+        public void QueryInsertAll(List<ListViewItem> item)
         {
 
-            string sqlInsertTonhadatchothue = $"INSERT INTO nhadatchothue VALUES ";
+            string sqlInsertToNhadatchothue = $"INSERT INTO Nhadatchothue VALUES ";
             foreach (ListViewItem item2 in item)
             {
-                sqlInsertTonhadatchothue += "(DEFAULT ";
+                sqlInsertToNhadatchothue += "(DEFAULT ";
                 List<string> insertList = new();
                 Char value = '\'';
                 for(int i = 0; i < item2.SubItems.Count; i++){
@@ -28,54 +28,54 @@ namespace web_scraping_csharp.Controllers
                 }
                 foreach(string insert in insertList)
                 {
-                    sqlInsertTonhadatchothue += $",'{insert}'";
+                    sqlInsertToNhadatchothue += $",'{insert}'";
                 }
-                sqlInsertTonhadatchothue += ") ";
+                sqlInsertToNhadatchothue += ") ";
 
                 if (item.IndexOf(item2) != item.Count() - 1)
                 {
-                    sqlInsertTonhadatchothue += ',';
+                    sqlInsertToNhadatchothue += ',';
                 }
             }
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                db.Query<nhadatchothue>(sqlInsertTonhadatchothue);
+                db.Query<Nhadatchothue>(sqlInsertToNhadatchothue);
             }
         }
         public List<ListViewItem> queryFetchAll()
         {
-            string sqlGetAllnhadatchothue = "SELECT * FROM nhadatchothue";
-            List<nhadatchothue> nhadatchothues = new();
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
+            string sqlGetAllNhadatchothue = "SELECT * FROM Nhadatchothue";
+            List<Nhadatchothue> Nhadatchothues = new();
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                nhadatchothues = db.Query<nhadatchothue>(sqlGetAllnhadatchothue).ToList();
+                Nhadatchothues = db.Query<Nhadatchothue>(sqlGetAllNhadatchothue).ToList();
             }
             List< ListViewItem > result = new List<ListViewItem>();
-            foreach (nhadatchothue nhadatchothue in nhadatchothues)
+            foreach (Nhadatchothue Nhadatchothue in Nhadatchothues)
             {
                 ListViewItem item = new ListViewItem();
 
-                item.Text =  nhadatchothue.url;
-                item.SubItems.Add(nhadatchothue.tieude);
-                item.SubItems.Add(nhadatchothue.gia);
-                item.SubItems.Add(nhadatchothue.giam2);
-                item.SubItems.Add(nhadatchothue.dientich);
-                item.SubItems.Add(nhadatchothue.diachi);
-                item.SubItems.Add(nhadatchothue.ngaydangbai);
-                item.SubItems.Add(nhadatchothue.nenxem);
+                item.Text =  Nhadatchothue.url;
+                item.SubItems.Add(Nhadatchothue.tieude);
+                item.SubItems.Add(Nhadatchothue.gia);
+                item.SubItems.Add(Nhadatchothue.giam2);
+                item.SubItems.Add(Nhadatchothue.dientich);
+                item.SubItems.Add(Nhadatchothue.diachi);
+                item.SubItems.Add(Nhadatchothue.ngaydangbai);
+                item.SubItems.Add(Nhadatchothue.nenxem);
 
                 result.Add(item);
             }
             return result;
         }
-        public void queryDeleteAll()
+        public void QueryDeleteAll()
         {
 
-            string sqlDeleteAllnhadatchothue = $"DELETE FROM nhadatchothue";
+            string sqlDeleteAllNhadatchothue = $"DELETE FROM Nhadatchothue";
            
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                db.Query<nhadatchothue>(sqlDeleteAllnhadatchothue);
+                db.Query<Nhadatchothue>(sqlDeleteAllNhadatchothue);
             }
         }
     }

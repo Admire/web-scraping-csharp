@@ -6,15 +6,15 @@ using web_scraping_csharp.Services;
 
 namespace web_scraping_csharp.Controllers
 {
-    public class phongthuyController
+    public class PhongthuyController
     {
-        public void queryInsertAll(List<ListViewItem> item)
+        public void QueryInsertAll(List<ListViewItem> item)
         {
 
-            string sqlInsertTophongthuy = $"INSERT INTO phongthuy VALUES ";
+            string sqlInsertToPhongthuy = $"INSERT INTO Phongthuy VALUES ";
             foreach (ListViewItem item2 in item)
             {
-                sqlInsertTophongthuy += "(DEFAULT ";
+                sqlInsertToPhongthuy += "(DEFAULT ";
                 List<string> insertList = new();
                 Char value = '\'';
                 for(int i = 0; i < item2.SubItems.Count; i++){
@@ -28,47 +28,47 @@ namespace web_scraping_csharp.Controllers
                 }
                 foreach(string insert in insertList)
                 {
-                    sqlInsertTophongthuy += $",'{insert}'";
+                    sqlInsertToPhongthuy += $",'{insert}'";
                 }
-                sqlInsertTophongthuy += ") ";
+                sqlInsertToPhongthuy += ") ";
 
                 if (item.IndexOf(item2) != item.Count() - 1)
                 {
-                    sqlInsertTophongthuy += ',';
+                    sqlInsertToPhongthuy += ',';
                 }
             }
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                db.Query<phongthuy>(sqlInsertTophongthuy);
+                db.Query<Phongthuy>(sqlInsertToPhongthuy);
             }
         }
         public List<ListViewItem> queryFetchAll()
         {
-            string sqlGetAllphongthuy = "SELECT * FROM phongthuy";
-            List<phongthuy> phongthuys = new();
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
+            string sqlGetAllPhongthuy = "SELECT * FROM Phongthuy";
+            List<Phongthuy> Phongthuys = new();
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                phongthuys = db.Query<phongthuy>(sqlGetAllphongthuy).ToList();
+                Phongthuys = db.Query<Phongthuy>(sqlGetAllPhongthuy).ToList();
             }
             List< ListViewItem > result = new List<ListViewItem>();
-            foreach (phongthuy phongthuy in phongthuys)
+            foreach (Phongthuy Phongthuy in Phongthuys)
             {
                 ListViewItem item = new ListViewItem();
 
-                item.Text =  phongthuy.url;
-                item.SubItems.Add(phongthuy.tieude);
+                item.Text =  Phongthuy.url;
+                item.SubItems.Add(Phongthuy.tieude);
                 result.Add(item);
             }
             return result;
         }
-        public void queryDeleteAll()
+        public void QueryDeleteAll()
         {
 
-            string sqlDeleteAllphongthuy = $"DELETE FROM phongthuy";
+            string sqlDeleteAllPhongthuy = $"DELETE FROM Phongthuy";
            
-            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().getConnection()))
+            using (IDbConnection db = new MySqlConnection(new databaseConnectionString().GetConnection()))
             {
-                db.Query<phongthuy>(sqlDeleteAllphongthuy);
+                db.Query<Phongthuy>(sqlDeleteAllPhongthuy);
             }
         }
     }
